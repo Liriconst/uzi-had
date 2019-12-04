@@ -1,0 +1,88 @@
+@import "config";
+
+@mixin flexRelative {
+  display: flex;
+  position: relative;
+}
+
+@mixin textRobotoSlab {
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(20px);
+  font-weight: 300;
+  color: white;
+}
+
+@mixin bigTextRobotoSlab {
+  @include flexRelative;
+  flex-direction: row;
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(58px);
+  font-weight: 100;
+  color: #4cff00;
+}
+
+.appHeader {
+  @include flexRelative;
+  flex-direction: column;
+}
+
+.appHeaderStart {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  background: #0064aa;
+  width: 100%;
+  height: ptr(80px);
+}
+
+.appHeaderStartText9 {
+  @include bigTextRobotoSlab;
+  margin: ptr(-2.5px) 0 0 ptr(15px);
+}
+
+.appHeaderStartTextOO {
+  @include bigTextRobotoSlab;
+  font-size: ptr(26px);
+  font-weight: 300;
+  margin: ptr(8.5px) 0 0 ptr(3px);
+}
+
+.appHeaderStartDoubleText {
+  @include flexRelative;
+  @include textRobotoSlab;
+  flex-direction: column;
+  padding-left: ptr(48px);
+
+  span {
+    padding-top: ptr(11px);
+  }
+}
+
+.appHeaderStartAddress {
+  @include flexRelative;
+  flex-direction: column;
+  width: ptr(425px);
+}
+
+.appHeaderStartAddressSeparator {
+  @include flexRelative;
+  width: ptr(1px);
+  height: ptr(56px);
+  background: #015088;
+  margin-top: ptr(12px);
+}
+
+.appHeaderStartSchedule {
+  @include flexRelative;
+  flex-direction: column;
+  width: ptr(124px);
+}
+
+.appHeaderStartScheduleSeparator {
+  @include flexRelative;
+  width: ptr(1px);
+  height: ptr(44px);
+  background: #4cff00;
+  margin-top: ptr(18px);
+}
+

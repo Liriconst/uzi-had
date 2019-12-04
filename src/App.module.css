@@ -1,0 +1,86 @@
+.appHeader {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.appHeaderStart {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  background: #0064aa;
+  width: 100%;
+  height: 5rem;
+}
+
+.appHeaderStartText9 {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  font-family: "Roboto Slab", serif;
+  font-size: 3.625rem;
+  font-weight: 100;
+  color: #4cff00;
+  margin: -0.15625rem 0 0 0.9375rem;
+}
+
+.appHeaderStartTextOO {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  font-family: "Roboto Slab", serif;
+  font-size: 3.625rem;
+  font-weight: 100;
+  color: #4cff00;
+  font-size: 1.625rem;
+  font-weight: 300;
+  margin: 0.53125rem 0 0 0.1875rem;
+}
+
+.appHeaderStartDoubleText {
+  display: flex;
+  position: relative;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: white;
+  flex-direction: column;
+  padding-left: 3rem;
+}
+.appHeaderStartDoubleText span {
+  padding-top: 0.6875rem;
+}
+
+.appHeaderStartAddress {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 26.5625rem;
+}
+
+.appHeaderStartAddressSeparator {
+  display: flex;
+  position: relative;
+  width: 0.0625rem;
+  height: 3.5rem;
+  background: #015088;
+  margin-top: 0.75rem;
+}
+
+.appHeaderStartSchedule {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 7.75rem;
+}
+
+.appHeaderStartScheduleSeparator {
+  display: flex;
+  position: relative;
+  width: 0.0625rem;
+  height: 2.75rem;
+  background: #4cff00;
+  margin-top: 1.125rem;
+}
+
+/*# sourceMappingURL=App.module.css.map */

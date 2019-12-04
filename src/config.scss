@@ -1,0 +1,5 @@
+$size-base: 16px;
+
+@function ptr($size) {
+  @return #{$size / $size-base}rem;
+}
