@@ -13,7 +13,20 @@
   height: 5rem;
 }
 
-.appHeaderStartText9 {
+.appHeaderStartPart1 {
+  display: flex;
+  position: relative;
+  width: 50%;
+}
+
+.appHeaderStartPart2 {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.appHeaderStartNumber {
   display: flex;
   position: relative;
   flex-direction: row;
@@ -21,7 +34,10 @@
   font-size: 3.625rem;
   font-weight: 100;
   color: #4cff00;
-  margin: -0.15625rem 0 0 0.9375rem;
+  margin-top: -0.15625rem;
+}
+.appHeaderStartNumber span {
+  margin: 0 0.1875rem 0 0.1875rem;
 }
 
 .appHeaderStartTextOO {
@@ -45,7 +61,6 @@
   font-weight: 300;
   color: white;
   flex-direction: column;
-  padding-left: 3rem;
 }
 .appHeaderStartDoubleText span {
   padding-top: 0.6875rem;
@@ -65,6 +80,7 @@
   height: 3.5rem;
   background: #015088;
   margin-top: 0.75rem;
+  margin-right: 3rem;
 }
 
 .appHeaderStartSchedule {
@@ -80,7 +96,50 @@
   width: 0.0625rem;
   height: 2.75rem;
   background: #4cff00;
-  margin-top: 1.125rem;
+  margin: 1.125rem 0.9375rem 0 0;
+}
+
+.appHeaderStartNet {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  margin-right: 1.75rem;
+}
+.appHeaderStartNet img {
+  width: 100%;
+}
+
+.appHeaderStartButton {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 16.25rem;
+  height: 5rem;
+  background: #39d02a;
+  margin: 0 3.125rem 0 1.375rem;
+}
+.appHeaderStartButton span {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: white;
+  line-height: 0;
+}
+
+.appHeaderStartPhone {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: white;
+  line-height: 0;
+  margin-right: 3rem;
 }
 
 /*# sourceMappingURL=App.module.css.map */

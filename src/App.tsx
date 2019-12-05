@@ -27,7 +27,7 @@ const App: React.FC = () => {
               <span className={styles.appHeaderStartScheduleSeparator}/>
               <div className={styles.appHeaderStartNumber}>9</div>
               <div className={styles.appHeaderStartTextOO}>ОО</div>
-              <div className={styles.appHeaderStartDash}>-</div>
+              <div className={styles.appHeaderStartNumber}><span>-</span></div>
               <div className={styles.appHeaderStartNumber}>17</div>
               <div className={styles.appHeaderStartTextOO}>ОО</div>
             </div>
