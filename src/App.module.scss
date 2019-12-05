@@ -35,9 +35,24 @@
   height: ptr(80px);
 }
 
-.appHeaderStartText9 {
+.appHeaderStartPart1 {
+  @include flexRelative;
+  width: 50%;
+}
+
+.appHeaderStartPart2 {
+  @include flexRelative;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.appHeaderStartNumber {
   @include bigTextRobotoSlab;
-  margin: ptr(-2.5px) 0 0 ptr(15px);
+  margin-top: ptr(-2.5px);
+
+  span {
+    margin: 0 ptr(3px) 0 ptr(3px);
+  }
 }
 
 .appHeaderStartTextOO {
@@ -51,7 +66,6 @@
   @include flexRelative;
   @include textRobotoSlab;
   flex-direction: column;
-  padding-left: ptr(48px);
 
   span {
     padding-top: ptr(11px);
@@ -70,6 +84,7 @@
   height: ptr(56px);
   background: #015088;
   margin-top: ptr(12px);
+  margin-right: ptr(48px);
 }
 
 .appHeaderStartSchedule {
@@ -83,6 +98,47 @@
   width: ptr(1px);
   height: ptr(44px);
   background: #4cff00;
-  margin-top: ptr(18px);
+  margin: ptr(18px) ptr(15px) 0 0;
 }
 
+.appHeaderStartNet {
+  @include flexRelative;
+  align-items: center;
+  justify-content: center;
+  width: ptr(52px);
+  margin-right: ptr(28px);
+
+  img {
+    width: 100%;
+  }
+}
+
+.appHeaderStartButton {
+  @include flexRelative;
+  align-items: center;
+  justify-content: center;
+  width: ptr(260px);
+  height: ptr(80px);
+  background: #39d02a;
+  margin: 0 ptr(50px) 0 ptr(22px);
+
+  span {
+    font-family: "Roboto Slab", serif;
+    font-size: ptr(30px);
+    font-weight: 400;
+    color: white;
+    line-height: 0;
+  }
+}
+
+.appHeaderStartPhone {
+  @include flexRelative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(24px);
+  font-weight: 400;
+  color: white;
+  line-height: 0;
+  margin-right: ptr(48px);
+}
