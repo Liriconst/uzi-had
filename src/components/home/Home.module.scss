@@ -1,0 +1,257 @@
+@import "../../config";
+
+@mixin flexRowRelative {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+@mixin flexColumnRelative {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pageHome {
+  @include flexColumnRelative;
+  height: 100%;
+  width: 100%;
+  background: white;
+}
+
+
+
+/*region Advantages*/
+
+.homeHeader {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  height: ptr(70px);
+  width: 100%;
+
+  span {
+    font-family: "Roboto", sans-serif;
+    font-size: ptr(42px);
+    font-weight: 400;
+    color: #0064aa;
+    line-height: 0;
+  }
+}
+
+.homeAdvantages {
+  @include flexRowRelative;
+
+  justify-content: center;
+  height: ptr(480px);
+  max-width: 100%;
+  background: white;
+  padding: 0 ptr(131px) 0 ptr(131px);
+  margin-bottom: ptr(20px);
+}
+
+.homeAdvantageTemplate {
+  @include flexColumnRelative;
+  width: ptr(512px);
+}
+
+.homeAdvantageTemplateImg {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  height: ptr(88px);
+  width: ptr(88px);
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 ptr(3.25px) rgba(0, 100, 170, 1);
+  margin: ptr(4px) 0 ptr(20px) ptr(208px);
+
+  #img1 {
+    height: ptr(72px);
+    display: block;
+  }
+
+  #img2 {
+    height: ptr(72px);
+    display: none;
+  }
+
+  &:hover {
+    background: #0064aa;
+    transition: 350ms;
+
+    #img1 {
+      height: ptr(72px);
+      display: none;
+    }
+
+    #img2 {
+      height: ptr(72px);
+      display: block;
+    }
+  }
+}
+
+.homeAdvantageTemplateImgRadius {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  height: 100%;
+  width: ptr(90px);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 179, 229, 1);
+
+  img {
+    height: 100%;
+  }
+}
+
+.homeAdvantageTemplateTextHeader {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(23px);
+  font-weight: 300;
+  color: #005890;
+  line-height: 0;
+  margin-top: ptr(10px);
+
+  span {
+    margin-top: ptr(20px);
+    margin-bottom: ptr(20px);
+  }
+}
+
+.homeAdvantageTemplateText {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(19px);
+  font-weight: 300;
+  color: #393939;
+  text-align: justify;
+  margin-bottom: ptr(5px);
+}
+
+.homeAdvantageTemplateLink {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(23px);
+  font-weight: 300;
+  text-align: justify;
+  line-height: 0;
+  margin-top: ptr(20px);
+
+  a {
+    color: #005890;
+    text-decoration: none;
+  }
+
+  &:hover {
+    a {
+      color: black;
+    }
+  }
+}
+
+.homeAdvantageSeparator {
+  @include flexRowRelative;
+  height: ptr(480px);
+  width: 1px;
+  background: #9bbacf;
+  margin: 0 ptr(30px) 0 ptr(30px);
+}
+
+/*endregion Advantages*/
+
+/*region Footer*/
+
+.homeFooter {
+  @include flexColumnRelative;
+  max-height: ptr(150px);
+  max-width: 100%;
+  background: #0064aa;
+  padding: ptr(20px) ptr(665px) ptr(20px) ptr(665px);
+}
+
+.homeFooterButtons {
+  @include flexRowRelative;
+  height: ptr(50px);
+  width: 100%;
+}
+
+.homeFooterButtonTemplate {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  height: ptr(50px);
+  width: ptr(235px);
+  background: #39d02a;
+  border-radius: ptr(5px);
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(22px);
+  font-weight: 400;
+  color: white;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: #018401;
+    box-shadow: 0 ptr(3px) ptr(3px) #004487;
+    transition: 100ms;
+  }
+}
+
+.homeFooterButtonSeparator {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(24px);
+  font-weight: 300;
+  color: #a2c6df;
+  margin: 0 ptr(34px) 0 ptr(34px);
+}
+
+.homeFooterRemark {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(10px);
+  font-weight: 400;
+  color: #a2c6df;
+  margin-top: ptr(20px);
+}
+
+.homeFooterRemarkLink {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(10px);
+
+  a {
+    color: #a2c6df;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &:hover {
+    a {
+      color: black;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
+}
+
+/*endregion Footer*/

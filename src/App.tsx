@@ -1,18 +1,22 @@
 import * as React from 'react';
-import {Router, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Link, withRouter} from "react-router-dom";
 import styles from './App.module.scss';
 import Home from "./components/home/Home";
 import News from "./components/news/News";
 import Ultrasound from "./components/ultrasound/Ultrasound";
+import Contacts from "./components/contacts/Contacts";
 
 import { createBrowserHistory } from 'history';
 
-export const appHistory =  createBrowserHistory();
+class AppHeaderInner extends React.Component<{
+  location: any;
+}> {
 
-const App: React.FC = () => {
-  return (
-      <Router history={appHistory}>
-        <div className={styles.appHeader}>
+  render() {
+    const { location } = this.props;
+
+    return (
+        <>
           <div className={styles.appHeaderStart}>
             <div className={styles.appHeaderStartPart1}>
               <div className={styles.appHeaderStartAddress}>
@@ -32,18 +36,74 @@ const App: React.FC = () => {
               <div className={styles.appHeaderStartTextOO}>ОО</div>
             </div>
             <div className={styles.appHeaderStartPart2}>
-              <div className={styles.appHeaderStartNet}><img src="/static/svg/7-vk-White.svg" alt={""}/></div>
-              <div className={styles.appHeaderStartNet}><img src="/static/svg/8-instagram-White.svg" alt={""}/></div>
-              <div className={styles.appHeaderStartButton}><span>Запись online</span></div>
+              <a className={styles.appHeaderStartNet} href='/home'>
+                <img id={styles.img1} src="/static/svg/7-vk-White.svg" alt={""}/>
+                <img id={styles.img2} src="/static/svg/7-vk-39d02a.svg" alt={""}/>
+              </a>
+              <a className={styles.appHeaderStartNet} href='/home'>
+                <img id={styles.img1} src="/static/svg/8-instagram-White.svg" alt={""}/>
+                <img id={styles.img2} src="/static/svg/8-instagram-39d02a.svg" alt={""}/>
+              </a>
+              {/*<div className={styles.appHeaderStartNet}><img src="/static/svg/7-vk-White.svg" alt={""}/></div>*/}
+              {/*<div className={styles.appHeaderStartNet}><img src="/static/svg/8-instagram-White.svg" alt={""}/></div>*/}
+              <div className={styles.appHeaderStartButton}><Link to="/news">Запись online</Link></div>
               <span className={styles.appHeaderStartPhone}>+7(918)177-24-17</span>
             </div>
-            {/* <div><Link to="/">Home</Link></div>*/}
-            {/*<div><Link to="/menu">Menu</Link></div>*/}
-            {/*<div>*/}
-            {/*    <Link to="/heating">Heating</Link>*/}
-            {/*</div>*/}
           </div>
+          <div className={styles.appHeaderMiddle}>
+            <div className={styles.appHeaderMiddlePart1}>
+              <a className={styles.appHeaderMiddleFavicon} href='/home'>
+                <img src="/static/img/9-favicon.png" alt={""}/>
+              </a>
+              <div className={styles.appHeaderMiddleName}>
+                <div className={styles.appHeaderMiddleDoubleText}><span><Link to="/home">медицинский центр</Link></span></div>
+                <div className={styles.appHeaderMiddleDoubleText}><Link to="/home">"ЮЖНЫЙ"</Link></div>
+              </div>
+            </div>
+            <div className={styles.appHeaderMiddlePart2}>
+              <div className={styles.appHeaderMiddleMenu}>
+                <div className={location.pathname === "/home"? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/home">Главная</Link></div>
+                <span className={styles.appHeaderMiddleMenuSpace}/>
+                <div className={location.pathname === "/news"? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/news">Новости</Link></div>
+                <span className={styles.appHeaderMiddleMenuSpace}/>
+                <div className={styles.appHeaderMiddleMenuText}>УЗИ</div>
+                <span className={styles.appHeaderMiddleMenuSpace}/>
+                <div className={styles.appHeaderMiddleMenuText}>Массаж</div>
+                <span className={styles.appHeaderMiddleMenuSpace}/>
+                <div className={styles.appHeaderMiddleMenuText}>Цены</div>
+                <span className={styles.appHeaderMiddleMenuSpace}/>
+                <div className={styles.appHeaderMiddleMenuText}>О нас</div>
+                <span className={styles.appHeaderMiddleMenuSpace}/>
+                <div className={location.pathname === "/contacts"? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/contacts">Контакты</Link></div>
+                <span className={styles.appHeaderMiddleMenuSpace}/>
+                <div className={styles.appHeaderMiddleMenuText}>Отзывы</div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.appHeaderEnd}>
+            {(location.pathname === "/home") ? (<span className={styles.appHeaderEndText}>ГЛАВНАЯ</span>) :
+             (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
+             (location.pathname === "/contacts") ? (<span className={styles.appHeaderEndText}>КОНТАКТЫ</span>) :
+             (<span className={styles.appHeaderEndText}>ОСТАЛЬНОЕ</span>)}
+          </div>
+        </>
+    );
+  };
+}
 
+const AppHeader = withRouter(AppHeaderInner);
+
+export const appHistory =  createBrowserHistory();
+// export const {router, params, location, routes} = (window as any).props;
+
+const App: React.FC = () => {
+    return (
+      <Router history={appHistory}>
+        <div className={styles.appHeader}>
+          <AppHeader/>
           <Switch>
             <Route path="/news">
               <News/>
@@ -51,13 +111,16 @@ const App: React.FC = () => {
             <Route path="/ultrasound">
               <Ultrasound/>
             </Route>
+            <Route path="/contacts">
+              <Contacts/>
+            </Route>
             <Route path="/">
               <Home/>
             </Route>
           </Switch>
         </div>
       </Router>
-  );
+    );
 };
 
 export default App;
