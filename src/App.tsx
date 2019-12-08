@@ -44,8 +44,6 @@ class AppHeaderInner extends React.Component<{
                 <img id={styles.img1} src="/static/svg/8-instagram-White.svg" alt={""}/>
                 <img id={styles.img2} src="/static/svg/8-instagram-39d02a.svg" alt={""}/>
               </a>
-              {/*<div className={styles.appHeaderStartNet}><img src="/static/svg/7-vk-White.svg" alt={""}/></div>*/}
-              {/*<div className={styles.appHeaderStartNet}><img src="/static/svg/8-instagram-White.svg" alt={""}/></div>*/}
               <div className={styles.appHeaderStartButton}><Link to="/news">Запись online</Link></div>
               <span className={styles.appHeaderStartPhone}>+7(918)177-24-17</span>
             </div>

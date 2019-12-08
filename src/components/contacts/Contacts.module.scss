@@ -1,5 +1,15 @@
 @import "../../config";
 
+//::-webkit-scrollbar { /* chrome based */
+//  width: 0px;  /* ширина scrollbar'a */
+//  background: transparent;  /* опционально */
+//}
+//
+//html {
+//  -ms-overflow-style: none;  /* IE 10+ */
+//  scrollbar-width: none; /* Firefox */
+//}
+
 @mixin flexRowRelative {
   display: flex;
   flex-direction: row;
@@ -15,13 +25,207 @@
 .pageContacts {
   @include flexColumnRelative;
   width: 100%;
-  height: 100%;
   background: white;
 }
+
+/*region contactsInfo*/
 
 .contactsInfo {
   @include flexRowRelative;
   max-width: 100%;
-  height: ptr(780px);
-  padding: ptr(150px) ptr(206px);
+  height: ptr(480px);
+  margin: ptr(150px) ptr(206px);
 }
+
+/*region contactsPart1*/
+
+.contactsPart1 {
+  @include flexColumnRelative;
+  width: ptr(521px);
+  padding-top: ptr(30px);
+  margin-right: ptr(187px);
+}
+
+.contactsPart1Header {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(24px);
+  font-weight: 400;
+  color: #0064aa;
+  margin-bottom: ptr(30px);
+}
+
+.contactsPart1Separator {
+  @include flexRowRelative;
+  height: 1px;
+  width: ptr(521px);
+  background: #919ba2;
+  margin-bottom: ptr(30px);
+}
+
+.contactsPart1Blocks {
+  @include flexRowRelative;
+}
+
+.contactsPart1Block1 {
+  @include flexColumnRelative;
+  width: ptr(305px);
+  margin-right: ptr(44px);
+}
+
+.contactsPart1Block2 {
+  @include flexColumnRelative;
+  width: ptr(172px);
+}
+
+.contactsBlock1Text {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(20px);
+  font-weight: 300;
+  color: black;
+  margin-bottom: ptr(10px);
+}
+
+.contactsBlock1Phone {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(20px);
+  font-weight: 300;
+  color: #0064aa;
+  margin: ptr(30px) 0;
+}
+
+.contactsBlock1Button {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  height: ptr(50px);
+  width: ptr(270px);
+  background: #39d02a;
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(24px);
+  font-weight: 400;
+  color: white;
+  line-height: 0;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: #018401;
+    transition: 100ms;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+.contactsBlock2Schedule {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(20px);
+  font-weight: 300;
+  color: #0064aa;
+  margin-bottom: ptr(10px);
+}
+
+.contactsBlock2Text {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(20px);
+  font-weight: 300;
+  color: black;
+  margin-bottom: ptr(10px);
+}
+
+/*endregion contactsPart1*/
+
+/*region contactsPart2*/
+
+.contactsPart2 {
+  @include flexColumnRelative;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: ptr(967px);
+}
+
+.contactsPart2Img {
+  height: ptr(425px);
+  width: ptr(780px);
+
+  img {
+    height: ptr(425px);
+    width: ptr(780px);
+    border-top-left-radius: ptr(10px);
+    border-top-right-radius: ptr(10px);
+  }
+}
+
+.contactsPart2Text {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  background: #0064aa;
+  height: ptr(55px);
+  width: ptr(780px);
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(24px);
+  font-weight: 300;
+  color: white;
+  border-bottom-left-radius: ptr(10px);
+  border-bottom-right-radius: ptr(10px);
+}
+
+/*endregion contactsPart2*/
+
+/*endregion contactsInfo*/
+
+/*region contactsMap*/
+
+.contactsMap {
+  @include flexRowRelative;
+  width: 100%;
+  height: ptr(420px);
+}
+
+.contactsMapBlock {
+  @include flexRowRelative;
+  height: ptr(420px);
+  width: 100%;
+  background: #bdd4de;
+}
+
+.contactsMapInfo {
+  @include flexColumnRelative;
+  align-items: center;
+  height: ptr(324px);
+  width: ptr(486px);
+  background: white;
+  border-radius: ptr(10px);
+  margin: ptr(48px) 0 ptr(48px) ptr(261px);
+}
+
+.contactsMapInfoHeader {
+  @include flexRowRelative;
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(22px);
+  font-weight: 700;
+  color: black;
+  padding-top: ptr(35px);
+}
+
+.contactsMapInfoText {
+  @include flexRowRelative;
+  font-family: "Roboto Slab", serif;
+  font-size: ptr(20px);
+  font-weight: 300;
+  color: black;
+  padding-top: ptr(5px);
+
+  span {
+    padding-top: ptr(15px);
+  }
+}
+
+/*endregion contactsMap*/
