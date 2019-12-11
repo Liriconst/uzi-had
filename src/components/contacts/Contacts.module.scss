@@ -34,7 +34,15 @@
   @include flexRowRelative;
   max-width: 100%;
   height: ptr(480px);
-  margin: ptr(150px) ptr(206px);
+  margin: ptr(150px) ptr(206px) ptr(149px) ptr(206px);
+}
+
+.contactsInfoSeparator {
+  @include flexRowRelative;
+  height: 1px;
+  width: 100%;
+  background: #00a4f0;
+  opacity: 25%;
 }
 
 /*region contactsPart1*/
@@ -193,7 +201,8 @@
   @include flexRowRelative;
   height: ptr(420px);
   width: 100%;
-  background: #bdd4de;
+  position: absolute;
+  z-index: 1;
 }
 
 .contactsMapInfo {
@@ -204,6 +213,9 @@
   background: white;
   border-radius: ptr(10px);
   margin: ptr(48px) 0 ptr(48px) ptr(261px);
+  position: absolute;
+  z-index: 10;
+  border: 1px solid #00a4f0;
 }
 
 .contactsMapInfoHeader {

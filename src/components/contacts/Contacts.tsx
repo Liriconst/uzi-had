@@ -3,7 +3,7 @@ import {Router, Switch, Route, Link} from "react-router-dom";
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import styles from "./Contacts.module.scss";
 
-const mapState = { center: [55.751574, 37.573856], zoom: 9 };
+const mapState = { center: [44.423044, 39.536405], zoom: 17};
 
 class Contacts extends React.Component<{}, {
     test?: boolean
@@ -45,29 +45,28 @@ class Contacts extends React.Component<{}, {
                         <span className={styles.contactsPart2Text}>г. Хадыженск, ул. Первомайская, д. 103 "А", 2 этаж, кабинет 6</span>
                     </div>
                 </div>
+                <span className={styles.contactsInfoSeparator}/>
                 <div className={styles.contactsMap}>
-                    <div className={styles.contactsMapBlock}>
-                        <YMaps>
-                            <Map state={mapState}>
-                                <Placemark
-                                    geometry={mapState.center}
-                                    properties={{
-                                        iconCaption: 'Очень длиннный, но невероятно интересный текст',
-                                        hintContent: 'Собственный значок метки',
-                                        balloonContent: 'Это красивая метка',
-                                    }}
-                                />
-                            </Map>
-                        </YMaps>;
-                        <div className={styles.contactsMapInfo}>
-
-                            {/*<div className={styles.contactsMapInfoHeader}>Адрес</div>*/}
-                            {/*<div className={styles.contactsMapInfoText}><span>г. Хадыженск, ул. Первомайская,</span></div>*/}
-                            {/*<div className={styles.contactsMapInfoText}>д. 103 "А", 2 этаж, кабинет 6</div>*/}
-                            {/*<div className={styles.contactsMapInfoHeader}>Контакты</div>*/}
-                            {/*<div className={styles.contactsMapInfoText}><span>+7(918)177-24-17</span></div>*/}
-                            {/*<div className={styles.contactsMapInfoText}>example@gmail.com</div>*/}
-                        </div>
+                    <YMaps>
+                        <Map className={styles.contactsMapBlock} state={mapState}>
+                            <Placemark
+                                geometry={mapState.center}
+                                properties={{
+                                    iconCaption: 'Медицинский центр "Южный"',
+                                }}
+                                options={{
+                                    preset: 'islands#blueDotIconWithCaption',
+                                }}
+                            />
+                        </Map>
+                    </YMaps>;
+                    <div className={styles.contactsMapInfo}>
+                        <div className={styles.contactsMapInfoHeader}>Адрес</div>
+                        <div className={styles.contactsMapInfoText}><span>г. Хадыженск, ул. Первомайская,</span></div>
+                        <div className={styles.contactsMapInfoText}>д. 103 "А", 2 этаж, кабинет 6</div>
+                        <div className={styles.contactsMapInfoHeader}>Контакты</div>
+                        <div className={styles.contactsMapInfoText}><span>+7(918)177-24-17</span></div>
+                        <div className={styles.contactsMapInfoText}>example@gmail.com</div>
                     </div>
                 </div>
             </div>

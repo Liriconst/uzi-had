@@ -5,6 +5,10 @@ import Home from "./components/home/Home";
 import News from "./components/news/News";
 import Ultrasound from "./components/ultrasound/Ultrasound";
 import Contacts from "./components/contacts/Contacts";
+import Spa from "./components/spa/Spa";
+import About from "./components/about/About";
+import Reviews from "./components/reviews/Reviews";
+import './components/dropdown/dropdown';
 
 import { createBrowserHistory } from 'history';
 
@@ -68,23 +72,29 @@ class AppHeaderInner extends React.Component<{
                 <span className={styles.appHeaderMiddleMenuSpace}/>
                 <div className={styles.appHeaderMiddleMenuText}>УЗИ</div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
-                <div className={styles.appHeaderMiddleMenuText}>Массаж</div>
+                <div className={location.pathname === "/spa"? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/spa">Массаж</Link></div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
                 <div className={styles.appHeaderMiddleMenuText}>Цены</div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
-                <div className={styles.appHeaderMiddleMenuText}>О нас</div>
+                <div className={location.pathname === "/about"? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/about">О нас</Link></div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
                 <div className={location.pathname === "/contacts"? styles.appHeaderMiddleMenuCurrent :
                     styles.appHeaderMiddleMenuText}><Link to="/contacts">Контакты</Link></div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
-                <div className={styles.appHeaderMiddleMenuText}>Отзывы</div>
+                <div className={location.pathname === "/reviews"? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/reviews">Отзывы</Link></div>
               </div>
             </div>
           </div>
           <div className={styles.appHeaderEnd}>
-            {(location.pathname === "/home") ? (<span className={styles.appHeaderEndText}>ГЛАВНАЯ</span>) :
+            {(location.pathname === "/home") ? (<span className={styles.appHeaderEndText}>НАШИ ПРЕИМУЩЕСТВА</span>) :
              (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
+             (location.pathname === "/spa") ? (<span className={styles.appHeaderEndText}>МАССАЖ</span>) :
+             (location.pathname === "/about") ? (<span className={styles.appHeaderEndText}>О НАС</span>) :
              (location.pathname === "/contacts") ? (<span className={styles.appHeaderEndText}>КОНТАКТЫ</span>) :
+             (location.pathname === "/reviews") ? (<span className={styles.appHeaderEndText}>ОТЗЫВЫ</span>) :
              (<span className={styles.appHeaderEndText}>ОСТАЛЬНОЕ</span>)}
           </div>
         </>
@@ -109,8 +119,17 @@ const App: React.FC = () => {
             <Route path="/ultrasound">
               <Ultrasound/>
             </Route>
+            <Route path="/spa">
+              <Spa/>
+            </Route>
+            <Route path="/about">
+              <About/>
+            </Route>
             <Route path="/contacts">
               <Contacts/>
+            </Route>
+            <Route path="/reviews">
+              <Reviews/>
             </Route>
             <Route path="/">
               <Home/>
