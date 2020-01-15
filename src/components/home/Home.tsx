@@ -13,7 +13,6 @@ class Home extends React.Component<{}, {
         }
     }
 
-// <div><Link to="/news">Новости</Link></div>
     public render(): React.ReactNode {
         return (
             <div className={styles.pageHome}>

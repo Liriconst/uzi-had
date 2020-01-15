@@ -25,7 +25,7 @@
   @include flexRowRelative;
   height: ptr(504px);
   max-width: 100%;
-  margin: ptr(26px) ptr(266px);
+  margin: ptr(26px) ptr(296px);
 }
 
 .spaPart1 {
@@ -34,7 +34,7 @@
   justify-content: center;
   height: ptr(504px);
   width: ptr(379px);
-  margin-right: ptr(209px);
+  margin-right: ptr(240px);
   background: rgba(0, 100, 170, 0.1);
 
   img {
@@ -55,8 +55,10 @@
   font-size: ptr(30px);
   font-weight: 400;
   color: #0064aa;
+  line-height: ptr(28px);
 
   span {
+    line-height: ptr(36px);
     font-weight: 300;
   }
 }

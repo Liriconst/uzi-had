@@ -1,9 +1,10 @@
 import * as React from "react";
 import {Router, Switch, Route, Link} from "react-router-dom";
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import {YMaps, Map, Placemark, ZoomControl} from 'react-yandex-maps';
 import styles from "./Contacts.module.scss";
 
-const mapState = { center: [44.423044, 39.536405], zoom: 17};
+const mapState = { center: [44.422930, 39.532857], zoom: 17};
+const placemark = [44.423044, 39.536405];
 
 class Contacts extends React.Component<{}, {
     test?: boolean
@@ -50,7 +51,7 @@ class Contacts extends React.Component<{}, {
                     <YMaps>
                         <Map className={styles.contactsMapBlock} state={mapState}>
                             <Placemark
-                                geometry={mapState.center}
+                                geometry={placemark}
                                 properties={{
                                     iconCaption: 'Медицинский центр "Южный"',
                                 }}
@@ -58,6 +59,7 @@ class Contacts extends React.Component<{}, {
                                     preset: 'islands#blueDotIconWithCaption',
                                 }}
                             />
+                            <ZoomControl options={{ float: 'right' }} />
                         </Map>
                     </YMaps>;
                     <div className={styles.contactsMapInfo}>
