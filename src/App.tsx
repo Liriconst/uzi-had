@@ -15,42 +15,48 @@ import { createBrowserHistory } from 'history';
 class AppHeaderInner extends React.Component<{
   location: any;
 }> {
+  checkViewport = 0;
 
   render() {
     const { location } = this.props;
 
+    if (document.body.clientWidth > 1024) {
+      this.checkViewport = 1;
+    }
+
     return (
-        <>
+        <div className={styles.appHeader}>
           <div className={styles.appHeaderStart}>
-            <div className={styles.appHeaderStartPart1}>
-              <div className={styles.appHeaderStartAddress}>
-                <div className={styles.appHeaderStartDoubleText}><span>г. Хадыженск, ул. Первомайская,</span></div>
-                <div className={styles.appHeaderStartDoubleText}>д. 103 "А", 2 этаж, кабинет №6</div>
-              </div>
-              <span className={styles.appHeaderStartAddressSeparator}/>
-              <div className={styles.appHeaderStartSchedule}>
-                <div className={styles.appHeaderStartDoubleText}><span>Пн, Вт</span></div>
-                <div className={styles.appHeaderStartDoubleText}>Ср, Пт</div>
-              </div>
-              <span className={styles.appHeaderStartScheduleSeparator}/>
+            <div className={styles.appHeaderStartDoubleTextContainer}>
+              <div className={styles.appHeaderStartDoubleText}><span>г. Хадыженск, ул. Первомайская,</span></div>
+              <div className={styles.appHeaderStartDoubleText}>д. 103 "А", 2 этаж, кабинет №6</div>
+            </div>
+            <span className={styles.appHeaderStartSeparator}/>
+            <div className={styles.appHeaderStartDoubleTextContainer}>
+              <div className={styles.appHeaderStartDoubleText}><span>Пн, Вт</span></div>
+              <div className={styles.appHeaderStartDoubleText}>Ср, Пт</div>
+            </div>
+            <span className={styles.appHeaderStartSeparator2}/>
+            <div className={styles.appHeaderStartTimeTextContainer}>
               <div className={styles.appHeaderStartNumber}>9</div>
               <div className={styles.appHeaderStartTextOO}>ОО</div>
               <div className={styles.appHeaderStartNumber}><span>-</span></div>
               <div className={styles.appHeaderStartNumber}>17</div>
               <div className={styles.appHeaderStartTextOO}>ОО</div>
             </div>
-            <div className={styles.appHeaderStartPart2}>
-              <a className={styles.appHeaderStartNet} href='/home'>
+            <div className={styles.appHeaderStartNet}>
+              <a className={styles.appHeaderStartNetImg} href='/home'>
                 <img id={styles.img1} src="/static/svg/7-vk-White.svg" alt={""}/>
                 <img id={styles.img2} src="/static/svg/7-vk-39d02a.svg" alt={""}/>
               </a>
-              <a className={styles.appHeaderStartNet} href='/home'>
+              <span className={styles.appHeaderStartNetSeparator}/>
+              <a className={styles.appHeaderStartNetImg} href='/home'>
                 <img id={styles.img1} src="/static/svg/8-instagram-White.svg" alt={""}/>
                 <img id={styles.img2} src="/static/svg/8-instagram-39d02a.svg" alt={""}/>
               </a>
-              <div className={styles.appHeaderStartButton}><Link to="/news">Запись online</Link></div>
-              <span className={styles.appHeaderStartPhone}>+7(918)177-24-17</span>
             </div>
+            {/*  <div className={styles.appHeaderStartButton}><Link to="/news">Запись online</Link></div>*/}
+            {/*  <span className={styles.appHeaderStartPhone}>+7(918)177-24-17</span>*/}
           </div>
           <div className={styles.appHeaderMiddle}>
             <div className={styles.appHeaderMiddlePart1}>
@@ -97,7 +103,7 @@ class AppHeaderInner extends React.Component<{
              (location.pathname === "/reviews") ? (<span className={styles.appHeaderEndText}>ОТЗЫВЫ</span>) :
              (<span className={styles.appHeaderEndText}>ОСТАЛЬНОЕ</span>)}
           </div>
-        </>
+        </div>
     );
   };
 }
@@ -110,7 +116,7 @@ export const appHistory =  createBrowserHistory();
 const App: React.FC = () => {
     return (
       <Router history={appHistory}>
-        <div className={styles.appHeader}>
+        <div className={styles.appMain}>
           <AppHeader/>
           <Switch>
             <Route path="/news">

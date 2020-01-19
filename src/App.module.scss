@@ -1,81 +1,159 @@
 @import "config";
 
-@mixin flexRowRelative {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
+.appMain {
+  @media only screen and (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 230px 1fr;
+  }
 
-@mixin flexColumnRelative {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 200px 1fr;
+  }
+
+  @media only screen and (min-width: 256px) and (max-width: 640px) {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 150px 1fr;
+  }
 }
 
 .appHeader {
-  @include flexColumnRelative;
+  @media only screen and (min-width: 1024px) {
+    display: grid;
+    grid-template-rows: 70px 100px 60px;
+    grid-template-columns: 100%;
+  }
+
+  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+    display: grid;
+    grid-template-rows: 60px 80px 60px;
+    grid-template-columns: 100%;
+  }
+
+  @media only screen and (min-width: 256px) and (max-width: 640px) {
+    display: grid;
+    grid-template-rows: 45px 60px 45px;
+    grid-template-columns: 100%;
+  }
+
+  //@media only screen and (min-width : 320px) and (max-width : 480px) {
+  //  display: grid;
+  //  grid-template-rows: 100px 200px 200px;
+  //  grid-template-columns: 100%;
+  //}
 }
 
 /*region appHeaderStart*/
 
 .appHeaderStart {
-  @include flexRowRelative;
+  display: grid;
+  grid-template-rows: 100%;
   background: #0064aa;
-  width: 100%;
-  height: ptr(80px);
+
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: 372px 1px 102px 1px 1fr 115px 1fr 1fr;
+  }
+
+  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+    grid-template-columns: 340px 1px 97px 1px 1fr 90px 1fr 1fr;
+  }
 }
 
-.appHeaderStartPart1 {
-  @include flexRowRelative;
-  width: 50%;
-  padding-left: ptr(48px);
-}
-
-.appHeaderStartAddress {
+.appHeaderStartDoubleTextContainer {
   @include flexColumnRelative;
-  margin-right: ptr(48px);
+  justify-content: center;
+  padding-left: 20px;
+  height: 100%;
 }
 
 .appHeaderStartDoubleText {
   @include flexColumnRelative;
   font-family: "Roboto Slab", serif;
-  font-size: ptr(20px);
   font-weight: 300;
   color: white;
 
-  span {
-    padding-top: ptr(11px);
+  @media only screen and (min-width: 1024px) {
+    font-size: 20px;
+    line-height: 20px;
+
+    span {
+      margin-top: -4px;
+      padding-bottom: 8px;
+    }
+  }
+
+  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+    font-size: 18px;
+    line-height: 18px;
+
+    span {
+      margin-top: -2px;
+      padding-bottom: 8px;
+    }
   }
 }
 
-.appHeaderStartAddressSeparator {
-  @include flexRowRelative;
-  width: 1px;
-  height: ptr(56px);
-  background: #015088;
-  margin: ptr(12px) ptr(48px) 0 0;
+/*region appHeaderStartSeparators*/
+@media only screen and (min-width: 1024px) {
+  .appHeaderStartSeparator {
+    width: 1px;
+    background: #015088;
+    height: 50px;
+    margin: 10px 0;
+  }
+
+  .appHeaderStartSeparator2 {
+    width: 1px;
+    background: #4cff00;
+    height: 50px;
+    margin: 10px 0;
+  }
 }
 
-.appHeaderStartSchedule {
-  @include flexColumnRelative;
-  margin-right: ptr(15px);
-}
+@media only screen and (min-width: 641px) and (max-width: 1023px) {
+  .appHeaderStartSeparator {
+    width: 1px;
+    background: #015088;
+    height: 46px;
+    margin: 7px 0;
+  }
 
-.appHeaderStartScheduleSeparator {
+  .appHeaderStartSeparator2 {
+    width: 1px;
+    background: #4cff00;
+    height: 46px;
+    margin: 7px 0;
+  }
+}
+/*endregion appHeaderStartSeparators*/
+
+.appHeaderStartTimeTextContainer {
   @include flexRowRelative;
-  width: 1px;
-  height: ptr(44px);
-  background: #4cff00;
-  margin: ptr(18px) ptr(15px) 0 0;
+  padding-left: 20px;
+  height: 100%;
+  width: 100%;
 }
 
 .appHeaderStartNumber {
   @include flexRowRelative;
+  justify-content: center;
+  align-items: center;
   font-family: "Roboto Slab", serif;
-  font-size: ptr(58px);
   font-weight: 100;
   color: #4cff00;
-  margin-top: ptr(-2.5px);
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 50px;
+    line-height: 50px;
+  }
+
+  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+    font-size: 46px;
+    line-height: 46px;
+  }
 
   span {
     margin: 0 ptr(3px) 0 ptr(3px);
@@ -85,49 +163,93 @@
 .appHeaderStartTextOO {
   @include flexRowRelative;
   font-family: "Roboto Slab", serif;
-  font-size: ptr(26px);
+  font-size: 26px;
   font-weight: 300;
   color: #4cff00;
   margin: ptr(8.5px) 0 0 ptr(3px);
 }
 
-.appHeaderStartPart2 {
-  @include flexRowRelative;
-  justify-content: flex-end;
-  width: 50%;
-}
-
 .appHeaderStartNet {
   @include flexRowRelative;
   align-items: center;
-  justify-content: center;
-  width: ptr(52px);
-  margin-right: ptr(28px);
+  height: 100%;
+}
 
-  #img1 {
-    height: ptr(52px);
-    width: ptr(52px);
-    display: block;
-  }
-
-  #img2 {
-    display: none;
-  }
-
-  &:hover {
-    transition: 200ms ease-out;
+/*region appHeaderStartNetImgs*/
+@media only screen and (min-width: 1024px) {
+  .appHeaderStartNetImg {
+    @include flexRowRelative;
+    width: 50px;
 
     #img1 {
-      display: none;
+      height: 50px;
+      width: 50px;
+      display: block;
     }
 
     #img2 {
-      height: ptr(60px);
-      width: ptr(60px);
-      display: block;
+      display: none;
+    }
+
+    &:hover {
+      transition: 200ms ease-out;
+
+      #img1 {
+        display: none;
+      }
+
+      #img2 {
+        height: 50px;
+        width: 50px;
+        display: block;
+      }
     }
   }
+
+  .appHeaderStartNetSeparator {
+    @include flexRowRelative;
+    height: 100%;
+    width: 15px;
+  }
 }
+
+@media only screen and (min-width: 641px) and (max-width: 1023px) {
+  .appHeaderStartNetImg {
+    @include flexRowRelative;
+    width: 40px;
+
+    #img1 {
+      height: 40px;
+      width: 40px;
+      display: block;
+    }
+
+    #img2 {
+      display: none;
+    }
+
+    &:hover {
+      transition: 200ms ease-out;
+
+      #img1 {
+        display: none;
+      }
+
+      #img2 {
+        height: 40px;
+        width: 40px;
+        display: block;
+      }
+    }
+  }
+
+  .appHeaderStartNetSeparator {
+    @include flexRowRelative;
+    height: 100%;
+    width: 10px;
+  }
+}
+/*endregion appHeaderStartNetImgs*/
 
 .appHeaderStartButton {
   @include flexRowRelative;
@@ -137,7 +259,7 @@
   height: ptr(80px);
   background: #39d02a;
   font-family: "Roboto Slab", serif;
-  font-size: ptr(30px);
+  font-size: 30px;
   font-weight: 400;
   color: white;
   line-height: 0;
@@ -165,7 +287,7 @@
   align-items: center;
   justify-content: center;
   font-family: "Roboto Slab", serif;
-  font-size: ptr(24px);
+  font-size: 24px;
   font-weight: 400;
   color: white;
   line-height: 0;
@@ -180,7 +302,6 @@
   @include flexRowRelative;
   background: white;
   width: 100%;
-  height: ptr(120px);
 }
 
 .appHeaderMiddlePart1 {
@@ -193,7 +314,7 @@
   @include flexRowRelative;
   align-items: center;
   justify-content: center;
-  width: ptr(80px);
+  width: 80px;
   margin-right: ptr(20px);
 
   a {
@@ -214,7 +335,7 @@
 .appHeaderMiddleDoubleText {
   @include flexRowRelative;
   font-family: "Roboto Slab", serif;
-  font-size: ptr(48px);
+  font-size: 48px;
   font-weight: 400;
   color: #005890;
   line-height: 0;
@@ -226,7 +347,7 @@
   }
 
   span {
-    font-size: ptr(24px);
+    font-size: 24px;
     font-weight: 300;
     color: #018401;
     padding-bottom: ptr(10px);
@@ -255,7 +376,7 @@
   @include flexRowRelative;
   height: ptr(40px);
   font-family: "Roboto", sans-serif;
-  font-size: ptr(30px);
+  font-size: 30px;
   font-weight: 300;
   color: #0064aa;
   line-height: 0;
@@ -284,7 +405,7 @@
   @include flexRowRelative;
   height: ptr(40px);
   font-family: "Roboto", sans-serif;
-  font-size: ptr(30px);
+  font-size: 30px;
   font-weight: 300;
   color: black;
   line-height: 0;
@@ -312,8 +433,6 @@
 .appHeaderEnd {
   @include flexRowRelative;
   justify-content: center;
-  min-height: ptr(90px);
-  max-height: ptr(100px);
   width: 100%;
   background: #0064aa;
 }
@@ -323,7 +442,7 @@
   align-items: center;
   justify-content: center;
   font-family: "Roboto", sans-serif;
-  font-size: ptr(36px);
+  font-size: 36px;
   font-weight: 400;
   color: white;
   line-height: 0;
