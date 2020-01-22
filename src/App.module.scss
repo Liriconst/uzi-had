@@ -1,49 +1,55 @@
 @import "config";
 
 .appMain {
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1201px) {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 230px 1fr;
   }
 
-  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 200px 1fr;
   }
 
-  @media only screen and (min-width: 256px) and (max-width: 640px) {
+  @media only screen and (min-width: 641px) and (max-width: 900px) {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: 80px 1fr;
+  }
+
+  @media only screen and (max-width: 640px) {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60px 1fr;
   }
 }
 
 .appHeader {
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1201px) {
     display: grid;
     grid-template-rows: 70px 100px 60px;
     grid-template-columns: 100%;
   }
 
-  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
     display: grid;
     grid-template-rows: 60px 80px 60px;
     grid-template-columns: 100%;
   }
 
-  @media only screen and (min-width: 256px) and (max-width: 640px) {
+  @media only screen and (min-width: 641px) and (max-width: 900px) {
     display: grid;
-    grid-template-rows: 45px 60px 45px;
+    grid-template-rows: 80px;
     grid-template-columns: 100%;
   }
 
-  //@media only screen and (min-width : 320px) and (max-width : 480px) {
-  //  display: grid;
-  //  grid-template-rows: 100px 200px 200px;
-  //  grid-template-columns: 100%;
-  //}
+  @media only screen and (max-width: 640px) {
+    display: grid;
+    grid-template-rows: 60px;
+    grid-template-columns: 100%;
+  }
 }
 
 /*region appHeaderStart*/
@@ -53,12 +59,28 @@
   grid-template-rows: 100%;
   background: #0064aa;
 
-  @media only screen and (min-width: 1024px) {
-    grid-template-columns: 372px 1px 102px 1px 1fr 115px 1fr 1fr;
+  @media only screen and (min-width: 1366px) {
+    grid-template-columns: 372px 1px 102px 1px 1fr 140px 250px 225px;
   }
 
-  @media only screen and (min-width: 641px) and (max-width: 1023px) {
-    grid-template-columns: 340px 1px 97px 1px 1fr 90px 1fr 1fr;
+  @media only screen and (min-width: 1201px) and (max-width: 1365px){
+    grid-template-columns: 372px 1px 102px 1px 1fr 140px 150px 225px;
+  }
+
+  @media only screen and (min-width: 961px) and (max-width: 1200px) {
+    grid-template-columns: 340px 1px 1fr 110px 150px 207px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 960px) {
+    grid-template-columns: 340px 1px 1fr 43px 150px 207px;
+  }
+
+  @media only screen and (min-width: 641px) and (max-width: 900px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  @media only screen and (max-width: 640px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -75,7 +97,7 @@
   font-weight: 300;
   color: white;
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1201px) {
     font-size: 20px;
     line-height: 20px;
 
@@ -85,7 +107,7 @@
     }
   }
 
-  @media only screen and (min-width: 641px) and (max-width: 1023px) {
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
     font-size: 18px;
     line-height: 18px;
 
@@ -96,8 +118,17 @@
   }
 }
 
+.appHeaderStartDoubleTextGreen {
+  @include flexColumnRelative;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #4cff00;
+  line-height: 18px;
+}
+
 /*region appHeaderStartSeparators*/
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1201px) {
   .appHeaderStartSeparator {
     width: 1px;
     background: #015088;
@@ -113,7 +144,7 @@
   }
 }
 
-@media only screen and (min-width: 641px) and (max-width: 1023px) {
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
   .appHeaderStartSeparator {
     width: 1px;
     background: #015088;
@@ -132,7 +163,7 @@
 
 .appHeaderStartTimeTextContainer {
   @include flexRowRelative;
-  padding-left: 20px;
+  padding: 0 20px;
   height: 100%;
   width: 100%;
 }
@@ -170,13 +201,32 @@
 }
 
 .appHeaderStartNet {
-  @include flexRowRelative;
-  align-items: center;
-  height: 100%;
+  @media only screen and (min-width: 1201px) {
+    @include flexRowRelative;
+    align-items: center;
+    height: 100%;
+    padding-right: 20px;
+  }
+
+  @media only screen and (min-width: 961px) and (max-width: 1200px) {
+    @include flexRowRelative;
+    align-items: center;
+    height: 100%;
+    padding-right: 20px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 960px) {
+    @include flexColumnRelative;
+    padding: 5px 20px 5px 0;
+    align-items: center;
+    height: 100%;
+  }
+
+
 }
 
 /*region appHeaderStartNetImgs*/
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1201px) {
   .appHeaderStartNetImg {
     @include flexRowRelative;
     width: 50px;
@@ -209,11 +259,11 @@
   .appHeaderStartNetSeparator {
     @include flexRowRelative;
     height: 100%;
-    width: 15px;
+    width: 20px;
   }
 }
 
-@media only screen and (min-width: 641px) and (max-width: 1023px) {
+@media only screen and (min-width: 960px) and (max-width: 1200px) {
   .appHeaderStartNetImg {
     @include flexRowRelative;
     width: 40px;
@@ -249,23 +299,63 @@
     width: 10px;
   }
 }
+
+@media only screen and (min-width: 901px) and (max-width: 960px) {
+  .appHeaderStartNetImg {
+    @include flexRowRelative;
+    width: 23px;
+
+    #img1 {
+      height: 23px;
+      width: 23px;
+      display: block;
+    }
+
+    #img2 {
+      display: none;
+    }
+
+    &:hover {
+      transition: 200ms ease-out;
+
+      #img1 {
+        display: none;
+      }
+
+      #img2 {
+        height: 23px;
+        width: 23px;
+        display: block;
+      }
+    }
+  }
+
+  .appHeaderStartNetSeparator {
+    @include flexRowRelative;
+    height: 100%;
+    width: 4px;
+  }
+}
 /*endregion appHeaderStartNetImgs*/
 
 .appHeaderStartButton {
-  @include flexRowRelative;
-  align-items: center;
-  justify-content: center;
-  width: ptr(260px);
-  height: ptr(80px);
   background: #39d02a;
-  font-family: "Roboto Slab", serif;
-  font-size: 30px;
-  font-weight: 400;
-  color: white;
-  line-height: 0;
-  margin: 0 ptr(50px) 0 ptr(22px);
+  height: 100%;
+
+  @media only screen and (min-width: 1366px) {
+    width: 250px;
+  }
+
+  @media only screen and (max-width: 1365px) {
+    width: 150px;
+  }
 
   a {
+    @include flexColumnRelative;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
     color: white;
     text-decoration: none;
   }
@@ -276,6 +366,11 @@
     transition: 100ms;
 
     a {
+      @include flexColumnRelative;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
       color: white;
       text-decoration: none;
     }
@@ -287,11 +382,21 @@
   align-items: center;
   justify-content: center;
   font-family: "Roboto Slab", serif;
-  font-size: 24px;
   font-weight: 400;
+  padding: 0 20px;
   color: white;
-  line-height: 0;
-  margin-right: ptr(48px);
+
+  @media only screen and (min-width: 1201px) {
+    width: 225px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    width: 207px;
+    font-size: 21px;
+    line-height: 21px;
+  }
 }
 
 /*endregion appHeaderStart*/
