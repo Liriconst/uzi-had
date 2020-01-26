@@ -64,7 +64,7 @@
   }
 
   @media only screen and (min-width: 1201px) and (max-width: 1365px){
-    grid-template-columns: 372px 1px 102px 1px 1fr 140px 150px 225px;
+    grid-template-columns: 372px 1px 102px 1px 1fr 140px 150px 218px;
   }
 
   @media only screen and (min-width: 961px) and (max-width: 1200px) {
@@ -76,7 +76,7 @@
   }
 
   @media only screen and (min-width: 641px) and (max-width: 900px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 80px 1px 1fr 1fr 1px 80px;
   }
 
   @media only screen and (max-width: 640px) {
@@ -157,6 +157,24 @@
     background: #4cff00;
     height: 46px;
     margin: 7px 0;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 900px) {
+  .appHeaderStartSeparator {
+    width: 1px;
+    background: #015088;
+    height: 60px;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .appHeaderStartSeparator {
+    width: 1px;
+    background: #015088;
+    height: 60px;
+    margin: 10px 0;
   }
 }
 /*endregion appHeaderStartSeparators*/
@@ -380,16 +398,22 @@
 .appHeaderStartPhone {
   @include flexRowRelative;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   padding: 0 20px;
   color: white;
 
-  @media only screen and (min-width: 1201px) {
+  @media only screen and (min-width: 1366px) {
     width: 225px;
     font-size: 24px;
     line-height: 24px;
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1365px) {
+    width: 218px;
+    font-size: 23px;
+    line-height: 23px;
   }
 
   @media only screen and (min-width: 901px) and (max-width: 1200px) {
@@ -402,25 +426,35 @@
 /*endregion appHeaderStart*/
 
 /*region appHeaderMiddle*/
-
 .appHeaderMiddle {
-  @include flexRowRelative;
+  display: grid;
   background: white;
-  width: 100%;
-}
 
-.appHeaderMiddlePart1 {
-  @include flexRowRelative;
-  width: 30%;
-  padding-left: ptr(48px);
+  @media only screen and (min-width: 1201px) {
+    grid-template-rows: 100px;
+    grid-template-columns: 120px 229px 1fr;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    grid-template-rows: 80px;
+    grid-template-columns: 100px 207px 1fr;
+  }
 }
 
 .appHeaderMiddleFavicon {
-  @include flexRowRelative;
-  align-items: center;
+  display: grid;
   justify-content: center;
-  width: 80px;
-  margin-right: ptr(20px);
+  align-content: center;
+
+  @media only screen and (min-width: 1201px) {
+    grid-template-rows: 80px;
+    grid-template-columns: 80px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    grid-template-rows: 60px;
+    grid-template-columns: 60px;
+  }
 
   a {
     text-decoration: none;
@@ -432,61 +466,124 @@
 }
 
 .appHeaderMiddleName {
-  @include flexColumnRelative;
-  align-items: center;
+  display: grid;
+  padding-right: 20px;
 
+  @media only screen and (min-width: 1201px) {
+    grid-template-rows: 24px 48px;
+    grid-template-columns: 1fr;
+    height: 100px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    grid-template-rows: 20px 40px;
+    grid-template-columns: 1fr;
+    height: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
-.appHeaderMiddleDoubleText {
+.appHeaderMiddleNameFirst {
   @include flexRowRelative;
+  justify-content: center;
+  align-items: flex-start;
+  font-weight: 300;
+  color: #018401;
+
+  @media only screen and (min-width: 1201px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  a {
+    color: #018401;
+    text-decoration: none;
+
+    &:hover {
+      color: #4cff00;
+    }
+  }
+}
+
+.appHeaderMiddleNameSecond {
+  @include flexRowRelative;
+  justify-content: center;
+  align-items: flex-end;
   font-family: "Roboto Slab", serif;
-  font-size: 48px;
   font-weight: 400;
   color: #005890;
-  line-height: 0;
-  padding-top: ptr(30px);
+
+  @media only screen and (min-width: 1201px) {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    font-size: 36px;
+    line-height: 36px;
+  }
 
   a {
     color: #005890;
     text-decoration: none;
   }
-
-  span {
-    font-size: 24px;
-    font-weight: 300;
-    color: #018401;
-    padding-bottom: ptr(10px);
-
-    a{
-      color: #018401;
-      text-decoration: none;
-    }
-  }
-}
-
-.appHeaderMiddlePart2 {
-  @include flexRowRelative;
-  justify-content: flex-end;
-  width: 70%;
-  padding-right: ptr(48px);
 }
 
 .appHeaderMiddleMenu {
-  @include flexRowRelative;
-  height: ptr(40px);
-  margin-top: ptr(50px);
+  display: grid;
+  justify-content: right;
+  align-items: center;
+  padding-right: 20px;
+
+  @media only screen and (min-width: 1366px) {
+    grid-template-rows: 100px;
+    grid-template-columns: 112px 20px 119px 20px 57px 20px 113px 20px 76px 20px 76px 20px 135px 20px 112px;
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1365px) {
+    grid-template-rows: 100px;
+    grid-template-columns: 94px 20px 99px 20px 49px 20px 94px 20px 64px 20px 64px 20px 113px 20px 93px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    grid-template-rows: 80px;
+    grid-template-columns: 71px 10px 75px 10px 36px 10px 71px 10px 49px 10px 49px 10px 86px 10px 71px;
+  }
 }
 
 .appHeaderMiddleMenuText {
   @include flexRowRelative;
-  height: ptr(40px);
   font-family: "Roboto", sans-serif;
-  font-size: 30px;
   font-weight: 300;
   color: #0064aa;
-  line-height: 0;
   border-bottom: 1px solid #beced9;
   box-sizing: border-box;
+
+  @media only screen and (min-width: 1366px) {
+    height: 45px;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1365px) {
+    height: 40px;
+    font-size: 25px;
+    line-height: 25px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    height: 35px;
+    font-size: 19px;
+    line-height: 19px;
+  }
 
   a {
     color: #0064aa;
@@ -508,14 +605,29 @@
 
 .appHeaderMiddleMenuCurrent {
   @include flexRowRelative;
-  height: ptr(40px);
   font-family: "Roboto", sans-serif;
-  font-size: 30px;
   font-weight: 300;
   color: black;
-  line-height: 0;
   border-bottom: 3px solid #005890;
   box-sizing: border-box;
+
+  @media only screen and (min-width: 1366px) {
+    height: 45px;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1365px) {
+    height: 40px;
+    font-size: 25px;
+    line-height: 25px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    height: 35px;
+    font-size: 19px;
+    line-height: 19px;
+  }
 
   a {
     color: black;
@@ -525,10 +637,23 @@
 
 .appHeaderMiddleMenuSpace {
   @include flexRowRelative;
-  height: ptr(40px);
-  width: ptr(20px);
   border-bottom: 1px solid #beced9;
   box-sizing: border-box;
+
+  @media only screen and (min-width: 1366px) {
+    height: 45px;
+    width: 20px;
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1365px) {
+    height: 40px;
+    width: 20px;
+  }
+
+  @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    height: 35px;
+    width: 10px;
+  }
 }
 
 /*endregion appHeaderMiddle*/
