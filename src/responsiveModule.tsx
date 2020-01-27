@@ -31,6 +31,11 @@ export const Tablet = ({ children }: {children : any}) => {
     return isTablet ? children : null
 };
 
+export const TabletAndMobile = ({ children }: {children : any}) => {
+    const isTabletAndMobile = useMediaQuery({ maxWidth: 900 })
+    return isTabletAndMobile ? children : null
+};
+
 export const Mobile = ({ children }: {children : any}) => {
     const isMobile = useMediaQuery({ maxWidth: 640 })
     return isMobile ? children : null
