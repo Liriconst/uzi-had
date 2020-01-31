@@ -12,10 +12,10 @@ import './components/dropdown/dropdown';
 import {DesktopMax,Desktop, DesktopAndLaptop, Laptop, LaptopMin, Tablet, TabletAndMobile, Mobile} from "./responsiveModule";
 import {createBrowserHistory} from 'history';
 import {Menu, Dropdown, Icon} from "antd";
-import {link} from "fs";
+import "./App.scss";
 
 const menu = (
-    <Menu className={styles.appHeaderStartMenuModal}>
+    <Menu className={styles.appHeaderStartMenuModal} style={{top: "0 !important"}}>
         <div className={window.location.pathname === "/home" ? styles.appHeaderStartMenuModalCurrentLink :
             styles.appHeaderStartMenuModalLinks}><Link to="/home">ГЛАВНАЯ</Link></div>
         <span className={styles.appHeaderStartMenuModalSeparator}/>
@@ -322,8 +322,6 @@ const HeaderForMobile = ({location}: {location:any}) => (
         {/*</Mobile>*/}
     </div>
 );
-
-
 
 class AppHeaderInner extends React.Component<{
     location: any;

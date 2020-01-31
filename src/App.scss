@@ -1,5 +1,11 @@
 @import "config";
 
+.menuAntEdit {
+  .ant-dropdown .ant-dropdown-placement-bottomRight {
+    top: 0 !important;
+  }
+}
+
 .appHeaderStartMenuModal {
   display: grid;
   grid-template-columns: 1fr;
