@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Router, Switch, Route, Link} from "react-router-dom";
 import styles from "./Home.module.scss";
-import {Desktop, DesktopAndLaptop, DesktopMax, Laptop, Tablet} from "../../responsiveModule";
+import {Desktop, Laptop, Tablet, Mobile} from "../../responsiveModule";
 import {Dropdown} from "antd";
 
 const HomeForPC = () => {
@@ -195,7 +195,6 @@ const HomeForTablet = () => (
     <div className={styles.pageHome}>
         <span/>
         <div className={styles.homeAdvantages}>
-            <span/>
             <div className={styles.homeAdvantageTemplate}>
                 <div className={styles.homeAdvantageTemplateIcon}>
                     <div className={styles.homeAdvantageTemplateImg}>
@@ -273,7 +272,6 @@ const HomeForTablet = () => (
                 </div>
                 <div className={styles.homeAdvantageTemplateLink}><Link to="/contacts">Связаться с нами</Link></div>
             </div>
-            <span/>
         </div>
         <span/>
         <div className={styles.homeFooter}>
@@ -288,61 +286,116 @@ const HomeForTablet = () => (
     </div>
 );
 
-const HeaderForMobile = ({location}: {location:any}) => (
-    <div className={styles.appHeader}>
-        <div className={styles.appHeaderStart}>
-            <a className={styles.appHeaderMiddleFavicon} href='/home'>
-                <img src="/static/img/9-favicon.png" alt={""}/>
-            </a>
-            <span className={styles.appHeaderStartSeparator}/>
-            <div className={styles.appHeaderMiddleName}>
-                <div className={styles.appHeaderMiddleNameFirst}><Link to="/home">медицинский центр</Link></div>
-                <div className={styles.appHeaderMiddleNameSecond}><Link to="/home">"ЮЖНЫЙ"</Link></div>
+const HomeForMobile = () => (
+    <div className={styles.pageHome}>
+        <span/>
+        <div className={styles.homeAdvantages}>
+            <div className={styles.homeAdvantageTemplate}>
+                <div className={styles.homeAdvantageTemplateIcon}>
+                    <div className={styles.homeAdvantageTemplateImg}>
+                        <img id={styles.img1} src="/static/svg/1-therapy-0064aa.svg" alt={""}/>
+                        <img id={styles.img2} src="/static/svg/1-therapy-White.svg" alt={""}/>
+                    </div>
+                </div>
+                <div className={styles.homeAdvantageTemplateHeader}>
+                    <span>ВЫСОКАЯ</span>
+                    <span>КВАЛИФИКАЦИЯ</span>
+                </div>
+                <div className={styles.homeAdvantageTemplateText}>
+                    <span>Мы уже более 10 лет проводим</span>
+                    <span>ультразвуковые исследования и</span>
+                    <span>оказываем услуги по ЭКГ, опираясь</span>
+                    <span>как на собственный опыт, так и на</span>
+                    <span>основные врачебные стандарты.</span>
+                    <span>Более 25 лет практики в терапии.</span>
+                    <span>Также, более 25 лет практики в</span>
+                    <span>функциональной диагностике</span>
+                    <span>в сфере клинической электро-</span>
+                    <span>кардиографии – всё это позволяет</span>
+                    <span>нам быстро и качественно,</span>
+                    <span>оказывать наши услуги.</span>
+                    <span>Свыше 12 000 довольных клиентов</span>
+                    <span>являются ярким показателем</span>
+                    <span>уровня нашей работы.</span>
+                </div>
+                <div className={styles.homeAdvantageTemplateLink}><Link to="/news">Подробнее об УЗИ</Link></div>
             </div>
-            <span className={styles.appHeaderStartSeparator}/>
+            <span className={styles.homeAdvantageSeparator}/>
+            <div className={styles.homeAdvantageTemplate}>
+                <div className={styles.homeAdvantageTemplateIcon}>
+                    <div className={styles.homeAdvantageTemplateImg}>
+                        <img id={styles.img1} src="/static/svg/2-medal-0064aa.svg" alt={""}/>
+                        <img id={styles.img2} src="/static/svg/2-medal-White.svg" alt={""}/>
+                    </div>
+                </div>
+                <div className={styles.homeAdvantageTemplateHeader}>
+                    <span>НАВЫКИ И</span>
+                    <span>СЕРТИФИКАЦИЯ</span>
+                </div>
+                <div className={styles.homeAdvantageTemplateText}>
+                    <span>Наш ведущий специалист</span>
+                    <span>Попкова Ольга Николаевна</span>
+                    <span>является врачом ультразвуковой</span>
+                    <span>диагностики с 10-летним стажем.</span>
+                    <span>Обладает более чем 30 дипломами,</span>
+                    <span>сертификатами и документами,</span>
+                    <span>подтверждающими навыки и</span>
+                    <span>высокий уровень профессионализма.</span>
+                    <span>Также, имеет 2 международных</span>
+                    <span>сертификата фондамедицины плода</span>
+                    <span>(The Fetal Medicine Foundation)</span>
+                    <span>Принимала неоднократное участие</span>
+                    <span> во всероссийских и международных</span>
+                    <span>конференциях в сфере кардиологии,</span>
+                    <span>узи, акушерства и гинекологии.</span>
+                </div>
+                <div className={styles.homeAdvantageTemplateLink}><Link to="/about">Подробнее о нас</Link></div>
+            </div>
+            <span className={styles.homeAdvantageSeparator}/>
+            <div className={styles.homeAdvantageTemplate}>
+                <div className={styles.homeAdvantageTemplateIcon}>
+                    <div className={styles.homeAdvantageTemplateImg}>
+                        <img id={styles.img1} src="/static/svg/3-ultra-0064aa.svg" alt={""}/>
+                        <img id={styles.img2} src="/static/svg/3-ultra-White.svg" alt={""}/>
+                    </div>
+                </div>
+                <div className={styles.homeAdvantageTemplateHeader}>
+                    <span>ВЫСОКОКЛАССНОЕ</span>
+                    <span>ОБОРУДОВАНИЕ</span>
+                </div>
+                <div className={styles.homeAdvantageTemplateText}>
+                    <span>Чтобы отвечать всем требованиям</span>
+                    <span>современной медицины, мы</span>
+                    <span>используем только качественное</span>
+                    <span>оборудование. Наш прибор УЗИ –</span>
+                    <span>сканер экспертного класса.</span>
+                    <span>Поддержка тканевой гармоники,</span>
+                    <span>сканирование в 4D формате в режиме</span>
+                    <span>реального времени,TEE – эти, и</span>
+                    <span>другие не менее важные преимущества</span>
+                    <span>наглядно выделяют наш УЗИ сканер</span>
+                    <span>среди прочих аналогов. Наш ЭКГ-</span>
+                    <span>аппарат является современным</span>
+                    <span> прибором, позволяющим работать</span>
+                    <span>с электрокардиограммами по всем</span>
+                    <span>нормам функциональной диагностики.</span>
+                </div>
+                <div className={styles.homeAdvantageTemplateLink}><Link to="/contacts">Связаться с нами</Link></div>
+            </div>
         </div>
-        {/*<Mobile>*/}
-        {/*    <div className={styles.appHeaderStartMenuModal}>*/}
-        {/*        <div className={location.pathname === "/home" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/home">ГЛАВНАЯ</Link></div>*/}
-        {/*        <span className={styles.appHeaderStartMenuModalSeparator}/>*/}
-        {/*        <div className={location.pathname === "/news" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/news">НОВОСТИ</Link></div>*/}
-        {/*        <span className={styles.appHeaderStartMenuModalSeparator}/>*/}
-        {/*        <div className={location.pathname === "/ultrasound" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/ultrasound">УЗИ</Link></div>*/}
-        {/*        <span className={styles.appHeaderStartMenuModalSeparator}/>*/}
-        {/*        <div className={location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/spa">МАССАЖ</Link></div>*/}
-        {/*        <span className={styles.appHeaderStartMenuModalSeparator}/>*/}
-        {/*        <div className={location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/spa">ЦЕНЫ</Link></div>*/}
-        {/*        <span className={styles.appHeaderStartMenuModalSeparator}/>*/}
-        {/*        <div className={location.pathname === "/about" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/about">О НАС</Link></div>*/}
-        {/*        <span className={styles.appHeaderStartMenuModalSeparator}/>*/}
-        {/*        <div className={location.pathname === "/contacts" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/contacts">КОНТАКТЫ</Link></div>*/}
-        {/*        <span className={styles.appHeaderStartMenuModalSeparator}/>*/}
-        {/*        <div className={location.pathname === "/reviews" ? styles.appHeaderStartMenuModalCurrentLink :*/}
-        {/*            styles.appHeaderStartMenuModalLinks}><Link to="/reviews">ОТЗЫВЫ</Link></div>*/}
-        {/*        <span/>*/}
-        {/*        <div className={styles.appHeaderStartMenuModalImgContainer}>*/}
-        {/*            <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>*/}
-        {/*                <img src="/static/svg/4-vk.svg" alt={""}/>*/}
-        {/*            </a>*/}
-        {/*            <span className={styles.appHeaderStartMenuModalImgSeparator}/>*/}
-        {/*            <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>*/}
-        {/*                <img src="/static/svg/4-instagram.svg" alt={""}/>*/}
-        {/*            </a>*/}
-        {/*        </div>*/}
-        {/*        <div className={styles.appHeaderStartMenuModalAddressContainer}>*/}
-        {/*            <div className={styles.appHeaderStartMenuModalAddress}>г. Хадыженск, ул. Первомайская,</div>*/}
-        {/*            <div className={styles.appHeaderStartMenuModalAddress}>д. 103 "А", 2 этаж, кабинет 6</div>*/}
-        {/*        </div>*/}
-        {/*        <div className={styles.appHeaderStartMenuModalLinks}><span>+7(918)177-24-17</span></div>*/}
-        {/*    </div>*/}
-        {/*</Mobile>*/}
+        <span/>
+        <div className={styles.homeFooter}>
+            <div className={styles.homeFooterButtons}>
+                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Отзывы</Link></div>
+                <div className={styles.homeFooterButtonSeparator}>ИЛИ</div>
+                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Обратный звонок</Link></div>
+            </div>
+            <div className={styles.homeFooterRemark}>
+                <span>Нажимая на кнопку "Записаться online", Вы даете Согласие на</span>
+                <span>обработку персональных данных на&nbsp;<span className={styles.homeFooterRemarkLink}><Link to="/news">следующих условиях</Link></span></span>
+            </div>
+        </div>
+        <span/>
     </div>
 );
 
@@ -369,6 +422,9 @@ class Home extends React.Component<{}, {
                 <Tablet>
                     <HomeForTablet/>
                 </Tablet>
+                <Mobile>
+                    <HomeForMobile/>
+                </Mobile>
             </>
         );
     }
