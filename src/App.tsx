@@ -3,9 +3,9 @@ import {BrowserRouter as Router, Switch, Route, Link, withRouter} from "react-ro
 import styles from './App.module.scss';
 import Home from "./components/home/Home";
 import News from "./components/news/News";
-import Ultrasound from "./components/ultrasound/Ultrasound";
+import Ultrasound from "./components/profiles/Ultrasound";
 import Contacts from "./components/contacts/Contacts";
-import Spa from "./components/spa/Spa";
+import Spa from "./components/profiles/Spa";
 import About from "./components/about/About";
 import Reviews from "./components/reviews/Reviews";
 import './components/dropdown/dropdown';
@@ -117,7 +117,8 @@ const HeaderForPC = ({location}: {location:any}) => {
                     <div className={location.pathname === "/news" ? styles.appHeaderMiddleMenuCurrent :
                         styles.appHeaderMiddleMenuText}><Link to="/news">Новости</Link></div>
                     <span className={styles.appHeaderMiddleMenuSpace}/>
-                    <div className={styles.appHeaderMiddleMenuText}>УЗИ</div>
+                    <div className={location.pathname === "/ultrasound" ? styles.appHeaderMiddleMenuCurrent :
+                        styles.appHeaderMiddleMenuText}><Link to="/ultrasound">УЗИ</Link></div>
                     <span className={styles.appHeaderMiddleMenuSpace}/>
                     <div className={location.pathname === "/spa" ? styles.appHeaderMiddleMenuCurrent :
                         styles.appHeaderMiddleMenuText}><Link to="/spa">Массаж</Link></div>

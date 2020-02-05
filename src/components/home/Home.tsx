@@ -2,7 +2,15 @@ import * as React from "react";
 import {Router, Switch, Route, Link} from "react-router-dom";
 import styles from "./Home.module.scss";
 import {Desktop, Laptop, Tablet, Mobile} from "../../responsiveModule";
-import {Dropdown} from "antd";
+import Footer from "../footer/Footer";
+import FooterMobile from "../footer/FooterMobile";
+
+const template = Object.keys(data.books).map(
+    item =>
+        <span key={data.books[item].id}>
+            {data.books[item].author} - {data.books[item].name}
+        </span>
+)
 
 const HomeForPC = () => {
     return (
@@ -90,20 +98,11 @@ const HomeForPC = () => {
                 <span/>
             </div>
             <span/>
-            <div className={styles.homeFooter}>
-                <div className={styles.homeFooterButtons}>
-                    <div className={styles.homeFooterButtonTemplate}><Link to="/news">Записаться online</Link></div>
-                    <div className={styles.homeFooterButtonSeparator}>ИЛИ</div>
-                    <div className={styles.homeFooterButtonTemplate}><Link to="/news">Заказать звонок</Link></div>
-                </div>
-                <div className={styles.homeFooterRemark}>Нажимая на кнопку "Записаться online", Вы даете Согласие на обработку персональных данных на&nbsp;<span className={styles.homeFooterRemarkLink}><Link to="/news">следующих условиях</Link></span></div>
-            </div>
+            <Footer/>
             <span/>
         </div>
     )
 };
-
-// const Name = () => Варианты: {return(<span/>)} и (<span/>) одинаковы. Функциональные компоненты. В рамках одного кмпонента
 
 const HomeForLaptop = () => (
     <div className={styles.pageHome}>
@@ -179,14 +178,7 @@ const HomeForLaptop = () => (
             </div>
         </div>
         <span/>
-        <div className={styles.homeFooter}>
-            <div className={styles.homeFooterButtons}>
-                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Записаться online</Link></div>
-                <div className={styles.homeFooterButtonSeparator}>ИЛИ</div>
-                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Заказать звонок</Link></div>
-            </div>
-            <div className={styles.homeFooterRemark}>Нажимая на кнопку "Записаться online", Вы даете Согласие на обработку персональных данных на&nbsp;<span className={styles.homeFooterRemarkLink}><Link to="/news">следующих условиях</Link></span></div>
-        </div>
+        <Footer/>
         <span/>
     </div>
 );
@@ -274,14 +266,7 @@ const HomeForTablet = () => (
             </div>
         </div>
         <span/>
-        <div className={styles.homeFooter}>
-            <div className={styles.homeFooterButtons}>
-                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Записаться online</Link></div>
-                <div className={styles.homeFooterButtonSeparator}>ИЛИ</div>
-                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Заказать звонок</Link></div>
-            </div>
-            <div className={styles.homeFooterRemark}>Нажимая на кнопку "Записаться online", Вы даете Согласие на обработку персональных данных на&nbsp;<span className={styles.homeFooterRemarkLink}><Link to="/news">следующих условиях</Link></span></div>
-        </div>
+        <Footer/>
         <span/>
     </div>
 );
@@ -384,17 +369,7 @@ const HomeForMobile = () => (
             </div>
         </div>
         <span/>
-        <div className={styles.homeFooter}>
-            <div className={styles.homeFooterButtons}>
-                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Отзывы</Link></div>
-                <div className={styles.homeFooterButtonSeparator}>ИЛИ</div>
-                <div className={styles.homeFooterButtonTemplate}><Link to="/news">Обратный звонок</Link></div>
-            </div>
-            <div className={styles.homeFooterRemark}>
-                <span>Нажимая на кнопку "Записаться online", Вы даете Согласие на</span>
-                <span>обработку персональных данных на&nbsp;<span className={styles.homeFooterRemarkLink}><Link to="/news">следующих условиях</Link></span></span>
-            </div>
-        </div>
+        <FooterMobile/>
         <span/>
     </div>
 );
