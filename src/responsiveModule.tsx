@@ -21,6 +21,11 @@ export const Laptop = ({ children }: {children : any}) => {
     return isLaptop ? children : null
 };
 
+export const WithoutLaptop = ({ children }: {children : any}) => {
+    const isWithoutLaptop = useMediaQuery({ minWidth: 901, maxWidth: 1200 })
+    return isWithoutLaptop ? null : children
+};
+
 export const LaptopMin = ({ children }: {children : any}) => {
     const isLaptopMin = useMediaQuery({ minWidth: 901 })
     return isLaptopMin ? children : null
