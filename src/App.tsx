@@ -15,7 +15,7 @@ import {Menu, Dropdown, Icon} from "antd";
 import "./App.scss";
 
 const menu = (
-    <Menu className={styles.appHeaderStartMenuModal} style={{top: "0 !important"}}>
+    <Menu  className={styles.appHeaderStartMenuModal}>
         <div className={window.location.pathname === "/home" ? styles.appHeaderStartMenuModalCurrentLink :
             styles.appHeaderStartMenuModalLinks}><Link to="/home">ГЛАВНАЯ</Link></div>
         <span className={styles.appHeaderStartMenuModalSeparator}/>
@@ -273,7 +273,8 @@ const HeaderForMobile = ({location}: {location:any}) => (
                 <div className={styles.appHeaderMiddleNameSecond}><Link to="/home">"ЮЖНЫЙ"</Link></div>
             </div>
             <span className={styles.appHeaderStartSeparator}/>
-            <Dropdown overlay={menu} trigger={['click']}>
+            <Dropdown overlay={menu} overlayClassName={styles.appHeaderStartDropdown} trigger={['click']}>
+            {/*<Dropdown overlay={menu} trigger={['click']}>*/}
                 <a className={styles.appHeaderStartMenuModalButton} href="#">
                     <img src="/static/svg/5-menus-white.svg" alt={""}/>
                 </a>

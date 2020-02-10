@@ -45,6 +45,11 @@ export const Mobile = ({ children }: {children : any}) => {
     const isMobile = useMediaQuery({ maxWidth: 640 })
     return isMobile ? children : null
 };
+
+export const WithoutMobile = ({ children }: {children : any}) => {
+    const isWithoutMobile = useMediaQuery({ minWidth: 641 })
+    return isWithoutMobile ? children : null
+};
 //
 // export const Default = ({ children }: {children : any}) => {
 //     const isNotMobile = useMediaQuery({ minWidth: 768 })
