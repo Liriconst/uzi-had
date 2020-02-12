@@ -1,0 +1,335 @@
+@import "../../config";
+
+.pageSPA {
+  display: grid;
+  position: relative;
+  height: 1fr;
+  width: 1fr;
+  background: white;
+
+  @media screen and (min-width: 1918px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 1px 500px 1px 120px 10px;
+  }
+
+  @media screen and (min-width: 1598px) and (max-width: 1917px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 415px 1fr 95px 1fr;
+  }
+
+  @media screen and (min-width: 1201px) and (max-width: 1574px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 341px 1fr 95px 1fr;
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 422px 1fr 75px 1fr;
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1388px 28px 80px 30px;
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 640px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 20px 1648px 18px 90px 20px;
+  }
+
+  @media screen and (max-width: 360px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 20px 1413px 18px 90px 20px;
+  }
+}
+
+/*region spaBlock*/
+
+//.spaBlock {
+//  @include flexRowRelative;
+//  height: ptr(504px);
+//  max-width: 100%;
+//  margin: ptr(26px) ptr(296px);
+//}
+
+.spaBlock {
+  display: grid;
+
+  @media screen and (min-width: 1918px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 1px 311px 1px 120px 10px;
+  }
+
+  @media screen and (min-width: 1598px) and (max-width: 1917px) {
+    grid-template-columns: 1fr 311px 240px 799px 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+.spaPart1 {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  height: ptr(504px);
+  width: ptr(379px);
+  margin-right: ptr(240px);
+  background: rgba(0, 100, 170, 0.1);
+
+  img {
+    height: ptr(480px);
+    width: ptr(319px);
+    border: 1px solid rgba(0, 88, 144, 0.5);
+  }
+}
+
+.spaPart2 {
+  @include flexColumnRelative;
+  height: ptr(504px);
+  width: ptr(921px);
+}
+
+.spaPart2Header {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(30px);
+  font-weight: 400;
+  color: #0064aa;
+  line-height: ptr(28px);
+
+  span {
+    line-height: ptr(36px);
+    font-weight: 300;
+  }
+}
+
+.spaPart2Remark {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(16px);
+  font-weight: 300;
+  color: #7c868e;
+}
+
+.spaPart2Separator {
+  height: 1px;
+  width: ptr(760px);
+  position: relative;
+  background: #919ba2;
+  margin: ptr(30px) 0 ptr(30px) 0;
+}
+
+.spaPart2Text {
+  font-family: "Roboto", sans-serif;
+  font-size: ptr(24px);
+  font-weight: 300;
+  color: black;
+  line-height: 1.26;
+}
+
+/*endregion spaBlock*/
+
+/*region Footer*/
+
+.homeFooter {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background: #0064aa;
+
+  @media screen and (min-width: 1918px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 30px;
+  }
+
+  @media screen and (min-width: 1201px) and (max-width: 1917px) {
+    grid-template-columns: 900px;
+    grid-template-rows: 40px 25px;
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 35px 20px;
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 20px;
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 640px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 30px;
+  }
+
+  @media screen and (max-width: 360px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 30px;
+  }
+}
+
+.homeFooterButtons {
+  @include flexRowRelative;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeFooterButtonTemplate {
+  @include flexRowRelative;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  color: white;
+  background: #39d02a;
+  border-radius: ptr(5px);
+
+  @media screen and (min-width: 1918px) {
+    width: 235px;
+    font-size: 22px;
+  }
+
+  @media screen and (min-width: 1201px) and (max-width: 1917px) {
+    width: 210px;
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    width: 180px;
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 900px) {
+    width: 180px;
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 640px) {
+    width: 140px;
+    font-size: 14px;
+    border-radius: 2px !important;
+  }
+
+  @media screen and (max-width: 360px) {
+    width: 120px;
+    font-size: 12px;
+    border-radius: 2px !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  &:hover {
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    cursor: pointer;
+    background: #018401;
+    box-shadow: 0 ptr(3px) ptr(3px) #004487;
+    transition: 100ms;
+  }
+}
+
+.homeFooterButtonSeparator {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  color: #a2c6df;
+
+  @media screen and (min-width: 1918px) {
+    font-size: 24px;
+    margin: 0 30px;
+  }
+
+  @media screen and (min-width: 1201px) and (max-width: 1917px) {
+    font-size: 21px;
+    margin: 0 30px;
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    font-size: 18px;
+    margin: 0 20px;
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 900px) {
+    font-size: 18px;
+    margin: 0 20px;
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 640px) {
+    font-size: 15px;
+    margin: 0 15px;
+  }
+
+  @media screen and (max-width: 360px) {
+    font-size: 14px;
+    margin: 0 14px;
+  }
+}
+
+.homeFooterRemark {
+  @include flexRowRelative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #a2c6df;
+  line-height: 10px;
+
+  @media screen and (min-width: 1918px) {
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: 1201px) and (max-width: 1917px) {
+    margin-top: 15px;
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    margin-top: 10px;
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 900px) {
+    margin-top: 10px;
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 640px) {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 360px) {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    margin-top: 10px;
+  }
+}
+
+.homeFooterRemarkLink {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  line-height: 10px;
+
+  a {
+    color: #a2c6df;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &:hover {
+    a {
+      color: black;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
+}
+
+/*endregion Footer*/

@@ -9,9 +9,9 @@ import Spa from "./components/profiles/Spa";
 import About from "./components/about/About";
 import Reviews from "./components/reviews/Reviews";
 import './components/dropdown/dropdown';
-import {DesktopMax,Desktop, DesktopAndLaptop, Laptop, LaptopMin, Tablet, TabletAndMobile, Mobile} from "./responsiveModule";
+import {DesktopMax,Desktop, DesktopAndLaptop, Laptop, Tablet, Mobile} from "./responsiveModule";
 import {createBrowserHistory} from 'history';
-import {Menu, Dropdown, Icon} from "antd";
+import {Menu, Dropdown} from "antd";
 import "./App.scss";
 
 const menu = (
@@ -205,7 +205,8 @@ const HeaderForLaptop = ({location}: {location:any}) => (
                 <div className={location.pathname === "/news" ? styles.appHeaderMiddleMenuCurrent :
                     styles.appHeaderMiddleMenuText}><Link to="/news">Новости</Link></div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
-                <div className={styles.appHeaderMiddleMenuText}>УЗИ</div>
+                <div className={location.pathname === "/ultrasound" ? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/ultrasound">УЗИ</Link></div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
                 <div className={location.pathname === "/spa" ? styles.appHeaderMiddleMenuCurrent :
                     styles.appHeaderMiddleMenuText}><Link to="/spa">Массаж</Link></div>
@@ -223,17 +224,14 @@ const HeaderForLaptop = ({location}: {location:any}) => (
             </div>
         </div>
         <div className={styles.appHeaderEnd}>
-            {(location.pathname === "/home") ? (
-                    <span className={styles.appHeaderEndText}>НАШИ ПРЕИМУЩЕСТВА</span>) :
-                (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
-                    (location.pathname === "/spa") ? (<span className={styles.appHeaderEndText}>МАССАЖ</span>) :
-                        (location.pathname === "/about") ? (
-                                <span className={styles.appHeaderEndText}>О НАС</span>) :
-                            (location.pathname === "/contacts") ? (
-                                    <span className={styles.appHeaderEndText}>КОНТАКТЫ</span>) :
-                                (location.pathname === "/reviews") ? (
-                                        <span className={styles.appHeaderEndText}>ОТЗЫВЫ</span>) :
-                                    (<span className={styles.appHeaderEndText}>ОСТАЛЬНОЕ</span>)}
+            {(location.pathname === "/home") ? (<span className={styles.appHeaderEndText}>НАШИ ПРЕИМУЩЕСТВА</span>) :
+            (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
+            (location.pathname === "/ultrasound") ? (<span className={styles.appHeaderEndText}>УЗИ</span>) :
+            (location.pathname === "/spa") ? (<span className={styles.appHeaderEndText}>МАССАЖ</span>) :
+            (location.pathname === "/about") ? (<span className={styles.appHeaderEndText}>О НАС</span>) :
+            (location.pathname === "/contacts") ? (<span className={styles.appHeaderEndText}>КОНТАКТЫ</span>) :
+            (location.pathname === "/reviews") ? (<span className={styles.appHeaderEndText}>ОТЗЫВЫ</span>) :
+            (<span className={styles.appHeaderEndText}>ОСТАЛЬНОЕ</span>)}
         </div>
     </div>
 );

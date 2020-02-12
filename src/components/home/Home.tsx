@@ -6,7 +6,7 @@ import Footer from "../footer/Footer";
 import FooterMobile from "../footer/FooterMobile";
 import AdvantageTemplate from "./AdvantageTemplate";
 
-const Advantages = [
+const advantages = [
     {
         "id": 1,
         "img1": "/static/svg/1-therapy-0064aa.svg",
@@ -181,7 +181,7 @@ class Home extends React.Component<{}, {
                 <span/>
                 <div className={styles.homeAdvantages}>
                     <Desktop><span/></Desktop>
-                    {Advantages.reduce((accumulator, current) => {
+                    {advantages.reduce((accumulator, current) => {
                             accumulator.length && accumulator.push(<TemplateSeparator/>);
                             accumulator.push(<AdvantageTemplate advantage={current}/>);
                             return accumulator;
