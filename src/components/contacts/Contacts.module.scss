@@ -1,118 +1,294 @@
 @import "../../config";
 
-//::-webkit-scrollbar { /* chrome based */
-//  width: 0px;  /* ширина scrollbar'a */
-//  background: transparent;  /* опционально */
-//}
-//
-//html {
-//  -ms-overflow-style: none;  /* IE 10+ */
-//  scrollbar-width: none; /* Firefox */
-//}
-
-@mixin flexRowRelative {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
-@mixin flexColumnRelative {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
 .pageContacts {
-  @include flexColumnRelative;
-  width: 100%;
-  background: white;
+  display: grid;
+
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(139.5px) ptr(480px) ptr(139.5px) ptr(420px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(150px) 1fr ptr(150px) ptr(420px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(150px) 1fr ptr(150px) ptr(420px);
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(150px) 1fr ptr(150px) ptr(420px);
+  }
+}
+
+/*region contactsInfoBlock*/
+
+.contactsInfoBlock {
+  display: grid;
+
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: 1fr ptr(521px) ptr(206px) ptr(780px) 1fr;
+    grid-template-rows: 100%;
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 1200px) {
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 100%;
+  }
+
+  @media screen and (max-width: 640px) {
+    grid-template-columns: ptr(150px) 1fr ptr(150px);
+    grid-template-rows: 1fr;
+  }
+}
+
+.contactsInfoBlockExtra {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: ptr(900px) ptr(1412px) 0;
 }
 
 /*region contactsInfo*/
 
 .contactsInfo {
-  @include flexRowRelative;
-  max-width: 100%;
-  height: ptr(480px);
-  margin: ptr(150px) ptr(206px) ptr(149px) ptr(206px);
+  display: grid;
+
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(54px) ptr(61px) ptr(365px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(108px) ptr(71px) ptr(376px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(128px) ptr(91px) ptr(508px);
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(176px) ptr(161px) ptr(1075px);
+  }
+}
+
+.contactsInfoHeader {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #0064aa;
+  line-height: 1;
+
+  @media screen and (min-width: 1201px) {
+    font-size: ptr(24px);
+    margin-top: ptr(30px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    font-size: ptr(48px);
+    margin-top: ptr(60px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    font-size: ptr(56px);
+    margin-top: ptr(72px);
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: ptr(80px);
+    margin-top: ptr(96px);
+  }
 }
 
 .contactsInfoSeparator {
-  @include flexRowRelative;
+  display: grid;
+  align-self: center;
   height: 1px;
   width: 100%;
-  background: #00a4f0;
-  opacity: 25%;
+  background: rgba(145, 155, 162, 0.75);
+
+  @media screen and (min-width: 1201px) {
+    margin: ptr(30px) 0;
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    margin: ptr(35px) 0;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    margin: ptr(45px) 0;
+  }
+
+  @media screen and (max-width: 479px) {
+    margin: ptr(80px) 0;
+  }
 }
 
-/*region contactsPart1*/
+.contactsInfoTextBlock {
+   display: grid;
 
-.contactsPart1 {
-  @include flexColumnRelative;
-  width: ptr(521px);
-  padding-top: ptr(30px);
-  margin-right: ptr(187px);
+  @media screen and (min-width: 1201px) {
+   grid-template-columns: ptr(348px) ptr(173px);
+   grid-template-rows: 100%;
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    grid-template-columns: ptr(200px) 1fr ptr(310px) ptr(200px);
+    grid-template-rows: 100%;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    grid-template-columns: ptr(150px) 1fr ptr(415px) ptr(150px);
+    grid-template-rows: 100%;
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: ptr(175px) 1fr ptr(175px);
+    grid-template-rows: ptr(1075px);
+  }
 }
 
-.contactsPart1Header {
+.contactsInfoTextBlockExtra {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: ptr(504px) ptr(324px) ptr(72px) ptr(175px);
+}
+
+.contactsInfoTextBlockContainerLeft {
+  display: grid;
+
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(30px) ptr(30px) ptr(30px) ptr(30px) ptr(30px) ptr(19px) ptr(50px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(54px) ptr(54px) ptr(54px) ptr(54px) ptr(54px) ptr(36px) ptr(70px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(72px) ptr(72px) ptr(72px) ptr(72px) ptr(72px) ptr(48px) ptr(100px);
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(108px) ptr(108px) ptr(108px) ptr(108px) ptr(72px);
+  }
+}
+
+.contactsInfoTextBlockContainerRight {
+  display: grid;
+
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(30px) ptr(30px) ptr(30px) ptr(30px) ptr(30px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(54px) ptr(54px) ptr(54px) ptr(54px) ptr(54px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(72px) ptr(72px) ptr(72px) ptr(72px) ptr(72px);
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 1fr 108px;
+    grid-template-rows: 1fr;
+  }
+}
+
+.contactsInfoTextBlockContainerRightAdd {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: ptr(108px) ptr(108px) ptr(108px);
+}
+
+.contactsInfoText {
   font-family: "Roboto", sans-serif;
-  font-size: ptr(24px);
-  font-weight: 400;
-  color: #0064aa;
-  margin-bottom: ptr(30px);
-}
-
-.contactsPart1Separator {
-  @include flexRowRelative;
-  height: 1px;
-  width: ptr(521px);
-  background: #919ba2;
-  margin-bottom: ptr(30px);
-}
-
-.contactsPart1Blocks {
-  @include flexRowRelative;
-}
-
-.contactsPart1Block1 {
-  @include flexColumnRelative;
-  width: ptr(305px);
-  margin-right: ptr(44px);
-}
-
-.contactsPart1Block2 {
-  @include flexColumnRelative;
-  width: ptr(172px);
-}
-
-.contactsBlock1Text {
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(20px);
   font-weight: 300;
   color: black;
-  margin-bottom: ptr(10px);
+  line-height: 1;
+
+  @media screen and (min-width: 1201px) {
+    font-size: ptr(20px);
+    margin-bottom: ptr(10px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    font-size: ptr(36px);
+    margin-bottom: ptr(18px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    font-size: ptr(48px);
+    margin-bottom: ptr(24px);
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: ptr(72px);
+    margin-bottom: ptr(36px);
+  }
+
+  span {
+    color: #0064aa;
+  }
 }
 
-.contactsBlock1Phone {
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(20px);
-  font-weight: 300;
-  color: #0064aa;
-  margin: ptr(30px) 0;
+.contactsInfoButtonContainer {
+  display: grid;
+  height: 100%;
+  width: 100%;
+
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: ptr(303px) 1fr;
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    grid-template-columns: ptr(545px) 1fr;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    grid-template-columns: ptr(720px) 1fr;
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: ptr(175px);
+  }
 }
 
-.contactsBlock1Button {
+.contactsInfoButton {
   @include flexRowRelative;
   align-items: center;
   justify-content: center;
-  height: ptr(50px);
-  width: ptr(270px);
+  height: 100%;
+  width: 100%;
   background: #39d02a;
   font-family: "Roboto Slab", serif;
-  font-size: ptr(24px);
   font-weight: 400;
   color: white;
-  line-height: 0;
+  line-height: 1;
+
+  @media screen and (min-width: 1201px) {
+    font-size: ptr(24px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    font-size: ptr(32px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    font-size: ptr(48px);
+  }
 
   a {
     color: white;
@@ -131,75 +307,87 @@
   }
 }
 
-.contactsBlock2Schedule {
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(20px);
-  font-weight: 300;
-  color: #0064aa;
-  margin-bottom: ptr(10px);
-}
+/*endregion contactsInfo*/
 
-.contactsBlock2Text {
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(20px);
-  font-weight: 300;
-  color: black;
-  margin-bottom: ptr(10px);
-}
+/*region contactsInfoImgBlock*/
 
-/*endregion contactsPart1*/
+.contactsInfoImgBlock {
+  display: grid;
 
-/*region contactsPart2*/
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(425px) ptr(55px);
+  }
 
-.contactsPart2 {
-  @include flexColumnRelative;
-  align-items: flex-end;
-  justify-content: flex-end;
-  width: ptr(967px);
-}
+  @media screen and (min-width: 641px) and (max-width: 1200px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr ptr(75px);
+  }
 
-.contactsPart2Img {
-  height: ptr(425px);
-  width: ptr(780px);
-
-  img {
-    height: ptr(425px);
-    width: ptr(780px);
-    border-top-left-radius: ptr(10px);
-    border-top-right-radius: ptr(10px);
+  @media screen and (max-width: 640px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr;
   }
 }
 
-.contactsPart2Text {
+.contactsInfoImg {
+  @include flexRowRelative;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    @media screen and (min-width: 641px) {
+      border-top-left-radius: ptr(10px);
+      border-top-right-radius: ptr(10px);
+    }
+
+    @media screen and (max-width: 640px) {
+      border: #7c868e 1px solid;
+    }
+  }
+}
+
+.contactsInfoImgSubscription {
   @include flexRowRelative;
   align-items: center;
   justify-content: center;
   background: #0064aa;
-  height: ptr(55px);
-  width: ptr(780px);
+  height: 100%;
+  width: 100%;
   font-family: "Roboto", sans-serif;
-  font-size: ptr(24px);
   font-weight: 300;
   color: white;
+  line-height: 1;
   border-bottom-left-radius: ptr(10px);
   border-bottom-right-radius: ptr(10px);
+
+  @media screen and (min-width: 1201px) {
+    font-size: ptr(24px);
+  }
+
+  @media screen and (max-width: 1200px) {
+    font-size: ptr(36px);
+  }
+
 }
 
-/*endregion contactsPart2*/
+/*endregion contactsInfoImgBlock*/
 
-/*endregion contactsInfo*/
+/*endregion contactsInfoBlock*/
 
 /*region contactsMap*/
 
 .contactsMap {
   @include flexRowRelative;
+  height: 100%;
   width: 100%;
-  height: ptr(420px);
+  border-top: 1px solid rgba(0, 164, 240, 0.35);
 }
 
 .contactsMapBlock {
   @include flexRowRelative;
-  height: ptr(420px);
+  height: 100%;
   width: 100%;
   position: absolute;
   z-index: 1;

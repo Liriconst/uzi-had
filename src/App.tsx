@@ -13,6 +13,7 @@ import {DesktopMax,Desktop, DesktopAndLaptop, Laptop, Tablet, Mobile} from "./re
 import {createBrowserHistory} from 'history';
 import {Menu, Dropdown} from "antd";
 import "./App.scss";
+import { Redirect } from 'react-router-dom';
 
 const menu = (
     <Menu  className={styles.appHeaderStartMenuModal}>
@@ -225,6 +226,7 @@ const HeaderForLaptop = ({location}: {location:any}) => (
         </div>
         <div className={styles.appHeaderEnd}>
             {(location.pathname === "/home") ? (<span className={styles.appHeaderEndText}>НАШИ ПРЕИМУЩЕСТВА</span>) :
+                (location.pathname === "/") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
             (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
             (location.pathname === "/ultrasound") ? (<span className={styles.appHeaderEndText}>УЗИ</span>) :
             (location.pathname === "/spa") ? (<span className={styles.appHeaderEndText}>МАССАЖ</span>) :
@@ -336,9 +338,10 @@ const App: React.FC = () => {
                     <Route path="/reviews">
                         <Reviews/>
                     </Route>
-                    <Route path="/">
+                    <Route path="/home">
                         <Home/>
                     </Route>
+                    <Redirect from='/' to='/home'/>
                 </Switch>
             </div>
         </Router>

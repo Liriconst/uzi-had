@@ -11,6 +11,11 @@ export const Desktop = ({ children }: {children : any}) => {
     return isDesktop ? children : null
 };
 
+export const WithoutDesktop = ({ children }: {children : any}) => {
+    const isWithoutDesktop = useMediaQuery({ maxWidth: 1200 })
+    return isWithoutDesktop ? children : null
+};
+
 export const DesktopAndLaptop = ({ children }: {children : any}) => {
     const isDesktopAndLaptop = useMediaQuery({ minWidth: 901, maxWidth: 1365 })
     return isDesktopAndLaptop ? children : null
@@ -44,6 +49,16 @@ export const TabletAndMobile = ({ children }: {children : any}) => {
 export const Mobile = ({ children }: {children : any}) => {
     const isMobile = useMediaQuery({ maxWidth: 640 })
     return isMobile ? children : null
+};
+
+export const MobileMin480 = ({ children }: {children : any}) => {
+    const isMobileMin480 = useMediaQuery({ minWidth: 480 })
+    return isMobileMin480 ? children : null
+};
+
+export const MobileMax479 = ({ children }: {children : any}) => {
+    const isMobileMax479 = useMediaQuery({ maxWidth: 479 })
+    return isMobileMax479 ? children : null
 };
 
 export const WithoutMobile = ({ children }: {children : any}) => {
