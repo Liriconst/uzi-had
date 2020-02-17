@@ -238,7 +238,7 @@ const HeaderForLaptop = ({location}: {location:any}) => (
     </div>
 );
 
-const HeaderForTablet = () => (
+const HeaderForTablet = ({location}: {location:any}) => (
     <div className={styles.appHeader}>
         <div className={styles.appHeaderStart}>
             <a className={styles.appHeaderMiddleFavicon} href='/home'>
@@ -299,7 +299,7 @@ class AppHeaderInner extends React.Component<{
                     <HeaderForLaptop location={location}/>
                 </Laptop>
                 <Tablet>
-                    <HeaderForTablet/>
+                    <HeaderForTablet location={location}/>
                 </Tablet>
                 <Mobile>
                     <HeaderForMobile location={location}/>

@@ -8,19 +8,24 @@
     grid-template-rows: ptr(139.5px) ptr(480px) ptr(139.5px) ptr(420px);
   }
 
-  @media screen and (min-width: 560px) and (max-width: 1200px) {
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
     grid-template-columns: 100%;
-    grid-template-rows: ptr(150px) 1fr ptr(150px) ptr(420px);
+    grid-template-rows: ptr(150px) ptr(1470px) ptr(150px) ptr(550px);
+  }
+
+  @media screen and (min-width: 560px) and (max-width: 900px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(150px) ptr(1470px) ptr(150px) ptr(720px);
   }
 
   @media screen and (min-width: 480px) and (max-width: 559px) {
     grid-template-columns: 100%;
-    grid-template-rows: ptr(150px) 1fr ptr(150px) ptr(420px);
+    grid-template-rows: ptr(150px) ptr(1607px) ptr(150px) ptr(1050px);
   }
 
   @media screen and (max-width: 479px) {
     grid-template-columns: 100%;
-    grid-template-rows: ptr(150px) 1fr ptr(150px) ptr(420px);
+    grid-template-rows: ptr(150px) ptr(2550px) ptr(150px) ptr(1200px);
   }
 }
 
@@ -34,21 +39,39 @@
     grid-template-rows: 100%;
   }
 
-  @media screen and (min-width: 641px) and (max-width: 1200px) {
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
     grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 100%;
+    grid-template-rows: ptr(1470px);
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (min-width: 480px) and (max-width: 559px) {
     grid-template-columns: ptr(150px) 1fr ptr(150px);
-    grid-template-rows: 1fr;
+    grid-template-rows: ptr(1607px);
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: ptr(150px) 1fr ptr(150px);
+    grid-template-rows: ptr(2550px);
   }
 }
 
 .contactsInfoBlockExtra {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: ptr(900px) ptr(1412px) 0;
+
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: ptr(915px) ptr(555px);
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 559px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: ptr(880px) ptr(727px);
+  }
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: ptr(880px) ptr(1670px);
+  }
 }
 
 /*region contactsInfo*/
@@ -73,7 +96,7 @@
 
   @media screen and (max-width: 479px) {
     grid-template-columns: 100%;
-    grid-template-rows: ptr(176px) ptr(161px) ptr(1075px);
+    grid-template-rows: ptr(176px) ptr(131px) ptr(1363px);
   }
 }
 
@@ -124,7 +147,7 @@
   }
 
   @media screen and (max-width: 479px) {
-    margin: ptr(80px) 0;
+    margin: ptr(65px) 0;
   }
 }
 
@@ -148,14 +171,17 @@
 
   @media screen and (max-width: 479px) {
     grid-template-columns: ptr(175px) 1fr ptr(175px);
-    grid-template-rows: ptr(1075px);
+    grid-template-rows: 100%;
   }
 }
 
 .contactsInfoTextBlockExtra {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: ptr(504px) ptr(324px) ptr(72px) ptr(175px);
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: ptr(540px) ptr(648px) ptr(175px);
+  }
 }
 
 .contactsInfoTextBlockContainerLeft {
@@ -178,7 +204,7 @@
 
   @media screen and (max-width: 479px) {
     grid-template-columns: 100%;
-    grid-template-rows: ptr(108px) ptr(108px) ptr(108px) ptr(108px) ptr(72px);
+    grid-template-rows: ptr(108px) ptr(108px) ptr(108px) ptr(108px) ptr(108px);
   }
 }
 
@@ -201,15 +227,18 @@
   }
 
   @media screen and (max-width: 479px) {
-    grid-template-columns: 1fr 108px;
-    grid-template-rows: 1fr;
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(324px) ptr(324px);
   }
 }
 
 .contactsInfoTextBlockContainerRightAdd {
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: ptr(108px) ptr(108px) ptr(108px);
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: 100%;
+    grid-template-rows: ptr(108px) ptr(108px) ptr(108px);
+  }
 }
 
 .contactsInfoText {
@@ -250,18 +279,21 @@
 
   @media screen and (min-width: 1201px) {
     grid-template-columns: ptr(303px) 1fr;
+    grid-template-rows: 100%;
   }
 
   @media screen and (min-width: 560px) and (max-width: 1200px) {
     grid-template-columns: ptr(545px) 1fr;
+    grid-template-rows: 100%;
   }
 
   @media screen and (min-width: 480px) and (max-width: 559px) {
     grid-template-columns: ptr(720px) 1fr;
+    grid-template-rows: 100%;
   }
 
   @media screen and (max-width: 479px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: ptr(175px);
   }
 }
@@ -288,6 +320,10 @@
 
   @media screen and (min-width: 480px) and (max-width: 559px) {
     font-size: ptr(48px);
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: ptr(60px);
   }
 
   a {
@@ -319,14 +355,14 @@
     grid-template-rows: ptr(425px) ptr(55px);
   }
 
-  @media screen and (min-width: 641px) and (max-width: 1200px) {
+  @media screen and (min-width: 560px) and (max-width: 1200px) {
     grid-template-columns: 100%;
-    grid-template-rows: 1fr ptr(75px);
+    grid-template-rows: ptr(840px) ptr(75px);
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 559px) {
     grid-template-columns: 100%;
-    grid-template-rows: 1fr;
+    grid-template-rows: ptr(880px);
   }
 }
 
@@ -337,12 +373,12 @@
     width: 100%;
     height: 100%;
 
-    @media screen and (min-width: 641px) {
+    @media screen and (min-width: 560px) {
       border-top-left-radius: ptr(10px);
       border-top-right-radius: ptr(10px);
     }
 
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 559px) {
       border: #7c868e 1px solid;
     }
   }
@@ -375,57 +411,3 @@
 /*endregion contactsInfoImgBlock*/
 
 /*endregion contactsInfoBlock*/
-
-/*region contactsMap*/
-
-.contactsMap {
-  @include flexRowRelative;
-  height: 100%;
-  width: 100%;
-  border-top: 1px solid rgba(0, 164, 240, 0.35);
-}
-
-.contactsMapBlock {
-  @include flexRowRelative;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-}
-
-.contactsMapInfo {
-  @include flexColumnRelative;
-  align-items: center;
-  height: ptr(324px);
-  width: ptr(486px);
-  background: white;
-  border-radius: ptr(10px);
-  margin: ptr(48px) 0 ptr(48px) ptr(261px);
-  position: absolute;
-  z-index: 10;
-  border: 1px solid #00a4f0;
-}
-
-.contactsMapInfoHeader {
-  @include flexRowRelative;
-  font-family: "Roboto Slab", serif;
-  font-size: ptr(22px);
-  font-weight: 700;
-  color: black;
-  padding-top: ptr(35px);
-}
-
-.contactsMapInfoText {
-  @include flexRowRelative;
-  font-family: "Roboto Slab", serif;
-  font-size: ptr(20px);
-  font-weight: 300;
-  color: black;
-  padding-top: ptr(5px);
-
-  span {
-    padding-top: ptr(15px);
-  }
-}
-
-/*endregion contactsMap*/

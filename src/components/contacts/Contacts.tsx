@@ -3,167 +3,211 @@ import {Router, Switch, Route, Link} from "react-router-dom";
 import {YMaps, Map, Placemark, ZoomControl} from 'react-yandex-maps';
 import styles from "./Contacts.module.scss";
 import {
-    Desktop,
+    Desktop, DesktopAndLaptop, DesktopMax, Laptop,
     LaptopMin,
-    Mobile,
-    MobileMax479,
-    MobileMin480,
+    Mobile, Mobile480x559,
+    MobileMax479, SmallTablet, Tablet, TabletAndLaptop,
     WithoutDesktop,
     WithoutMobile
 } from "../../responsiveModule";
+import YmapDesktop from "../ymaps/YmapDesktop";
+import YmapLaptop from "../ymaps/YmapLaptop";
+import YmapTablet from "../ymaps/YmapTablet";
+import YmapMobile from "../ymaps/YmapMobile";
 
-const zoom = 17;
-const coordinateX = 44.422930;
-const coordinateY = 39.532857;
+const ContactsForDesktop = () => (
+    <div className={styles.contactsInfoBlock}>
+        <span/>
+        <div className={styles.contactsInfo}>
+            <span className={styles.contactsInfoHeader}>Хадыженск</span>
+            <span className={styles.contactsInfoSeparator}/>
+            <div className={styles.contactsInfoTextBlock}>
+                <div className={styles.contactsInfoTextBlockContainerLeft}>
+                    <span className={styles.contactsInfoText}>352680, Краснодарский край,</span>
+                    <span className={styles.contactsInfoText}>г. Хадыженск, ул. Первомайская,</span>
+                    <span className={styles.contactsInfoText}>д. 103 "А", 2 этаж, кабинет 6</span>
+                    <span/>
+                    <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
+                    <span/>
+                    <div className={styles.contactsInfoButtonContainer}>
+                        <span className={styles.contactsInfoButton}><Link to="/news">Посмотреть отзывы</Link></span>
+                        <span/>
+                    </div>
+                </div>
+                <div className={styles.contactsInfoTextBlockContainerRight}>
+                    <div className={styles.contactsInfoText}><span>График работы:</span></div>
+                    <span className={styles.contactsInfoText}>Пн-Ср: 9:00 – 17:00</span>
+                    <span className={styles.contactsInfoText}>Пт: 9:00 – 17:00</span>
+                    <span className={styles.contactsInfoText}>Сб-Вс: выходной</span>
+                    <span className={styles.contactsInfoText}>Чт: выходной</span>
+                </div>
+            </div>
+        </div>
+        <span/>
+        <div className={styles.contactsInfoImgBlock}>
+            <span className={styles.contactsInfoImg}><img src="/static/img/back-example.png" alt={""}/></span>
+            <span className={styles.contactsInfoImgSubscription}>г. Хадыженск, ул. Первомайская, д. 103 "А", 2 этаж, кабинет 6</span>
+        </div>
+        <span/>
+    </div>
+);
 
-const mapState = { center: [coordinateX, coordinateY], zoom: zoom};
-const placemark = [44.423044, 39.536405];
+const ContactsForTabletAndLaptop = () => (
+    <div className={styles.contactsInfoBlock}>
+        <span/>
+        <div className={styles.contactsInfoBlockExtra}>
+            <div className={styles.contactsInfoImgBlock}>
+                <span className={styles.contactsInfoImg}><img src="/static/img/back-example.png" alt={""}/></span>
+                <span className={styles.contactsInfoImgSubscription}>г. Хадыженск, ул. Первомайская, д. 103 "А", 2 этаж, кабинет 6</span>
+            </div>
+            <div className={styles.contactsInfo}>
+                <span className={styles.contactsInfoHeader}>Хадыженск</span>
+                <span className={styles.contactsInfoSeparator}/>
+                <div className={styles.contactsInfoTextBlock}>
+                    <span/>
+                    <div className={styles.contactsInfoTextBlockContainerLeft}>
+                        <span className={styles.contactsInfoText}>352680, Краснодарский край,</span>
+                        <span className={styles.contactsInfoText}>г. Хадыженск, ул. Первомайская,</span>
+                        <span className={styles.contactsInfoText}>д. 103 "А", 2 этаж, кабинет 6</span>
+                        <span/>
+                        <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
+                        <span/>
+                        <div className={styles.contactsInfoButtonContainer}>
+                            <span className={styles.contactsInfoButton}><Link to="/news">Записаться online</Link></span>
+                            <span/>
+                        </div>
+                    </div>
+                    <div className={styles.contactsInfoTextBlockContainerRight}>
+                        <div className={styles.contactsInfoText}><span>График работы:</span></div>
+                        <span className={styles.contactsInfoText}>Пн-Ср: 9:00 – 17:00</span>
+                        <span className={styles.contactsInfoText}>Пт: 9:00 – 17:00</span>
+                        <span className={styles.contactsInfoText}>Сб-Вс: выходной</span>
+                        <span className={styles.contactsInfoText}>Чт: выходной</span>
+                    </div>
+                    <span/>
+                </div>
+            </div>
+        </div>
+        <span/>
+    </div>
+);
 
-class Contacts extends React.Component<{}, {
-    test?: boolean
+const ContactsForMaxMobile = () => (
+    <div className={styles.contactsInfoBlock}>
+        <span/>
+        <div className={styles.contactsInfoBlockExtra}>
+            <div className={styles.contactsInfoImgBlock}>
+                <span className={styles.contactsInfoImg}><img src="/static/img/back-example.png" alt={""}/></span>
+            </div>
+            <div className={styles.contactsInfo}>
+                <span className={styles.contactsInfoHeader}>Хадыженск</span>
+                <span className={styles.contactsInfoSeparator}/>
+                <div className={styles.contactsInfoTextBlock}>
+                    <span/>
+                    <div className={styles.contactsInfoTextBlockContainerLeft}>
+                        <span className={styles.contactsInfoText}>352680, Краснодарский край,</span>
+                        <span className={styles.contactsInfoText}>г. Хадыженск, ул. Первомайская,</span>
+                        <span className={styles.contactsInfoText}>д. 103 "А", 2 этаж, кабинет 6</span>
+                        <span/>
+                        <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
+                        <span/>
+                        <div className={styles.contactsInfoButtonContainer}>
+                            <span className={styles.contactsInfoButton}><Link to="/news">Записаться online</Link></span>
+                            <span/>
+                        </div>
+                    </div>
+                    <div className={styles.contactsInfoTextBlockContainerRight}>
+                        <div className={styles.contactsInfoText}><span>График работы:</span></div>
+                        <span className={styles.contactsInfoText}>Пн-Ср: 9:00 – 17:00</span>
+                        <span className={styles.contactsInfoText}>Пт: 9:00 – 17:00</span>
+                        <span className={styles.contactsInfoText}>Сб-Вс: выходной</span>
+                        <span className={styles.contactsInfoText}>Чт: выходной</span>
+                    </div>
+                    <span/>
+                </div>
+            </div>
+        </div>
+        <span/>
+    </div>
+);
+
+const ContactsForMinMobile = () => (
+    <div className={styles.contactsInfoBlock}>
+        <span/>
+        <div className={styles.contactsInfoBlockExtra}>
+            <div className={styles.contactsInfoImgBlock}>
+                <span className={styles.contactsInfoImg}><img src="/static/img/back-example.png" alt={""}/></span>
+            </div>
+            <div className={styles.contactsInfo}>
+                <span className={styles.contactsInfoHeader}>Хадыженск</span>
+                <span className={styles.contactsInfoSeparator}/>
+                <div className={styles.contactsInfoTextBlock}>
+                    <span/>
+                    <div className={styles.contactsInfoTextBlockExtra}>
+                        <div className={styles.contactsInfoTextBlockContainerLeft}>
+                            <span className={styles.contactsInfoText}>352680, Краснодарский край,</span>
+                            <span className={styles.contactsInfoText}>г. Хадыженск, ул. Первомайская,</span>
+                            <span className={styles.contactsInfoText}>д. 103 "А", 2 этаж, кабинет 6</span>
+                            <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
+                            <span/>
+                        </div>
+                        <div className={styles.contactsInfoTextBlockContainerRight}>
+                            <div className={styles.contactsInfoTextBlockContainerRightAdd}>
+                                <div className={styles.contactsInfoText}><span>График работы:</span></div>
+                                <span className={styles.contactsInfoText}>Пн-Ср: 9:00 – 17:00</span>
+                                <span className={styles.contactsInfoText}>Пт: 9:00 – 17:00</span>
+                            </div>
+                            <div className={styles.contactsInfoTextBlockContainerRightAdd}>
+                                <span className={styles.contactsInfoText}>Сб-Вс: выходной</span>
+                                <span className={styles.contactsInfoText}>Чт: выходной</span>
+                                <span className={styles.contactsInfoText}/>
+                            </div>
+                        </div>
+                        <div className={styles.contactsInfoButtonContainer}>
+                            <span className={styles.contactsInfoButton}><Link to="/news">Записаться online</Link></span>
+                        </div>
+                    </div>
+                    <span/>
+                </div>
+            </div>
+        </div>
+        <span/>
+    </div>
+);
+
+
+
+class Contacts extends React.Component<{
+    location?: any;
 }> {
-    constructor(props: any) {
-        super(props);
-        // @ts-ignore
-        this.state = {
-            test: false
-        }
-    }
 
     public render(): React.ReactNode {
+        const {location} = this.props;
+
         return (
             <div className={styles.pageContacts}>
                 <span/>
-                <div className={styles.contactsInfoBlock}>
+                <Desktop>
+                    <ContactsForDesktop/>
                     <span/>
-                    <Desktop>
-                        <div className={styles.contactsInfo}>
-                            <span className={styles.contactsInfoHeader}>Хадыженск</span>
-                            <span className={styles.contactsInfoSeparator}/>
-                            <div className={styles.contactsInfoTextBlock}>
-                                <div className={styles.contactsInfoTextBlockContainerLeft}>
-                                    <span className={styles.contactsInfoText}>352680, Краснодарский край,</span>
-                                    <span className={styles.contactsInfoText}>г. Хадыженск, ул. Первомайская,</span>
-                                    <span className={styles.contactsInfoText}>д. 103 "А", 2 этаж, кабинет 6</span>
-                                    <span/>
-                                    <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
-                                    <span/>
-                                    <div className={styles.contactsInfoButtonContainer}>
-                                        <span className={styles.contactsInfoButton}><Link to="/news">Записаться online</Link></span>
-                                        <span/>
-                                    </div>
-                                </div>
-                                <div className={styles.contactsInfoTextBlockContainerRight}>
-                                    <div className={styles.contactsInfoText}><span>График работы:</span></div>
-                                    <span className={styles.contactsInfoText}>Пн-Ср: 9:00 – 17:00</span>
-                                    <span className={styles.contactsInfoText}>Пт: 9:00 – 17:00</span>
-                                    <span className={styles.contactsInfoText}>Сб-Вс: выходной</span>
-                                    <span className={styles.contactsInfoText}>Чт: выходной</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span/>
-                        <div className={styles.contactsInfoImgBlock}>
-                            <span className={styles.contactsInfoImg}><img src="/static/img/back-example.png" alt={""}/></span>
-                            <span className={styles.contactsInfoImgSubscription}>г. Хадыженск, ул. Первомайская, д. 103 "А", 2 этаж, кабинет 6</span>
-                        </div>
-                    </Desktop>
-                    <WithoutDesktop>
-                        <div className={styles.contactsInfoBlockExtra}>
-                            <div className={styles.contactsInfoImgBlock}>
-                                <span className={styles.contactsInfoImg}><img src="/static/img/back-example.png" alt={""}/></span>
-                                <WithoutMobile><span className={styles.contactsInfoImgSubscription}>г. Хадыженск, ул. Первомайская, д. 103 "А", 2 этаж, кабинет 6</span></WithoutMobile>
-                            </div>
-                            <Desktop><span/></Desktop>
-                            <div className={styles.contactsInfo}>
-                                <span className={styles.contactsInfoHeader}>Хадыженск</span>
-                                <span className={styles.contactsInfoSeparator}/>
-                                <div className={styles.contactsInfoTextBlock}>
-                                    <MobileMin480>
-                                        <span/>
-                                        <div className={styles.contactsInfoTextBlockContainerLeft}>
-                                            <span className={styles.contactsInfoText}>352680, Краснодарский край,</span>
-                                            <span className={styles.contactsInfoText}>г. Хадыженск, ул. Первомайская,</span>
-                                            <span className={styles.contactsInfoText}>д. 103 "А", 2 этаж, кабинет 6</span>
-                                            <span/>
-                                            <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
-                                            <span/>
-                                            <div className={styles.contactsInfoButtonContainer}>
-                                                <span className={styles.contactsInfoButton}><Link to="/news">Записаться online</Link></span>
-                                                <span/>
-                                            </div>
-                                        </div>
-                                        <div className={styles.contactsInfoTextBlockContainerRight}>
-                                            <div className={styles.contactsInfoText}><span>График работы:</span></div>
-                                            <span className={styles.contactsInfoText}>Пн-Ср: 9:00 – 17:00</span>
-                                            <span className={styles.contactsInfoText}>Пт: 9:00 – 17:00</span>
-                                            <span className={styles.contactsInfoText}>Сб-Вс: выходной</span>
-                                            <span className={styles.contactsInfoText}>Чт: выходной</span>
-                                        </div>
-                                        <span/>
-                                    </MobileMin480>
-                                    <MobileMax479>
-                                        <span/>
-                                        <div className={styles.contactsInfoTextBlockExtra}>
-                                            <div className={styles.contactsInfoTextBlockContainerLeft}>
-                                                <span className={styles.contactsInfoText}>352680, Краснодарский край,</span>
-                                                <span className={styles.contactsInfoText}>г. Хадыженск, ул. Первомайская,</span>
-                                                <span className={styles.contactsInfoText}>д. 103 "А", 2 этаж, кабинет 6</span>
-                                                <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
-                                                <span/>
-                                            </div>
-                                            <div className={styles.contactsInfoTextBlockContainerRight}>
-                                                <div className={styles.contactsInfoTextBlockContainerRightAdd} style={{display: "flex", flexDirection: "column"}}>
-                                                    <div className={styles.contactsInfoText}><span>График работы:</span></div>
-                                                    <span className={styles.contactsInfoText}>Пн-Ср: 9:00 – 17:00</span>
-                                                    <span className={styles.contactsInfoText}>Пт: 9:00 – 17:00</span>
-                                                </div>
-                                                <div className={styles.contactsInfoTextBlockContainerRightAdd} style={{display: "flex", flexDirection: "column"}}>
-                                                    <span className={styles.contactsInfoText} style={{height: "100%"}}/>
-                                                    <span className={styles.contactsInfoText}>Сб-Вс: выходной</span>
-                                                    <span className={styles.contactsInfoText}>Чт: выходной</span>
-                                                </div>
-                                            </div>
-                                            <span/>
-                                            <div className={styles.contactsInfoButtonContainer}>
-                                                <span className={styles.contactsInfoButton}><Link to="/news">Записаться online</Link></span>
-                                            </div>
-                                        </div>
-                                        <span/>
-                                    </MobileMax479>
-                                </div>
-                            </div>
-                        </div>
-                    </WithoutDesktop>
+                    <YmapDesktop/>
+                </Desktop>
+                <TabletAndLaptop>
+                    <ContactsForTabletAndLaptop/>
                     <span/>
-                </div>
-                <span/>
-                <div className={styles.contactsMap}>
-                    <YMaps>
-                        <Map className={styles.contactsMapBlock} state={mapState}>
-                            <Placemark
-                                geometry={placemark}
-                                properties={{
-                                    iconCaption: 'Медицинский центр "Южный"',
-                                }}
-                                options={{
-                                    preset: 'islands#blueDotIconWithCaption',
-                                }}
-                            />
-                            <ZoomControl options={{ float: 'right' }} />
-                        </Map>
-                    </YMaps>;
-                    <LaptopMin>
-                        <div className={styles.contactsMapInfo}>
-                            <div className={styles.contactsMapInfoHeader}>Адрес</div>
-                            <div className={styles.contactsMapInfoText}><span>г. Хадыженск, ул. Первомайская,</span></div>
-                            <div className={styles.contactsMapInfoText}>д. 103 "А", 2 этаж, кабинет 6</div>
-                            <div className={styles.contactsMapInfoHeader}>Контакты</div>
-                            <div className={styles.contactsMapInfoText}><span>+7(918)177-24-17</span></div>
-                            <div className={styles.contactsMapInfoText}>example@gmail.com</div>
-                        </div>
-                    </LaptopMin>
-                </div>
+                    <Laptop><YmapLaptop/></Laptop>
+                    <SmallTablet><YmapTablet/></SmallTablet>
+                </TabletAndLaptop>
+                <Mobile480x559>
+                    <ContactsForMaxMobile/>
+                    <span/>
+                    <YmapMobile/>
+                </Mobile480x559>
+                <MobileMax479>
+                    <ContactsForMinMobile/>
+                    <span/>
+                    <YmapMobile/>
+                </MobileMax479>
             </div>
         );
     };

@@ -1,0 +1,79 @@
+@import "../../config";
+
+/*region contactsMap*/
+
+.contactsMap {
+  @include flexRowRelative;
+  height: 100%;
+  width: 100%;
+  border-top: 1px solid rgba(0, 164, 240, 0.35);
+}
+
+.contactsMapBlock {
+  @include flexRowRelative;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.contactsMapInfo {
+  @include flexColumnRelative;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: ptr(10px);
+  position: absolute;
+  z-index: 10;
+  border: 1px solid #00a4f0;
+
+  @media screen and (min-width: 1201px) {
+    height: ptr(324px);
+    width: ptr(486px);
+    margin: ptr(48px) 0 ptr(48px) ptr(261px);
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    height: ptr(454px);
+    width: ptr(576px);
+    margin: ptr(48px) 0 ptr(48px) ptr(300px);
+  }
+}
+
+.contactsMapInfoHeader {
+  @include flexRowRelative;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  color: black;
+  padding: ptr(35px) 0 ptr(15px);
+
+  @media screen and (min-width: 1201px) {
+    font-size: ptr(22px);
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    font-size: ptr(30px);
+  }
+}
+
+.contactsMapInfoText {
+  @include flexRowRelative;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  color: black;
+  padding-top: ptr(5px);
+
+  @media screen and (min-width: 1201px) {
+    font-size: ptr(20px);
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    font-size: ptr(28px);
+  }
+
+  span {
+    padding-bottom: ptr(35px);
+  }
+}
+
+/*endregion contactsMap*/

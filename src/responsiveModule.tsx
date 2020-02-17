@@ -36,9 +36,19 @@ export const LaptopMin = ({ children }: {children : any}) => {
     return isLaptopMin ? children : null
 };
 
+export const TabletAndLaptop = ({ children }: {children : any}) => {
+    const isTabletAndLaptop = useMediaQuery({ minWidth: 560, maxWidth: 1200 })
+    return isTabletAndLaptop ? children : null
+};
+
 export const Tablet = ({ children }: {children : any}) => {
     const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 900 })
     return isTablet ? children : null
+};
+
+export const SmallTablet = ({ children }: {children : any}) => {
+    const isSmallTablet = useMediaQuery({ minWidth: 560, maxWidth: 900 })
+    return isSmallTablet ? children : null
 };
 
 export const TabletAndMobile = ({ children }: {children : any}) => {
@@ -51,9 +61,9 @@ export const Mobile = ({ children }: {children : any}) => {
     return isMobile ? children : null
 };
 
-export const MobileMin480 = ({ children }: {children : any}) => {
-    const isMobileMin480 = useMediaQuery({ minWidth: 480 })
-    return isMobileMin480 ? children : null
+export const Mobile480x559 = ({ children }: {children : any}) => {
+    const isMobile480x559 = useMediaQuery({ minWidth: 480, maxWidth: 559 })
+    return isMobile480x559 ? children : null
 };
 
 export const MobileMax479 = ({ children }: {children : any}) => {
