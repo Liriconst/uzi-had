@@ -66,6 +66,11 @@ export const Mobile480x559 = ({ children }: {children : any}) => {
     return isMobile480x559 ? children : null
 };
 
+export const MobileMin480 = ({ children }: {children : any}) => {
+    const isMobileMin480 = useMediaQuery({ minWidth: 480 })
+    return isMobileMin480 ? children : null
+};
+
 export const MobileMax479 = ({ children }: {children : any}) => {
     const isMobileMax479 = useMediaQuery({ maxWidth: 479 })
     return isMobileMax479 ? children : null
