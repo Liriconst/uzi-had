@@ -14,6 +14,7 @@ import {createBrowserHistory} from 'history';
 import {Menu, Dropdown} from "antd";
 import "./App.scss";
 import { Redirect } from 'react-router-dom';
+import Antupload from "./components/antupload/Antupload";
 
 const menu = (
     <Menu  className={styles.appHeaderStartMenuModal}>
@@ -325,6 +326,9 @@ const App: React.FC = () => {
                     </Route>
                     <Route path="/ultrasound">
                         <Ultrasound/>
+                    </Route>
+                    <Route path="/antupload">
+                        <Antupload/>
                     </Route>
                     <Route path="/spa">
                         <Spa/>
