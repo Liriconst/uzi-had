@@ -14,6 +14,8 @@ import {createBrowserHistory} from 'history';
 import {Menu, Dropdown} from "antd";
 import "./App.scss";
 import { Redirect } from 'react-router-dom';
+import { ApolloProvider } from "react-apollo";
+import { client } from "./index";
 import Antupload from "./components/antupload/Antupload";
 
 const menu = (
@@ -318,36 +320,38 @@ export const appHistory = createBrowserHistory();
 const App: React.FC = () => {
     return (
         <Router history={appHistory}>
-            <div className={styles.appMain}>
-                <AppHeader/>
-                <Switch>
-                    <Route path="/news">
-                        <News/>
-                    </Route>
-                    <Route path="/ultrasound">
-                        <Ultrasound/>
-                    </Route>
-                    <Route path="/antupload">
-                        <Antupload/>
-                    </Route>
-                    <Route path="/spa">
-                        <Spa/>
-                    </Route>
-                    <Route path="/about">
-                        <About/>
-                    </Route>
-                    <Route path="/contacts">
-                        <Contacts/>
-                    </Route>
-                    <Route path="/reviews">
-                        <Reviews/>
-                    </Route>
-                    <Route path="/home">
-                        <Home/>
-                    </Route>
-                    <Redirect from='/' to='/home'/>
-                </Switch>
-            </div>
+            <ApolloProvider client={client}>
+                <div className={styles.appMain}>
+                    <AppHeader/>
+                    <Switch>
+                        <Route path="/news">
+                            <News/>
+                        </Route>
+                        <Route path="/ultrasound">
+                            <Ultrasound/>
+                        </Route>
+                        <Route path="/antupload">
+                            <Antupload/>
+                        </Route>
+                        <Route path="/spa">
+                            <Spa/>
+                        </Route>
+                        <Route path="/about">
+                            <About/>
+                        </Route>
+                        <Route path="/contacts">
+                            <Contacts/>
+                        </Route>
+                        <Route path="/reviews">
+                            <Reviews/>
+                        </Route>
+                        <Route path="/home">
+                            <Home/>
+                        </Route>
+                        <Redirect from='/' to='/home'/>
+                    </Switch>
+                </div>
+            </ApolloProvider>
         </Router>
     );
 };

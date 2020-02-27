@@ -1,1 +1,46 @@
 @import "../../config";
+
+.container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 300px);
+  width: 1fr;
+
+  @media screen and (min-width: 1151px) {
+    grid-gap: ptr(75px);
+    margin: ptr(75px) ptr(100px);
+  }
+
+  @media screen and (min-width: 821px) and (max-width: 1150px) {
+    grid-gap: ptr(100px);
+    margin: ptr(100px) ptr(150px);
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 820px) {
+    grid-gap: ptr(125px);
+    margin: ptr(125px) ptr(100px);
+  }
+
+  @media screen and (max-width: 640px) {
+    grid-gap: ptr(175px);
+    margin: ptr(175px) ptr(250px);
+  }
+}
+
+
+
+.spancolor {
+  @include flexRowRelative;
+  background: blue;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.spantext {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #4cff00;
+  line-height: 1.25;
+}
