@@ -8,6 +8,7 @@ import styles from "./News.module.scss";
 import "./News.scss";
 import { Button, Modal } from "antd";
 import moment from "moment";
+import 'moment/locale/ru';
 import WrappedNewsAdd from "./NewsAdd";
 
 const GET_NEWS = gql`
@@ -17,8 +18,7 @@ const GET_NEWS = gql`
                 id
                 title
                 newsDate
-                fullText
-                imgLink
+                newsImg
             }
         }
     }
@@ -56,13 +56,12 @@ class News extends React.Component<{}, {
                     if (error) return <span>`Error! ${error.message}`</span>;
                     console.log(data);
                     return (
-                        <div className={styles.containerMain}>
+                        <div className={styles.pageNews}>
                             {data.allNews.nodes.map((newsQuery: any) => (
-                                <Button type="primary" key={newsQuery.id} className={"box"}>
-                                    <img className={styles.spancolor} src={newsQuery.imgLink} alt=""/>
-                                    <span className={styles.spantext}>{newsQuery.title}</span>
-                                    {/*<span>от&nbsp;</span>*/}
-                                    {/*<span>{moment(newsQuery.newsDate).format("DD.MM.YYYY hh:mm:ss")}</span>*/}
+                                <Button type="primary" key={newsQuery.id} className={"newsButton"}>
+                                    <img className={styles.newsImg} src={newsQuery.newsImg} alt=""/>
+                                    <span className={styles.newsDate}>{moment(newsQuery.newsDate).format("DD.MM.YYYY - dddd")}</span>
+                                    <span className={styles.newsTitle}>{newsQuery.title}</span>
                                 </Button>
                             ))}
                             <Modal

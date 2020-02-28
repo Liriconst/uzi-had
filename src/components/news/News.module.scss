@@ -1,6 +1,6 @@
 @import "../../config";
 
-.containerMain {
+.pageNews {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 300px);
@@ -26,15 +26,10 @@
   }
 }
 
-.box {
-  background-color: white;
-}
-
-.spancolor {
+.newsImg {
   @include flexRowRelative;
-  height: 300px;
-  width: 300px;
-  margin-bottom: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 
   img {
     height: 100%;
@@ -42,10 +37,35 @@
   }
 }
 
-.spantext {
+.newsDate {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 300px !important;
+  background: #0064AA;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-  color: #4cff00;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
   line-height: 1.25;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.newsTitle {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 300px !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #393939;
+  line-height: 1.25;
+}
+
+.newsDisplay {
+  display: block;
 }
