@@ -18,6 +18,7 @@ const GET_NEWS = gql`
                 title
                 newsDate
                 fullText
+                imgLink
             }
         }
     }
