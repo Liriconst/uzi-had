@@ -1,0 +1,94 @@
+@import "../../config";
+
+@mixin priceListTableHeaderTextTemplate {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  line-height: 1;
+  text-align: center;
+}
+
+.priceListPage {
+  display: grid;
+  height: 1fr;
+  width: 1fr;
+  align-content: start;
+  white-space: normal !important;
+}
+
+.priceListHeader {
+  text-align: center;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  line-height: 1.15;
+
+  .priceListPreview {
+    @include flexColumnRelative;
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+
+  .priceListTitle {
+    @include flexColumnRelative;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 5px;
+  }
+}
+
+.priceListTableHeader {
+  display: grid;
+  background: #0064aa;
+  justify-items: center;
+  align-items: center;
+
+  @media screen and (min-width: 920px) {
+    grid-template-columns: 1fr 1px 250px 1px 150px;
+    grid-template-rows: 65px;
+    margin: 30px ptr(200px) 0 ptr(200px);
+  }
+
+  @media screen and (max-width: 919px) {
+    grid-template-columns: 1fr 1px 1fr;
+    grid-template-rows: 50px 1px 50px;
+    grid-template-areas: "tableHeaderName tableHeaderName tableHeaderName"
+                         "tableHeaderSeparator tableHeaderSeparator tableHeaderSeparator"
+                         "tableHeaderTime tableHeaderSeparator tableHeaderPrice";
+    margin: 30px ptr(200px) 0 ptr(200px);
+  }
+}
+
+.tableHeaderName {
+  @include priceListTableHeaderTextTemplate;
+  grid-area: tableHeaderName;
+}
+.tableHeaderTime {
+  @include priceListTableHeaderTextTemplate;
+  grid-area: tableHeaderTime;
+}
+.tableHeaderPrice {
+  @include priceListTableHeaderTextTemplate;
+  grid-area: tableHeaderPrice;
+}
+.tableHeaderText {
+  @include priceListTableHeaderTextTemplate;
+}
+
+.tableHeaderSeparator {
+  @include flexRowRelative;
+  grid-area: tableHeaderSeparator;
+  background: white;
+}
+.tableHeaderSeparator2 {
+  @include flexRowRelative;
+  height: 55px;
+  width: 1px;
+  background: white;
+}
+
+.priceListTable {
+
+}

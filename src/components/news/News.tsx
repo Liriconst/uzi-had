@@ -1,22 +1,22 @@
 import * as React from "react";
 import autobind from "autobind-decorator";
-import {Router, Switch, Route, Link} from "react-router-dom";
 import { Query } from "react-apollo";
 import { ApolloError } from "apollo-boost";
 import gql from "graphql-tag";
 import styles from "./News.module.scss";
 import "./News.scss";
-import { Button, Modal } from "antd";
+import { Button } from "antd";
 import moment from "moment";
 import 'moment/locale/ru';
-import WrappedNewsAdd from "./NewsAdd";
+import NewsModal from "./NewsModal";
 
 const GET_NEWS = gql`
-    query AddNews {
+    query {
         allNews(orderBy: NEWS_DATE_DESC) {
             nodes {
                 id
                 title
+                fullText
                 newsDate
                 newsImg
             }
@@ -25,72 +25,48 @@ const GET_NEWS = gql`
 `;
 
 class News extends React.Component<{}, {
-    mode?: string,
-    visible?: boolean,
-    visible2?: boolean
+    activeModal?: number
 }> {
     constructor(props: any) {
         super(props);
         this.state = {
-            mode: 'all',
-            visible: false,
-            visible2: false
+            activeModal: 0
         }
     }
 
     @autobind
-    private showModal() {
-        this.setState({visible: true});
+    private showModal(id: number) {
+        this.setState({activeModal: id});
     };
 
     @autobind
     private handleCancel() {
-        this.setState({visible: false});
+        this.setState({activeModal: 0});
     };
 
     public render(): React.ReactNode {
         return (
             <Query query={GET_NEWS}>
                 {({loading, error, data}: {loading: boolean, error?: ApolloError, data: any}) => {
-                    if (loading) return <span>"Loading...";</span>
-                    if (error) return <span>`Error! ${error.message}`</span>;
+                    if (loading) return <span>"Загрузка новостей...";</span>
+                    if (error) return <span>`Ошибка! ${error.message}`</span>;
                     console.log(data);
                     return (
                         <div className={styles.pageNews}>
                             {data.allNews.nodes.map((newsQuery: any) => (
-                                <Button type="primary" key={newsQuery.id} className={"newsButton"}>
+                                <div>
+                                <Button type="primary" key={newsQuery.id} className={"newsButton"} onClick={() => this.showModal(newsQuery.id)}>
                                     <img className={styles.newsImg} src={newsQuery.newsImg} alt=""/>
                                     <span className={styles.newsDate}>{moment(newsQuery.newsDate).format("DD.MM.YYYY - dddd")}</span>
                                     <span className={styles.newsTitle}>{newsQuery.title}</span>
                                 </Button>
+                                <NewsModal news={newsQuery} isVisible={newsQuery.id === this.state.activeModal} onClose={this.handleCancel} />
+                                </div>
                             ))}
-                            <Modal
-                                title="Ваш отзыв"
-                                visible={this.state.visible}
-                                onCancel={this.handleCancel}
-                                wrapClassName="newsWrap"
-                            >
-                                <WrappedNewsAdd onCancel={this.handleCancel}/>
-                            </Modal>
                         </div>
                     );
                 }}
             </Query>
-            // <div className={styles.pageNews}>
-            //     <div className={styles.newsBlock}>
-            //         <div className={styles.newsTime}>
-            //             <span className={styles.newsTimeText}>26.11</span>
-            //             <span className={styles.newsTimeText}>2019</span>
-            //         </div>
-            //         <div className={styles.newsMain}>
-            //             <span className={styles.newsHeader}>НОВОСТЬ №1</span>
-            //             <span className={styles.newsText}>Равным образом реализация намеченного плана развития играет важную роль в формировании форм воздействия! Задача организации, в особенности роль в</span>
-            //             <span className={styles.newsText}>формировании форм воздействия! Задача организации, в особенности же новая модель организационной деятельности позволяет оценить значение системы</span>
-            //             <span className={styles.newsText}>масштабного изменения ряда параметров? Задача организации, в особенности же сложившаяся структура организации влечет за собой процесс внедрения и</span>
-            //             <span className={styles.newsText}>модернизации системы обучения кадров, соответствующей насущным потребностям. Дорогие друзья, социально-экономическое развитие...&nbsp;<Link to="/contacts">Читать далее</Link></span>
-            //         </div>
-            //     </div>
-            // </div>
         );
     }
 }

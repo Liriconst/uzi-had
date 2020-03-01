@@ -31,6 +31,16 @@ export const WithoutLaptop = ({ children }: {children : any}) => {
     return isWithoutLaptop ? null : children
 };
 
+export const LaptopMin920 = ({ children }: {children : any}) => {
+    const isLaptopMin920 = useMediaQuery({ minWidth: 920 })
+    return isLaptopMin920 ? children : null
+};
+
+export const LaptopMax919 = ({ children }: {children : any}) => {
+    const isLaptopMax919 = useMediaQuery({ maxWidth: 919 })
+    return isLaptopMax919 ? children : null
+};
+
 export const LaptopMin = ({ children }: {children : any}) => {
     const isLaptopMin = useMediaQuery({ minWidth: 901 })
     return isLaptopMin ? children : null

@@ -8,6 +8,7 @@ import Contacts from "./components/contacts/Contacts";
 import Spa from "./components/profiles/Spa";
 import About from "./components/about/About";
 import Reviews from "./components/reviews/Reviews";
+import Pricelist from "./components/pricelist/Pricelist";
 import './components/dropdown/dropdown';
 import {DesktopMax,Desktop, DesktopAndLaptop, Laptop, Tablet, Mobile} from "./responsiveModule";
 import {createBrowserHistory} from 'history';
@@ -32,8 +33,8 @@ const menu = (
         <div className={window.location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :
             styles.appHeaderStartMenuModalLinks}><Link to="/spa">МАССАЖ</Link></div>
         <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/spa">ЦЕНЫ</Link></div>
+        <div className={window.location.pathname === "/pricelist" ? styles.appHeaderStartMenuModalCurrentLink :
+            styles.appHeaderStartMenuModalLinks}><Link to="/pricelist">ЦЕНЫ</Link></div>
         <span className={styles.appHeaderStartMenuModalSeparator}/>
         <div className={window.location.pathname === "/about" ? styles.appHeaderStartMenuModalCurrentLink :
             styles.appHeaderStartMenuModalLinks}><Link to="/about">О НАС</Link></div>
@@ -127,7 +128,8 @@ const HeaderForPC = ({location}: {location:any}) => {
                     <div className={location.pathname === "/spa" ? styles.appHeaderMiddleMenuCurrent :
                         styles.appHeaderMiddleMenuText}><Link to="/spa">Массаж</Link></div>
                     <span className={styles.appHeaderMiddleMenuSpace}/>
-                    <div className={styles.appHeaderMiddleMenuText}>Цены</div>
+                    <div className={location.pathname === "/pricelist" ? styles.appHeaderMiddleMenuCurrent :
+                        styles.appHeaderMiddleMenuText}><Link to="/pricelist">Цены</Link></div>
                     <span className={styles.appHeaderMiddleMenuSpace}/>
                     <div className={location.pathname === "/about" ? styles.appHeaderMiddleMenuCurrent :
                         styles.appHeaderMiddleMenuText}><Link to="/about">О нас</Link></div>
@@ -140,17 +142,14 @@ const HeaderForPC = ({location}: {location:any}) => {
                 </div>
             </div>
             <div className={styles.appHeaderEnd}>
-                {(location.pathname === "/home") ? (
-                        <span className={styles.appHeaderEndText}>НАШИ ПРЕИМУЩЕСТВА</span>) :
-                    (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
-                        (location.pathname === "/spa") ? (<span className={styles.appHeaderEndText}>МАССАЖ</span>) :
-                            (location.pathname === "/about") ? (
-                                    <span className={styles.appHeaderEndText}>О НАС</span>) :
-                                (location.pathname === "/contacts") ? (
-                                        <span className={styles.appHeaderEndText}>КОНТАКТЫ</span>) :
-                                    (location.pathname === "/reviews") ? (
-                                            <span className={styles.appHeaderEndText}>ОТЗЫВЫ</span>) :
-                                        (<span className={styles.appHeaderEndText}>ОСТАЛЬНОЕ</span>)}
+                {(location.pathname === "/home") ? (<span className={styles.appHeaderEndText}>НАШИ ПРЕИМУЩЕСТВА</span>) :
+                (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
+                (location.pathname === "/spa") ? (<span className={styles.appHeaderEndText}>МАССАЖ</span>) :
+                (location.pathname === "/pricelist") ? (<span className={styles.appHeaderEndText}>ПРАЙС-ЛИСТ</span>) :
+                (location.pathname === "/about") ? (<span className={styles.appHeaderEndText}>О НАС</span>) :
+                (location.pathname === "/contacts") ? (<span className={styles.appHeaderEndText}>КОНТАКТЫ</span>) :
+                (location.pathname === "/reviews") ? (<span className={styles.appHeaderEndText}>ОТЗЫВЫ</span>) :
+                (<span className={styles.appHeaderEndText}>ОСТАЛЬНОЕ</span>)}
             </div>
         </div>
     )
@@ -215,7 +214,8 @@ const HeaderForLaptop = ({location}: {location:any}) => (
                 <div className={location.pathname === "/spa" ? styles.appHeaderMiddleMenuCurrent :
                     styles.appHeaderMiddleMenuText}><Link to="/spa">Массаж</Link></div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
-                <div className={styles.appHeaderMiddleMenuText}>Цены</div>
+                <div className={location.pathname === "/pricelist" ? styles.appHeaderMiddleMenuCurrent :
+                    styles.appHeaderMiddleMenuText}><Link to="/pricelist">Цены</Link></div>
                 <span className={styles.appHeaderMiddleMenuSpace}/>
                 <div className={location.pathname === "/about" ? styles.appHeaderMiddleMenuCurrent :
                     styles.appHeaderMiddleMenuText}><Link to="/about">О нас</Link></div>
@@ -229,10 +229,10 @@ const HeaderForLaptop = ({location}: {location:any}) => (
         </div>
         <div className={styles.appHeaderEnd}>
             {(location.pathname === "/home") ? (<span className={styles.appHeaderEndText}>НАШИ ПРЕИМУЩЕСТВА</span>) :
-                (location.pathname === "/") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
             (location.pathname === "/news") ? (<span className={styles.appHeaderEndText}>НОВОСТИ</span>) :
             (location.pathname === "/ultrasound") ? (<span className={styles.appHeaderEndText}>УЗИ</span>) :
             (location.pathname === "/spa") ? (<span className={styles.appHeaderEndText}>МАССАЖ</span>) :
+            (location.pathname === "/pricelist") ? (<span className={styles.appHeaderEndText}>ПРАЙС-ЛИСТ</span>) :
             (location.pathname === "/about") ? (<span className={styles.appHeaderEndText}>О НАС</span>) :
             (location.pathname === "/contacts") ? (<span className={styles.appHeaderEndText}>КОНТАКТЫ</span>) :
             (location.pathname === "/reviews") ? (<span className={styles.appHeaderEndText}>ОТЗЫВЫ</span>) :
@@ -335,6 +335,9 @@ const App: React.FC = () => {
                         </Route>
                         <Route path="/spa">
                             <Spa/>
+                        </Route>
+                        <Route path="/pricelist">
+                            <Pricelist/>
                         </Route>
                         <Route path="/about">
                             <About/>
