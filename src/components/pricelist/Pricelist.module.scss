@@ -1,12 +1,27 @@
 @import "../../config";
 
-@mixin priceListTableHeaderTextTemplate {
+@mixin priceListTableTextTemplate {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 18px;
+
+  @media screen and (min-width: 641px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 640px) {
+    font-size: 16px;
+  }
+
   color: white;
   line-height: 1;
   text-align: center;
+}
+
+@mixin priceListTableHeaderTemplate {
+  display: grid;
+  background: #0064aa;
+  justify-items: center;
+  align-items: center;
 }
 
 .priceListPage {
@@ -40,55 +55,110 @@
 }
 
 .priceListTableHeader {
-  display: grid;
-  background: #0064aa;
-  justify-items: center;
-  align-items: center;
+  @include priceListTableHeaderTemplate;
 
   @media screen and (min-width: 920px) {
-    grid-template-columns: 1fr 1px 250px 1px 150px;
+    grid-template-columns: 1fr 1px 200px 1px 200px;
     grid-template-rows: 65px;
     margin: 30px ptr(200px) 0 ptr(200px);
   }
+}
+
+.priceListTableHeaderMobilePart1 {
+  @include priceListTableHeaderTemplate;
 
   @media screen and (max-width: 919px) {
-    grid-template-columns: 1fr 1px 1fr;
-    grid-template-rows: 50px 1px 50px;
-    grid-template-areas: "tableHeaderName tableHeaderName tableHeaderName"
-                         "tableHeaderSeparator tableHeaderSeparator tableHeaderSeparator"
-                         "tableHeaderTime tableHeaderSeparator tableHeaderPrice";
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1px;
     margin: 30px ptr(200px) 0 ptr(200px);
   }
 }
 
-.tableHeaderName {
-  @include priceListTableHeaderTextTemplate;
-  grid-area: tableHeaderName;
+.priceListTableHeaderMobilePart2 {
+  @include priceListTableHeaderTemplate;
+
+  @media screen and (max-width: 919px) {
+    grid-template-columns: 1fr 1px 1fr;
+    grid-template-rows: 50px;
+    margin: 0 ptr(200px);
+  }
 }
-.tableHeaderTime {
-  @include priceListTableHeaderTextTemplate;
-  grid-area: tableHeaderTime;
-}
-.tableHeaderPrice {
-  @include priceListTableHeaderTextTemplate;
-  grid-area: tableHeaderPrice;
-}
+
 .tableHeaderText {
-  @include priceListTableHeaderTextTemplate;
+  @include priceListTableTextTemplate;
 }
 
 .tableHeaderSeparator {
   @include flexRowRelative;
-  grid-area: tableHeaderSeparator;
   background: white;
 }
-.tableHeaderSeparator2 {
+
+.priceListTable{
+  display: grid;
+  align-items: center;
+
+  @media screen and (min-width: 920px) {
+    grid-template-columns: 1px 1fr 1px 200px 1px 200px 1px;
+    grid-template-rows: minmax(65px, 1fr);
+    margin: 0 ptr(200px);
+  }
+}
+
+.priceListTableMobilePart1 {
+  display: grid;
+  align-items: center;
+
+  @media screen and (max-width: 919px) {
+    grid-template-columns: 1px 1fr 1px;
+    grid-template-rows: minmax(50px, auto);
+    margin: 0 ptr(200px);
+  }
+}
+
+.priceListTableMobilePart2 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+  @media screen and (max-width: 919px) {
+    grid-template-columns: 1px 1fr 1px 1fr 1px;
+    grid-template-rows: minmax(50px, auto);
+    margin: 0 ptr(200px);
+  }
+}
+
+.tableTextHeader {
+  @include priceListTableTextTemplate;
+  color: #393939;
+  text-align: start !important;
+  padding: 15px;
+}
+
+.tableText {
+  @include priceListTableTextTemplate;
+
+  @media screen and (min-width: 920px) {
+    font-weight: 400;
+  }
+
+  @media screen and (max-width: 919px) {
+    font-weight: 300;
+  }
+
+  color: #393939;
+}
+
+.tableSeparatorHorizontal {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1px;
+  margin: 0 ptr(200px);
+  background: #0064aa;
+}
+
+.tableSeparator {
   @include flexRowRelative;
-  height: 55px;
-  width: 1px;
-  background: white;
-}
-
-.priceListTable {
-
+  background: #0064aa;
 }

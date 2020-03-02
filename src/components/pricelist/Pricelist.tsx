@@ -1,15 +1,6 @@
 import * as React from "react";
 import styles from "./Pricelist.module.scss";
-import {
-    Desktop,
-    Laptop,
-    Tablet,
-    Mobile,
-    WithoutLaptop,
-    WithoutMobile,
-    LaptopMin920,
-    LaptopMax919
-} from "../../responsiveModule";
+import { Mobile, WithoutMobile, LaptopMin920, LaptopMax919 } from "../../responsiveModule";
 import { Query } from "react-apollo";
 import { ApolloError } from "apollo-boost";
 import gql from "graphql-tag";
@@ -35,10 +26,6 @@ const GET_PRICE = gql`
     }
 `;
 
-// function minuteParse() {
-//     let minuteCount = 27;
-// }
-
 class Pricelist extends React.Component<{}, {
     test?: boolean
 }> {
@@ -54,8 +41,8 @@ class Pricelist extends React.Component<{}, {
         return (
             <Query query={GET_PRICE}>
                 {({loading, error, data}: {loading: boolean, error?: ApolloError, data: any}) => {
-                    if (loading) return <span>"Загрузка новостей...";</span>;
-                    if (error) return <span>`Ошибка! ${error.message}`</span>;
+                    if (loading) return <span>Загрузка прайс-листа...</span>;
+                    if (error) return <span>Ошибка! ${error.message}</span>;
                     console.log(data);
                     return (
                         <div className={styles.priceListPage}>
@@ -70,7 +57,6 @@ class Pricelist extends React.Component<{}, {
                                         <span style={{fontSize: "15px"}}>Краснодарский к-й, Апшеронский р-н,</span>
                                         <span style={{fontSize: "15px"}}>г. Хадыженск, ул. Первомайская, д. 103 "А",</span>
                                         <span style={{fontSize: "15px"}}>2 этаж, кабинет 6. {data.allPriceInfos.nodes[0].phoneNumber}</span>
-
                                     </Mobile>
                                 </div>
                                 <div className={styles.priceListTitle}>
@@ -83,28 +69,57 @@ class Pricelist extends React.Component<{}, {
                                     </Mobile>
                                 </div>
                             </div>
-                            <div className={styles.priceListTableHeader}>
-                                {/*<LaptopMin920>*/}
-                                {/*    <span className={styles.tableHeaderText}>Наименование обследования</span>*/}
-                                {/*    <span className={styles.tableHeaderSeparator2}/>*/}
-                                {/*    <span className={styles.tableHeaderText}>Продолжительность</span>*/}
-                                {/*    <span className={styles.tableHeaderSeparator2}/>*/}
-                                {/*    <span className={styles.tableHeaderText}>Стоимость</span>*/}
-                                {/*</LaptopMin920>*/}
-                                {/*<LaptopMax919>*/}
-                                    <span className={styles.tableHeaderName}>Наименование обследования</span>
-                                    <span className={styles.tableHeaderSeparator} style={{height: "1px", width: "calc(100% - 10px)", margin: "0 5px"}}/>
-                                    <span className={styles.tableHeaderTime}>Продолжительность</span>
-                                    <span className={styles.tableHeaderSeparator} style={{height: "40px", width: "1px", marginTop: "50px"}}/>
-                                    <span className={styles.tableHeaderPrice}>Стоимость</span>
-                                {/*</LaptopMax919>*/}
-                            </div>
-                            {data.allPriceLists.nodes.map((queryPrice: any) => (
-                                <div className={styles.priceListTable}>
-                                    <span className={styles.newsTitle}>{queryPrice.surveyName}</span>
-                                    <span className={styles.newsTitle}>{minuteParser(queryPrice.surveyTime)}</span>
-                                    <span className={styles.newsTitle}>{queryPrice.surveyPrice}</span>
+                            <LaptopMin920>
+                                <div className={styles.priceListTableHeader}>
+                                    <span className={styles.tableHeaderText}>Наименование обследования</span>
+                                    <span className={styles.tableHeaderSeparator} style={{height: "55px", width: "1px", padding: "5px 0"}}/>
+                                    <span className={styles.tableHeaderText}>Время</span>
+                                    <span className={styles.tableHeaderSeparator} style={{height: "55px", width: "1px", padding: "5px 0"}}/>
+                                    <span className={styles.tableHeaderText}>Стоимость</span>
                                 </div>
+                            </LaptopMin920>
+                            <LaptopMax919>
+                                <div className={styles.priceListTableHeaderMobilePart1}>
+                                    <span className={styles.tableHeaderText}>Наименование обследования</span>
+                                    <span className={styles.tableHeaderSeparator} style={{height: "1px", width: "calc(100% - 10px)", padding: "0 5px"}}/>
+                                </div>
+                                <div className={styles.priceListTableHeaderMobilePart2}>
+                                    <span className={styles.tableHeaderText}>Время</span>
+                                    <span className={styles.tableHeaderSeparator} style={{height: "40px", width: "1px", padding: "5px 0"}}/>
+                                    <span className={styles.tableHeaderText}>Стоимость</span>
+                                </div>
+                            </LaptopMax919>
+                            {data.allPriceLists.nodes.map((queryPrice: any) => (
+                                <>
+                                <LaptopMin920>
+                                    <div className={styles.priceListTable}>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px"}}/>
+                                        <span className={styles.tableTextHeader}>{queryPrice.surveyName}</span>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px", marginLeft: "1px"}}/>
+                                        <span className={styles.tableText}>{minuteParser(queryPrice.surveyTime)}</span>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px", marginLeft: "1px"}}/>
+                                        <span className={styles.tableText}>{queryPrice.surveyPrice}</span>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px"}}/>
+                                    </div>
+                                    <span className={styles.tableSeparatorHorizontal}/>
+                                </LaptopMin920>
+                                <LaptopMax919>
+                                    <div className={styles.priceListTableMobilePart1}>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px"}}/>
+                                        <span className={styles.tableTextHeader}>{queryPrice.surveyName}</span>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px"}}/>
+                                    </div>
+                                    <span className={styles.tableSeparatorHorizontal}/>
+                                    <div className={styles.priceListTableMobilePart2}>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px"}}/>
+                                        <span className={styles.tableText}>{minuteParser(queryPrice.surveyTime)}</span>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px"}}/>
+                                        <span className={styles.tableText}>{queryPrice.surveyPrice}</span>
+                                        <span className={styles.tableSeparator} style={{height: "100%", width: "1px"}}/>
+                                    </div>
+                                    <span className={styles.tableSeparatorHorizontal}/>
+                                </LaptopMax919>
+                                </>
                             ))}
                         </div>
                     );

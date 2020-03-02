@@ -9,8 +9,16 @@ import Spa from "./components/profiles/Spa";
 import About from "./components/about/About";
 import Reviews from "./components/reviews/Reviews";
 import Pricelist from "./components/pricelist/Pricelist";
-import './components/dropdown/dropdown';
-import {DesktopMax,Desktop, DesktopAndLaptop, Laptop, Tablet, Mobile} from "./responsiveModule";
+import {
+    DesktopMax,
+    Desktop,
+    DesktopAndLaptop,
+    Laptop,
+    Tablet,
+    Mobile,
+    MobileMin480,
+    MobileMax479
+} from "./responsiveModule";
 import {createBrowserHistory} from 'history';
 import {Menu, Dropdown} from "antd";
 import "./App.scss";
@@ -21,44 +29,77 @@ import Antupload from "./components/antupload/Antupload";
 
 const menu = (
     <Menu  className={styles.appHeaderStartMenuModal}>
-        <div className={window.location.pathname === "/home" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/home">ГЛАВНАЯ</Link></div>
-        <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/news" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/news">НОВОСТИ</Link></div>
-        <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/ultrasound" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/ultrasound">УЗИ</Link></div>
-        <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/spa">МАССАЖ</Link></div>
-        <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/pricelist" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/pricelist">ЦЕНЫ</Link></div>
-        <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/about" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/about">О НАС</Link></div>
-        <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/contacts" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/contacts">КОНТАКТЫ</Link></div>
-        <span className={styles.appHeaderStartMenuModalSeparator}/>
-        <div className={window.location.pathname === "/reviews" ? styles.appHeaderStartMenuModalCurrentLink :
-            styles.appHeaderStartMenuModalLinks}><Link to="/reviews">ОТЗЫВЫ</Link></div>
-        <span/>
-        <div className={styles.appHeaderStartMenuModalImgContainer}>
-            <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>
-                <img src="/static/svg/4-vk.svg" alt={""}/>
-            </a>
-            <span className={styles.appHeaderStartMenuModalImgSeparator}/>
-            <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>
-                <img src="/static/svg/4-instagram.svg" alt={""}/>
-            </a>
-        </div>
-        <div className={styles.appHeaderStartMenuModalAddressContainer}>
-            <div className={styles.appHeaderStartMenuModalAddress}>г. Хадыженск, ул. Первомайская,</div>
-            <div className={styles.appHeaderStartMenuModalAddress}>д. 103 "А", 2 этаж, кабинет 6</div>
-        </div>
-        <div className={styles.appHeaderStartMenuModalLinks}><span>+7(918)177-24-17</span></div>
+        <MobileMin480>
+            <div>
+                <span></span>
+                <span/>
+                <span></span>
+                <span/>
+                <span></span>
+                <span/>
+                <span></span>
+            </div>
+            <span/>
+            <div>
+                <span></span>
+                <span/>
+                <span></span>
+                <span/>
+                <span></span>
+                <span/>
+                <span></span>
+            </div>
+            <span/>
+            <div>
+                <span></span>
+                <span/>
+                <span></span>
+                <span/>
+                <span></span>
+                <span/>
+                <span></span>
+            </div>
+        </MobileMin480>
+        <MobileMax479>
+            <div className={window.location.pathname === "/home" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/home">ГЛАВНАЯ</Link></div>
+            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/news" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/news">НОВОСТИ</Link></div>
+            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/ultrasound" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/ultrasound">УЗИ</Link></div>
+            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/spa">МАССАЖ</Link></div>
+            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/pricelist" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/pricelist">ЦЕНЫ</Link></div>
+            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/about" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/about">О НАС</Link></div>
+            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/contacts" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/contacts">КОНТАКТЫ</Link></div>
+            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/reviews" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/reviews">ОТЗЫВЫ</Link></div>
+            <span/>
+            <div className={styles.appHeaderStartMenuModalImgContainer}>
+                <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>
+                    <img src="/static/svg/4-vk.svg" alt={""}/>
+                </a>
+                <span className={styles.appHeaderStartMenuModalImgSeparator}/>
+                <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>
+                    <img src="/static/svg/4-instagram.svg" alt={""}/>
+                </a>
+            </div>
+            <div className={styles.appHeaderStartMenuModalAddressContainer}>
+                <div className={styles.appHeaderStartMenuModalAddress}>г. Хадыженск, ул. Первомайская,</div>
+                <div className={styles.appHeaderStartMenuModalAddress}>д. 103 "А", 2 этаж, кабинет 6</div>
+            </div>
+            <div className={styles.appHeaderStartMenuModalLinks}><span>+7(918)177-24-17</span></div>
+        </MobileMax479>
     </Menu>
 );
 

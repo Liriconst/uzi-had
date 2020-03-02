@@ -453,7 +453,11 @@
   -webkit-box-shadow: none !important;
   z-index: 999;
 
-  @media only screen and (min-width: 340px) and (max-width: 640px) {
+  @media only screen and (min-width: 480px) {
+    grid-template-rows: 1fr 1px 1fr 1px 1fr;
+  }
+
+  @media only screen and (min-width: 340px) and (max-width: 479px) {
     grid-template-rows: 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1fr 70px 40px 45px;
   }
 
