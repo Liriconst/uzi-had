@@ -4,6 +4,8 @@ import autobind from "autobind-decorator";
 import styles from "./Reviews.module.scss";
 import {Select, Modal, Button, Input} from 'antd';
 import "./Reviews.scss";
+import WrappedReviewsAdd from "./ReviewsAdd";
+import ReviewsAll from "./ReviewsAll";
 
 const {Option} = Select;
 const {TextArea} = Input;
@@ -12,11 +14,11 @@ function countDown() {
     let secondsToGo = 10;
 
     const modal = Modal.success({
-        title: 'Благодарим за ваш отзыв!',
+        title: 'Новость успешно добавлена!',
         okText: 'Понятно',
-        className: 'reviewsWarning',
+        className: 'newsWarning',
         content: (<div>
-            Ваш отзыв будет опубликован после модерации.
+            Новость была успешно добавлена.
             Это окно закроется через {secondsToGo} сек.
         </div>),
     });
@@ -25,7 +27,7 @@ function countDown() {
         secondsToGo -= 1;
         modal.update({
             content: (<div>
-                Ваш отзыв будет опубликован после модерации.
+                Новость была успешно добавлена.
                 Это окно закроется через {secondsToGo} сек.
             </div>),
         });
@@ -47,9 +49,10 @@ class Reviews extends React.Component<{}, {
         super(props);
         this.state = {
             mode: 'all',
-            visible: true,
+            visible: false,
             visible2: false,
-            loading: false
+            loading: false,
+
         };
     }
 
@@ -81,52 +84,29 @@ class Reviews extends React.Component<{}, {
 
     public render(): React.ReactNode {
         return (
-            <div className={styles.pageReviews}>
-                <div className={styles.reviewsButtons}>
-                    <div className="reviewsSelect">
-                        <Select onChange={this.onModeChange} value={this.state.mode}
-                                dropdownClassName="reviewsDropdown">
-                            <Option value="all">Все отзывы</Option>
-                            <Option value="pos">Позитивные отзывы</Option>
-                            <Option value="neg">Негативные отзывы</Option>
-                        </Select>
-                    </div>
-                    <div className="reviewsModal">
+            <div className={styles.pageNews}>
+                <div className={styles.newsButtons}>
+                    <div className="newsModal">
                         <Button type="primary" onClick={this.showModal}>
-                            Оставить отзыв
+                            Добавить новость
                         </Button>
                         <Modal
                             title="Ваш отзыв"
                             visible={this.state.visible}
                             onCancel={this.handleCancel}
-                            footer={[
-                                <Button key="submit" type="primary" loading={this.state.loading} onClick={this.handleOk}>
-                                    Оставить отзыв
-                                </Button>,
-                            ]}
-                            wrapClassName="reviewsWrap"
+                            // footer={[
+                            //     <Button key="submit" type="primary" loading={this.state.loading} onClick={this.handleOk}>
+                            //         Добавить новость
+                            //     </Button>,
+                            // ]}
+                            wrapClassName="newsWrap"
                         >
-                            <div className={styles.reviewsFeedbackHeader}>Введите ваше имя:</div>
-                            <Input placeholder="Ваше имя..."/>
-                            <div className={styles.reviewsFeedbackHeader2}><span>Введите ваш отзыв:</span></div>
-                            <TextArea placeholder="Текст отзыва..." autoSize={{minRows: 3}}/>
+                            <WrappedReviewsAdd onCancel={this.handleCancel}/>
                         </Modal>
                     </div>
                 </div>
-                <div className={styles.reviewsBlock}>
-                    <div className={styles.reviewsTime}>
-                        <span className={styles.reviewsTimeText}>26.11</span>
-                        <span className={styles.reviewsTimeText}>2019</span>
-                    </div>
-                    <div className={styles.reviewsMain}>
-                        <span className={styles.reviewsHeader}>НОВОСТЬ №1</span>
-                        <span className={styles.reviewsText}>Равным образом реализация намеченного плана развития играет важную роль в формировании форм воздействия! Задача организации, в особенности роль в</span>
-                        <span className={styles.reviewsText}>формировании форм воздействия! Задача организации, в особенности же новая модель организационной деятельности позволяет оценить значение системы</span>
-                        <span className={styles.reviewsText}>масштабного изменения ряда параметров? Задача организации, в особенности же сложившаяся структура организации влечет за собой процесс внедрения и</span>
-                        <span className={styles.reviewsText}>модернизации системы обучения кадров, соответствующей насущным потребностям. Дорогие друзья, социально-экономическое развитие...&nbsp;
-                            <Link to="/contacts">Читать далее</Link></span>
-                    </div>
-                </div>
+                {/*<div className={styles.newsShowBlock}/>*/}
+                <ReviewsAll/>
             </div>
         );
     }

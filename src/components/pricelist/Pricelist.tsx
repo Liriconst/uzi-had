@@ -12,7 +12,7 @@ const GET_PRICE = gql`
         allPriceInfos(orderBy: ID_ASC) {
             nodes {
                 phoneNumber
-                priceData
+                priceDate
             }
         }
         allPriceLists(orderBy: SERIAL_NUMBER_ASC) {
@@ -61,11 +61,11 @@ class Pricelist extends React.Component<{}, {
                                 </div>
                                 <div className={styles.priceListTitle}>
                                     <WithoutMobile>
-                                        <span>СТОИМОСТЬ ПРЕДОСТАВЛЯЕМЫХ УСЛУГ С {moment(data.allPriceInfos.nodes[0].priceData).format("DD.MM.YYYY")}</span>
+                                        <span>СТОИМОСТЬ ПРЕДОСТАВЛЯЕМЫХ УСЛУГ С {moment(data.allPriceInfos.nodes[0].priceDate).format("DD.MM.YYYY")}</span>
                                     </WithoutMobile>
                                     <Mobile>
                                         <span style={{fontSize: "18px"}}>СТОИМОСТЬ ПРЕДОСТАВЛЯЕМЫХ</span>
-                                        <span style={{fontSize: "18px"}}>УСЛУГ С {moment(data.allPriceInfos.nodes[0].priceData).format("DD.MM.YYYY")}</span>
+                                        <span style={{fontSize: "18px"}}>УСЛУГ С {moment(data.allPriceInfos.nodes[0].priceDate).format("DD.MM.YYYY")}</span>
                                     </Mobile>
                                 </div>
                             </div>

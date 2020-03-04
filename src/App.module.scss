@@ -435,34 +435,54 @@
 }
 
 .appHeaderStartDropdown {
-  top: 60px !important;
+  @media screen and (min-width: 641px) {
+    top: 80px !important;
+  }
+
+  @media screen and (max-width: 640px) {
+    top: 60px !important;
+  }
 }
 
 .appHeaderStartMenuModal {
   display: grid;
-  grid-template-columns: 1fr;
   position: absolute;
-  height: 100vh;
-  width: 100vw;
   background: white;
   border-radius: 0 !important;
-  //padding: 0 0 !important;
-  padding: 0 0 60px 0 !important;
-  //padding-bottom: 60px;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
   z-index: 999;
 
   @media only screen and (min-width: 480px) {
-    grid-template-rows: 1fr 1px 1fr 1px 1fr;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    grid-template-rows: 100%;
+    height: 203px;
+    width: 100vw;
   }
 
   @media only screen and (min-width: 340px) and (max-width: 479px) {
+    grid-template-columns: 1fr;
     grid-template-rows: 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1fr 70px 40px 45px;
+    height: 100vh;
+    width: 100vw;
+    padding: 0 0 60px 0 !important;
   }
 
   @media only screen and (max-width: 339px) {
+    grid-template-columns: 1fr;
     grid-template-rows: 40px 1px 40px 1px 40px 1px 40px 1px 40px 1px 40px 1px 40px 1px 40px 1fr 70px 40px 45px;
+    height: 100vh;
+    width: 100vw;
+    padding: 0 0 60px 0 !important;
+  }
+}
+
+.appHeaderStartMenuModalBlock {
+  display: grid;
+   
+  @media screen and (min-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1px 50px 1px 50px 1px 50px;
   }
 }
 
@@ -493,7 +513,15 @@
   width: 100%;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  font-size: 22px;
+
+  @media screen and (min-width: 480px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 22px;
+  }
+
   color: #393939;
 
   span {
@@ -519,7 +547,15 @@
   width: 100%;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 22px;
+
+  @media screen and (min-width: 480px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 22px;
+  }
+
   color: #0064aa;
 
   a {
@@ -539,7 +575,14 @@
   width: 1fr;
   color: #007ac6;
   background: rgba(57, 57, 57, 0.2);
-  margin: 0 30px;
+
+  @media screen and (min-width: 480px) {
+    margin: 0 15px;
+  }
+
+  @media screen and (max-width: 479px) {
+    margin: 0 30px;
+  }
 }
 
 .appHeaderStartMenuModalImgContainer {
@@ -554,8 +597,16 @@
   @include flexRowRelative;
   justify-content: center;
   align-items: center;
-  height: 45px;
-  width: 45px;
+
+  @media screen and (min-width: 480px) {
+    height: 35px;
+    width: 35px;
+  }
+
+  @media screen and (max-width: 479px) {
+    height: 45px;
+    width: 45px;
+  }
 
   img {
     width: 100%;
@@ -586,8 +637,17 @@
   width: 100%;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 16px;
+
+  @media screen and (min-width: 480px) {
+    font-size: 14px;
+    line-height: 0.5;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 16px;
+    line-height: 1;
+  }
+
   color: #0064aa;
 }
 

@@ -30,34 +30,56 @@ import Antupload from "./components/antupload/Antupload";
 const menu = (
     <Menu  className={styles.appHeaderStartMenuModal}>
         <MobileMin480>
-            <div>
-                <span></span>
+            <div className={styles.appHeaderStartMenuModalBlock}>
+                <div className={styles.appHeaderStartMenuModalImgContainer}>
+                    <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>
+                        <img src="/static/svg/4-vk.svg" alt={""}/>
+                    </a>
+                    <span className={styles.appHeaderStartMenuModalImgSeparator}/>
+                    <a className={styles.appHeaderStartMenuModalImgLink} href='/home'>
+                        <img src="/static/svg/4-instagram.svg" alt={""}/>
+                    </a>
+                </div>
                 <span/>
-                <span></span>
+                <div className={styles.appHeaderStartMenuModalAddressContainer}>
+                    <span className={styles.appHeaderStartMenuModalAddress}>г. Хадыженск,</span>
+                    <span className={styles.appHeaderStartMenuModalAddress}>ул. Первомайская,</span>
+                </div>
                 <span/>
-                <span></span>
+                <div className={styles.appHeaderStartMenuModalAddressContainer}>
+                    <span className={styles.appHeaderStartMenuModalAddress}>д. 103 "А", 2 этаж,</span>
+                    <span className={styles.appHeaderStartMenuModalAddress}>кабинет 6</span>
+                </div>
                 <span/>
-                <span></span>
+                <div className={styles.appHeaderStartMenuModalLinks}><span style={{height: "100%", paddingTop: "10px"}}>+7(918)177-24-17</span></div>
             </div>
-            <span/>
-            <div>
-                <span></span>
-                <span/>
-                <span></span>
-                <span/>
-                <span></span>
-                <span/>
-                <span></span>
+            <span style={{height: "calc(100% - 10px)", width: "1px", background: "rgba(57, 57, 57, 0.2)", margin: "5px 0 5px 0"}}/>
+            <div className={styles.appHeaderStartMenuModalBlock}>
+                <div className={window.location.pathname === "/home" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/home">ГЛАВНАЯ</Link></div>
+                <span className={styles.appHeaderStartMenuModalSeparator}/>
+                <div className={window.location.pathname === "/news" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/news">НОВОСТИ</Link></div>
+                <span className={styles.appHeaderStartMenuModalSeparator}/>
+                <div className={window.location.pathname === "/ultrasound" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/ultrasound">УЗИ</Link></div>
+                <span className={styles.appHeaderStartMenuModalSeparator}/>
+                <div className={window.location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/spa">МАССАЖ</Link></div>
             </div>
-            <span/>
-            <div>
-                <span></span>
-                <span/>
-                <span></span>
-                <span/>
-                <span></span>
-                <span/>
-                <span></span>
+            <span style={{height: "calc(100% - 10px)", width: "1px", background: "rgba(57, 57, 57, 0.2)", margin: "5px 0 5px 0"}}/>
+            <div className={styles.appHeaderStartMenuModalBlock}>
+                <div className={window.location.pathname === "/pricelist" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/pricelist">ЦЕНЫ</Link></div>
+                <span className={styles.appHeaderStartMenuModalSeparator}/>
+                <div className={window.location.pathname === "/about" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/about">О НАС</Link></div>
+                <span className={styles.appHeaderStartMenuModalSeparator}/>
+                <div className={window.location.pathname === "/contacts" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/contacts">КОНТАКТЫ</Link></div>
+                <span className={styles.appHeaderStartMenuModalSeparator}/>
+                <div className={window.location.pathname === "/reviews" ? styles.appHeaderStartMenuModalCurrentLink :
+                    styles.appHeaderStartMenuModalLinks}><Link to="/reviews">ОТЗЫВЫ</Link></div>
             </div>
         </MobileMin480>
         <MobileMax479>
@@ -300,7 +322,11 @@ const HeaderForTablet = ({location}: {location:any}) => (
                 <div className={styles.appHeaderStartTripleText}><span>+7(918)177-24-17</span></div>
             </div>
             <span className={styles.appHeaderStartSeparator}/>
-            <span className={styles.appHeaderStartPhone}>BUT</span>
+            <Dropdown overlay={menu} overlayClassName={styles.appHeaderStartDropdown} trigger={['click']}>
+                <a className={styles.appHeaderStartMenuModalButton} href="#">
+                    <img src="/static/svg/5-menus-white.svg" alt={""}/>
+                </a>
+            </Dropdown>
         </div>
     </div>
 );
@@ -318,7 +344,6 @@ const HeaderForMobile = ({location}: {location:any}) => (
             </div>
             <span className={styles.appHeaderStartSeparator}/>
             <Dropdown overlay={menu} overlayClassName={styles.appHeaderStartDropdown} trigger={['click']}>
-            {/*<Dropdown overlay={menu} trigger={['click']}>*/}
                 <a className={styles.appHeaderStartMenuModalButton} href="#">
                     <img src="/static/svg/5-menus-white.svg" alt={""}/>
                 </a>
