@@ -12,7 +12,7 @@ import WrappedReviewsAdd from "./ReviewsAdd";
 
 const GET_REVIEWS = gql`
     query {
-        allReviews(orderBy: REVIEW_DATE_DESC) {
+        allReviews(orderBy: REVIEW_DATE_DESC, condition: {reviewStatus: true}) {
             nodes {
                 id
                 firstName

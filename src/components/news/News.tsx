@@ -12,7 +12,7 @@ import NewsModal from "./NewsModal";
 
 const GET_NEWS = gql`
     query {
-        allNews(orderBy: NEWS_DATE_DESC, condition: {status: true}) {
+        allNews(orderBy: NEWS_DATE_DESC) {
             nodes {
                 id
                 title

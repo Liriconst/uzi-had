@@ -84,8 +84,8 @@ class Reviews extends React.Component<{}, {
 
     public render(): React.ReactNode {
         return (
-            <div className={styles.pageNews}>
-                <div className={styles.newsButtons}>
+            <div className={styles.pageReviews}>
+                <div className={styles.reviewsButtons}>
                     <div className="newsModal">
                         <Button type="primary" onClick={this.showModal}>
                             Добавить новость
@@ -94,12 +94,7 @@ class Reviews extends React.Component<{}, {
                             title="Ваш отзыв"
                             visible={this.state.visible}
                             onCancel={this.handleCancel}
-                            // footer={[
-                            //     <Button key="submit" type="primary" loading={this.state.loading} onClick={this.handleOk}>
-                            //         Добавить новость
-                            //     </Button>,
-                            // ]}
-                            wrapClassName="newsWrap"
+                            wrapClassName="reviewsWrap"
                         >
                             <WrappedReviewsAdd onCancel={this.handleCancel}/>
                         </Modal>
