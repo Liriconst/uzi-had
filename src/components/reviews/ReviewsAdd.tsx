@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import "./Reviews.scss";
 import {FormCreateKostyl} from "../../utils";
+import {MobileMax479, MobileMin480} from "../../responsiveModule";
 
 const {TextArea} = Input;
 const desc = ['Отвратительно', 'Плохо', 'Нормально', 'Хорошо', 'Отлично'];
@@ -106,20 +107,22 @@ class ReviewsAdd extends React.Component<ReviewsAddProps, {
                                 <TextArea placeholder="Текст отзыва..." autoSize={{minRows: 3}}/>
                             )}
                         </Form.Item>
-                        <div className={styles.reviewsHeaderText}>Введите оценку:</div>
-                        <div className={styles.reviewsMark} style={{display: "flex", flexDirection: "row", alignItems: "center", alignContent: "center", alignSelf: "center"}}>
+                        <div className={styles.reviewsHeaderText}>Ваша оценка:</div>
+                        <div className={styles.reviewsMark}>
                         <Form.Item>
                             {getFieldDecorator('reviewMark', { initialValue: 5 })(
-                                <Rate tooltips={desc} onChange={this.handleChange} value={value} className={"reviewMark"}/>
+                                <Rate tooltips={desc} onChange={this.handleChange} value={value} className={"reviewMarkInModal"}/>
                             )}
                         </Form.Item>
-                        <span>{value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}</span>
+                        <span>{value ? <span className="reviewMarkTextInModal">{desc[value - 1]}</span> : ''}</span>
                         </div>
                         <span className={styles.reviewsFooterSeparator}/>
                         <div className={styles.reviewsFooter}>
-                            <span/>
+                            <MobileMin480><span/></MobileMin480>
                             <Button className={styles.reviewsFooterButtonCancel} key="submit" type="primary" onClick={this.props.onCancel}>Отмена</Button>
-                            <Button className={styles.reviewsFooterButtonSubmit} key="submit" type="primary" onClick={() => {this.handleSubmit(createReview)}}>Добавить отзыв</Button>
+                            <MobileMax479><span/></MobileMax479>
+                            <MobileMin480><Button className={styles.reviewsFooterButtonSubmit} key="submit" type="primary" onClick={() => {this.handleSubmit(createReview)}}>Добавить отзыв</Button></MobileMin480>
+                            <MobileMax479><Button className={styles.reviewsFooterButtonSubmit} key="submit" type="primary" onClick={() => {this.handleSubmit(createReview)}}>Добавить</Button></MobileMax479>
                         </div>
                     </Form>
                 )}
@@ -128,6 +131,4 @@ class ReviewsAdd extends React.Component<ReviewsAddProps, {
     }
 }
 
-// const WrappedNewsAdd = Form.create({ name: 'normal_login' })(NewsAdd);
-// export default WrappedNewsAdd;
 export default Form.create()(ReviewsAdd) as unknown as React.ComponentClass<FormCreateKostyl<ReviewsAdd>>;

@@ -33,11 +33,11 @@
 }
 
 .priceListHeader {
-  text-align: center;
-  width: 100%;
   font-family: "Roboto", sans-serif;
+  width: 100%;
   color: black;
   line-height: 1.15;
+  text-align: center;
 
   .priceListPreview {
     @include flexColumnRelative;

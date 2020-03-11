@@ -2,13 +2,12 @@ import * as React from "react";
 import {Link} from "react-router-dom";
 import autobind from "autobind-decorator";
 import styles from "./Reviews.module.scss";
-import {Select, Modal, Button, Input} from 'antd';
+import { Select, Modal, Button } from 'antd';
 import "./Reviews.scss";
 import WrappedReviewsAdd from "./ReviewsAdd";
 import ReviewsAll from "./ReviewsAll";
 
 const {Option} = Select;
-const {TextArea} = Input;
 
 function countDown() {
     let secondsToGo = 10;
@@ -42,17 +41,16 @@ function countDown() {
 class Reviews extends React.Component<{}, {
     mode?: string,
     visible?: boolean,
-    visible2?: boolean,
-    loading?:boolean
+    loading?: boolean,
+    value?: number
 }> {
     public constructor(props: {}) {
         super(props);
         this.state = {
             mode: 'all',
             visible: false,
-            visible2: false,
             loading: false,
-
+            value: 0
         };
     }
 
@@ -82,13 +80,19 @@ class Reviews extends React.Component<{}, {
         this.setState({visible: false});
     };
 
+    @autobind
+    private handleChange(value: any) {
+        console.log(`selected ${value}`);
+        this.setState({value});
+    }
+
     public render(): React.ReactNode {
         return (
             <div className={styles.pageReviews}>
-                <div className={styles.reviewsButtons}>
-                    <div className="newsModal">
-                        <Button type="primary" onClick={this.showModal}>
-                            Добавить новость
+                <div className={styles.reviewsAddSelectButtons}>
+                    <div className="reviewsModal">
+                        <Button type="primary" onClick={this.showModal} className={styles.reviewButtonAdd}>
+                            Добавить отзыв
                         </Button>
                         <Modal
                             title="Ваш отзыв"
@@ -99,9 +103,16 @@ class Reviews extends React.Component<{}, {
                             <WrappedReviewsAdd onCancel={this.handleCancel}/>
                         </Modal>
                     </div>
+                    <div className="reviewsSelect">
+                        <Select defaultValue={0} style={{ width: 120 }} onChange={this.handleChange}>
+                            <Option className={styles.reviewButtonSelectSub} value={0}>Все отзывы</Option>
+                            <Option className={styles.reviewButtonSelectSub} value={1}>Положительные</Option>
+                            <Option className={styles.reviewButtonSelectSub} value={2}>Нейтральные</Option>
+                            <Option className={styles.reviewButtonSelectSub} value={3}>Отрицательные</Option>
+                        </Select>
+                    </div>
                 </div>
-                {/*<div className={styles.newsShowBlock}/>*/}
-                <ReviewsAll/>
+                <ReviewsAll value={this.state.value}/>
             </div>
         );
     }

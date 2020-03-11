@@ -55,12 +55,12 @@ class News extends React.Component<{}, {
                         <div className={styles.pageNews}>
                             {data.allNews.nodes.map((newsQuery: any) => (
                                 <div>
-                                <Button type="primary" key={newsQuery.id} className={"newsButton"} onClick={() => this.showModal(newsQuery.id)}>
-                                    <img className={styles.newsImg} src={newsQuery.newsImg} alt=""/>
-                                    <span className={styles.newsDate}>{moment(newsQuery.newsDate).format("DD.MM.YYYY - dddd")}</span>
-                                    <span className={styles.newsTitle}>{newsQuery.title}</span>
-                                </Button>
-                                <NewsModal news={newsQuery} isVisible={newsQuery.id === this.state.activeModal} onClose={this.handleCancel} />
+                                    <Button type="primary" key={newsQuery.id} className={"newsButton"} onClick={() => this.showModal(newsQuery.id)}>
+                                        <img className={styles.newsImg} src={newsQuery.newsImg} alt=""/>
+                                        <span className={styles.newsDate}>{moment(newsQuery.newsDate).format("DD.MM.YYYY - dddd")}</span>
+                                        <span className={styles.newsTitle}>{newsQuery.title}</span>
+                                    </Button>
+                                    <NewsModal news={newsQuery} isVisible={newsQuery.id === this.state.activeModal} onClose={this.handleCancel}/>
                                 </div>
                             ))}
                         </div>

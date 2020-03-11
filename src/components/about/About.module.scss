@@ -1,174 +1,184 @@
 @import "../../config";
 
-@mixin flexRowRelative {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
-@mixin flexColumnRelative {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.pageSPA {
-  @include flexColumnRelative;
-  height: 100%;
-  width: 100%;
-  background: white;
-}
-
-/*region spaBlock*/
-
-.spaBlock {
-  @include flexRowRelative;
-  height: ptr(504px);
-  max-width: 100%;
-  margin: ptr(26px) ptr(266px);
-}
-
-.spaPart1 {
-  @include flexRowRelative;
-  align-items: center;
+.pageAbout {
+  display: grid;
   justify-content: center;
-  height: ptr(504px);
-  width: ptr(379px);
-  margin-right: ptr(240px);
+  width: 100%;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: 1151px) {
+    padding: ptr(75px) ptr(100px);
+  }
+
+  @media screen and (min-width: 821px) and (max-width: 1150px) {
+    padding: ptr(100px) ptr(150px);
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 820px) {
+    padding: ptr(125px) ptr(100px);
+  }
+
+  @media screen and (max-width: 640px) {
+    padding: ptr(175px) ptr(250px);
+  }
+}
+
+.aboutHeader {
+  @include flexColumnRelative;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  color: black;
+  line-height: 1.15;
+  text-align: center;
+
+  .aboutHeaderPreview {
+    @include flexColumnRelative;
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .aboutHeaderTitle {
+    @include flexColumnRelative;
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 1151px) {
+    margin-bottom: ptr(75px);
+  }
+
+  @media screen and (min-width: 821px) and (max-width: 1150px) {
+    margin-bottom: ptr(100px);
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 820px) {
+    margin-bottom: ptr(125px);
+  }
+
+  @media screen and (max-width: 640px) {
+    margin-bottom: ptr(175px);
+  }
+}
+
+.aboutCards {
+  display: grid;
+  justify-content: center;
+  width: 100% !important;
+  grid-template-columns: repeat(auto-fill, 220px);
+
+  @media screen and (min-width: 1151px) {
+    grid-gap: ptr(75px);
+  }
+
+  @media screen and (min-width: 821px) and (max-width: 1150px) {
+    grid-gap: ptr(100px);
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 820px) {
+    grid-gap: ptr(125px);
+  }
+
+  @media screen and (max-width: 640px) {
+    grid-gap: ptr(175px);
+  }
+}
+
+@mixin aboutImgTemplate {
+  @include flexRowRelative;
+  justify-content: center;
+  align-items: center;
   background: rgba(0, 100, 170, 0.1);
+  border-radius: 5px;
+  border-top: 1px rgba(0, 100, 170, 0.7) solid;
+  border-left: 1px rgba(0, 100, 170, 0.7) solid;
+  border-bottom: 1px rgba(0, 100, 170, 0.25) solid;
+  border-right: 1px rgba(0, 100, 170, 0.25) solid;
+  margin-bottom: 10px;
+}
+
+.aboutImgVertical {
+  @include aboutImgTemplate;
+  height: 330px;
+  width: 220px;
 
   img {
-    height: ptr(480px);
-    width: ptr(319px);
-    border: 1px solid rgba(0, 88, 144, 0.5);
+    height: 310px;
+    width: 200px;
   }
 }
 
-.spaPart2 {
-  @include flexColumnRelative;
-  height: ptr(504px);
-  width: ptr(921px);
+.aboutImgHorizontal {
+  @include aboutImgTemplate;
+  height: 160px;
+  width: 220px;
+
+  img {
+    height: 140px;
+    width: 200px;
+  }
+
+  @media screen and (min-width: 645px) {
+    margin-top: 85px;
+  }
 }
 
-.spaPart2Header {
+@mixin aboutTitleTemplate {
   font-family: "Roboto", sans-serif;
-  font-size: ptr(30px);
   font-weight: 400;
-  color: #0064aa;
-  line-height: ptr(28px);
-
-  span {
-    line-height: ptr(36px);
-    font-weight: 300;
-  }
+  font-size: 16px;
+  color: #5f5f5f;
+  text-align: center;
+  line-height: 1.25;
+  white-space: normal;
 }
 
-.spaPart2Remark {
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(16px);
-  font-weight: 300;
-  color: #7c868e;
+.aboutTitleCard {
+  @include aboutTitleTemplate;
+  width: 220px;
 }
 
-.spaPart2Separator {
-  height: 1px;
-  width: ptr(807px);
-  position: relative;
-  background: #919ba2;
-  margin: ptr(30px) 0 ptr(30px) 0;
-}
-
-.spaPart2Text {
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(24px);
-  font-weight: 300;
-  color: black;
-  line-height: 1.26;
-}
-
-/*endregion spaBlock*/
-
-/*region Footer*/
-
-.spaFooter {
-  @include flexColumnRelative;
-  max-height: ptr(150px);
-  max-width: 100%;
-  background: #0064aa;
-  padding: ptr(20px) ptr(665px) ptr(20px) ptr(665px);
-}
-
-.spaFooterButtons {
-  @include flexRowRelative;
-  height: ptr(50px);
+.aboutTitleModal {
+  @include aboutTitleTemplate;
   width: 100%;
 }
 
-.spaFooterButtonTemplate {
-  @include flexRowRelative;
-  align-items: center;
-  justify-content: center;
-  height: ptr(50px);
-  width: ptr(235px);
-  background: #39d02a;
-  border-radius: ptr(5px);
-  font-family: "Roboto Slab", serif;
-  font-size: ptr(22px);
-  font-weight: 400;
-  color: white;
+// --^^^--- Последние изменения и рабочие стили
 
-  a {
-    color: white;
-    text-decoration: none;
+.newsTitleInModal {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #0064aa;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal !important;
+
+  @media screen and (min-width: 641px) {
+    margin: 20px 15px 0 15px;
   }
 
-  &:hover {
-    cursor: pointer;
-    background: #018401;
-    box-shadow: 0 ptr(3px) ptr(3px) #004487;
-    transition: 100ms;
+  @media screen and (max-width: 640px) {
+    margin-top: 30px;
+    font-size: ptr(80px) !important;
   }
 }
 
-.spaFooterButtonSeparator {
-  @include flexRowRelative;
-  align-items: center;
-  justify-content: center;
-  font-family: "Roboto Slab", serif;
-  font-size: ptr(24px);
+.newsFullTextInModal {
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: #a2c6df;
-  margin: 0 ptr(34px) 0 ptr(34px);
-}
+  font-size: 20px;
+  color: #393939;
+  line-height: 1.25;
+  text-align: start;
+  white-space: normal !important;
 
-.spaFooterRemark {
-  @include flexRowRelative;
-  align-items: center;
-  justify-content: center;
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(10px);
-  font-weight: 400;
-  color: #a2c6df;
-  margin-top: ptr(20px);
-}
-
-.spaFooterRemarkLink {
-  font-family: "Roboto", sans-serif;
-  font-size: ptr(10px);
-
-  a {
-    color: #a2c6df;
-    font-weight: 700;
-    text-decoration: none;
+  @media screen and (min-width: 641px) {
+    margin: 30px 15px 0 15px;
   }
 
-  &:hover {
-    a {
-      color: black;
-      font-weight: 700;
-      text-decoration: none;
-    }
+  @media screen and (max-width: 640px) {
+    margin-top: 20px;
+    font-size: ptr(72px) !important;
   }
 }
-
-/*endregion Footer*/

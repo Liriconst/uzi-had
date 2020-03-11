@@ -1,10 +1,10 @@
 @import "../../config";
 
-.newsButton {
+.aboutButton {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
-  width: 300px !important;
+  width: 220px !important;
   border: 0 !important;
   padding: 0 !important;
   outline: none !important;
@@ -19,7 +19,7 @@
 }
 
 .newsButton:hover > span:last-child {
-  color: #0064AA;
+  color: black;
   transition: 0.2s ease-out;
 }
 

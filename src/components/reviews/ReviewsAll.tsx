@@ -2,13 +2,15 @@ import * as React from "react";
 import {Link} from "react-router-dom";
 import autobind from "autobind-decorator";
 import styles from "./Reviews.module.scss";
-import {Select, Modal, Button, Input} from 'antd';
+import {Select, Modal, Button, Input, Rate} from 'antd';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { Table } from 'antd';
 import { ApolloError } from "apollo-boost";
 import moment from "moment";
-import WrappedReviewsAdd from "./ReviewsAdd";
+import 'moment/locale/ru';
+import ReviewsModal from "../reviews/ReviewsModal";
+import {Mobile, WithoutMobile} from "../../responsiveModule";
 
 const GET_REVIEWS = gql`
     query {
@@ -25,16 +27,22 @@ const GET_REVIEWS = gql`
     }
 `;
 
-class ReviewsAll extends React.Component<{}, {
+interface ReviewsAddProps {
+    value?: number
+}
+
+class ReviewsAll extends React.Component<ReviewsAddProps, {
     mode?: string,
-    visible?: boolean
+    visible?: boolean,
+    activeModal?: number
 }> {
-    public constructor(props: {}) {
+    public constructor(props: ReviewsAddProps) {
         super(props);
         this.state = {
             mode: 'all',
-            visible: false
-        };
+            visible: false,
+            activeModal: 0
+        }
     }
 
     @autobind
@@ -43,38 +51,102 @@ class ReviewsAll extends React.Component<{}, {
     };
 
     @autobind
+    private showModalFull(id: number) {
+        this.setState({activeModal: id});
+    };
+
+    @autobind
     private handleCancel() {
         this.setState({visible: false});
     };
 
+    @autobind
+    private handleCancelFull() {
+        this.setState({activeModal: 0});
+    };
+
     public render(): React.ReactNode {
+        function sliceTextFull(str: string) {
+            let newStr = str.trim();
+            if( newStr.length <= 350) return newStr;
+            newStr = newStr.slice( 0, 350);
+            let lastSpace = newStr.lastIndexOf(" ");
+            if( lastSpace > 0) newStr = newStr.substr(0, lastSpace);
+            return newStr + "...";
+        }
+
+        function sliceTextMobile(str: string) {
+            let newStr = str.trim();
+            if( newStr.length <= 100) return newStr;
+            newStr = newStr.slice( 0, 100);
+            let lastSpace = newStr.lastIndexOf(" ");
+            if( lastSpace > 0) newStr = newStr.substr(0, lastSpace);
+            return newStr + "...";
+        }
+
         return (
             <Query query={GET_REVIEWS}>
                 {({loading, error, data}: {loading: boolean, error?: ApolloError, data: any}) => {
-                    if (loading) return <span>"Loading...";</span>
+                    if (loading) return <span>"Loading...";</span>;
                     if (error) return <span>`Error! ${error.message}`</span>;
-                    console.log(data);
+                    let nodes;
+
+                    switch(this.props.value) {
+                        case 1: {
+                            nodes = data.allReviews.nodes.filter((revTemp:any) => revTemp.reviewMark >= 4);
+                            break;
+                        }
+                        case 2: {
+                            nodes = data.allReviews.nodes.filter((revTemp:any) => revTemp.reviewMark == 3);
+                            break;
+                        }
+                        case 3: {
+                            nodes = data.allReviews.nodes.filter((revTemp:any) => revTemp.reviewMark <= 2);
+                            break;
+                        }
+                        default: {
+                            nodes = data.allReviews.nodes;
+                            break;
+                        }
+                    }
                     return (
-                        <div className={styles.newsAll}>
-                            {data.allReviews.nodes.map((reviewsQuery: any) => (
-                                <Button type="primary" key={reviewsQuery.id} className={"newsList"}>
-                                    <span>Новость&nbsp;</span>
-                                    <span>"{reviewsQuery.firstName}"&nbsp;</span>
-                                    <span>"{reviewsQuery.secondName}"&nbsp;</span>
-                                    <span>"{reviewsQuery.reviewText}"&nbsp;</span>
-                                    <span>"{reviewsQuery.reviewMark}"&nbsp;</span>
-                                    <span>от&nbsp;</span>
-                                    <span>{moment(reviewsQuery.reviewDate).format("DD.MM.YYYY hh:mm:ss")}</span>
-                                </Button>
+                        <div className={styles.pageReviewsAll}>
+                            {nodes.map((reviewsQuery: any) => (
+                                <div>
+                                    <div className={styles.reviewHeader}>
+                                        <span className={styles.reviewAvatar}><img src="/static/svg/profileIcon.svg" alt=""/></span>
+                                        <div className={styles.reviewHeaderText}>
+                                            <span className={(reviewsQuery.reviewMark >= 4) ? styles.reviewsFIOPos :
+                                                            ((reviewsQuery.reviewMark == 3) ? styles.reviewsFIOMid : styles.reviewsFIONeg)}>
+                                                {reviewsQuery.firstName}&nbsp;{reviewsQuery.secondName}
+                                            </span>
+                                            <span className={styles.reviewHeaderDate}>{moment(reviewsQuery.reviewDate).format("DD.MM.YYYY")}</span>
+                                            <Mobile>
+                                                <Rate className={(reviewsQuery.reviewMark >= 4) ? styles.reviewMarkPos :
+                                                                ((reviewsQuery.reviewMark == 3) ? styles.reviewMarkMid :
+                                                                styles.reviewMarkNeg)} disabled defaultValue={reviewsQuery.reviewMark}/>
+                                            </Mobile>
+                                        </div>
+                                        <WithoutMobile>
+                                            <Rate className={(reviewsQuery.reviewMark >= 4) ? styles.reviewMarkPos :
+                                                ((reviewsQuery.reviewMark == 3) ? styles.reviewMarkMid :
+                                                    styles.reviewMarkNeg)} disabled defaultValue={reviewsQuery.reviewMark}/>
+                                        </WithoutMobile>
+                                    </div>
+                                    <WithoutMobile>
+                                        <div className={styles.reviewsText}>{sliceTextFull(reviewsQuery.reviewText)}</div>
+                                        {((reviewsQuery.reviewText).length > 500) ?
+                                        <Button type="primary" key={reviewsQuery.id} className={"reviewsButton"} onClick={() => this.showModalFull(reviewsQuery.id)}>Читать целиком</Button> : null}
+                                    </WithoutMobile>
+                                    <Mobile>
+                                        <div className={styles.reviewsText}>{sliceTextMobile(reviewsQuery.reviewText)}</div>
+                                        {((reviewsQuery.reviewText).length > 100) ?
+                                        <Button type="primary" key={reviewsQuery.id} className={"reviewsButton"} onClick={() => this.showModalFull(reviewsQuery.id)}>Читать целиком</Button> : null}
+                                    </Mobile>
+
+                                    <ReviewsModal reviews={reviewsQuery} isVisible={reviewsQuery.id === this.state.activeModal} onClose={this.handleCancelFull}/>
+                                </div>
                             ))}
-                            <Modal
-                                title="Ваш отзыв"
-                                visible={this.state.visible}
-                                onCancel={this.handleCancel}
-                                wrapClassName="newsWrap"
-                            >
-                                <WrappedReviewsAdd onCancel={this.handleCancel}/>
-                            </Modal>
                         </div>
                     );
                 }}
