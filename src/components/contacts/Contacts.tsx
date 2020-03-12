@@ -22,7 +22,7 @@ const ContactsForDesktop = () => (
                     <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
                     <span/>
                     <div className={styles.contactsInfoButtonContainer}>
-                        <span className={styles.contactsInfoButton}><Link to="/news">Посмотреть отзывы</Link></span>
+                        <span className={styles.contactsInfoButton}><Link to="/reviews">Посмотреть отзывы</Link></span>
                         <span/>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ const ContextForMaxMobile = () => (
                 <div className={styles.contactsInfoText}><span>+7(918)177-24-17</span></div>
                 <span/>
                 <div className={styles.contactsInfoButtonContainer}>
-                    <span className={styles.contactsInfoButton}><Link to="/news">Посмотреть отзывы</Link></span>
+                    <span className={styles.contactsInfoButton}><Link to="/reviews">Посмотреть отзывы</Link></span>
                     <span/>
                 </div>
             </div>
@@ -113,7 +113,7 @@ const ContextForMinMobile = () => (
                 </div>
             </div>
             <div className={styles.contactsInfoButtonContainer}>
-                <span className={styles.contactsInfoButton}><Link to="/news">Посмотреть отзывы</Link></span>
+                <span className={styles.contactsInfoButton}><Link to="/reviews">Посмотреть отзывы</Link></span>
             </div>
         </div>
         <span/>
@@ -146,6 +146,6 @@ class Contacts extends React.Component<{
             </div>
         );
     };
-};
+}
 
 export default Contacts;

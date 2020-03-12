@@ -51,9 +51,8 @@ class About extends React.Component<{}, {
                     return (
                         <div className={styles.pageAbout}>
                             <div className={styles.aboutHeader}>
-                                <span className={styles.aboutHeaderTitle}>БОЛЬШОЙ ЗАГОЛОВОК ОПИСАНИЯ</span>
-                                <span className={styles.aboutHeaderPreview}>Текст Текст Текст Текст Текст Текст</span>
-                                <span className={styles.aboutHeaderPreview}>Текст Текст Текст Текст Текст Текст Текст Текст Текст</span>
+                                <span className={styles.aboutHeaderTitle}>Дипломы, сертификаты и грамоты наших сотрудников</span>
+                                <span className={styles.aboutHeaderPreview}>Более 30 различных документов, подтверждающих нашу высокую квалификацию и стаж</span>
                             </div>
                             <div className={styles.aboutCards}>
                             {data.allAbouts.nodes.map((aboutQuery: any) => (
@@ -62,7 +61,7 @@ class About extends React.Component<{}, {
                                         <div className={(aboutQuery.rotate) ? styles.aboutImgVertical : styles.aboutImgHorizontal} ><img src={aboutQuery.linkImg} alt=""/></div>
                                         <span className={styles.aboutTitleCard}>{aboutQuery.title}</span>
                                     </Button>
-                                    <AboutModal news={aboutQuery} isVisible={aboutQuery.id === this.state.activeModal} onClose={this.handleCancel}/>
+                                    <AboutModal about={aboutQuery} isVisible={aboutQuery.id === this.state.activeModal} onClose={this.handleCancel}/>
                                 </div>
                             ))}
                             </div>

@@ -18,17 +18,32 @@
   text-align: unset !important;
 }
 
-.newsButton:hover > span:last-child {
+.aboutButton:hover > span:last-child {
   color: black;
   transition: 0.2s ease-out;
 }
 
-.newsButtonInModal {
+.aboutButtonInModal {
   @media screen and (min-width: 641px) {
     margin: 15px 15px;
   }
 }
 
-.newsModal {
-  width: 1024px !important;
+.aboutModal {
+  height: 100% !important;
+  width: 100% !important;
+  background: white !important;
+  top: 0 !important;
+  bottom: 0 !important;
+
+  .ant-modal-wrap {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .ant-modal-content {
+    height: 100% !important;
+    width: 100% !important;
+    box-shadow: none !important;
+  }
 }

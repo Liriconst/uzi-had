@@ -1,0 +1,109 @@
+@import "../../config";
+
+.footerModal {
+  & .ant-btn {
+    &.ant-btn-primary {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: "Roboto", sans-serif !important;
+      font-weight: 400 !important;
+      color: white !important;
+      width: 275px !important;
+      height: 50px !important;
+      border-radius: ptr(5px) !important;
+
+      @media screen and (min-width: 1918px) {
+        height: 50px !important;
+        width: 250px !important;
+        font-size: 22px !important;
+      }
+
+      @media screen and (min-width: 1201px) and (max-width: 1917px) {
+        height: 40px !important;
+        width: 235px !important;
+        font-size: 20px !important;
+      }
+
+      @media screen and (min-width: 901px) and (max-width: 1200px) {
+        height: 35px !important;
+        width: 180px !important;
+        font-size: 16px !important;
+      }
+
+      @media screen and (min-width: 641px) and (max-width: 900px) {
+        height: 40px !important;
+        width: 180px !important;
+        font-size: 16px !important;
+      }
+
+      @media screen and (min-width: 361px) and (max-width: 640px) {
+        height: 40px !important;
+        width: 140px !important;
+        font-size: 14px !important;
+        border-radius: 2px !important;
+      }
+
+      @media screen and (max-width: 360px) {
+        height: 40px !important;
+        width: 120px !important;
+        font-size: 12px !important;
+        border-radius: 2px !important;
+      }
+
+      &:hover {
+        background: #018401 !important;
+        box-shadow: 0 ptr(3px) ptr(3px) #004487 !important;
+        transition: 100ms !important;
+      }
+    }
+  }
+}
+
+.footerWrap {
+  width: 100vw !important;
+  align-self: start !important;
+  align-items: start !important;
+  align-content: start !important;
+
+  & .ant-modal-body {
+    padding: 24px 24px 16px 24px !important;
+  }
+
+  & .ant-modal-footer {
+    display: none !important;
+  }
+
+  .newsStyle {
+    display: flex;
+    justify-content: flex-start;
+    height: 80px;
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 300 !important;
+    font-size: 25px !important;
+    color: red !important;
+  }
+
+  & .ant-modal-title {
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 30px !important;
+    color: #0064aa !important;
+  }
+
+  & .ant-input {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+    color: #393939 !important;
+    border: 1px solid #0064aa;
+    margin-bottom: 0 !important;
+
+    &.ant-input::placeholder {
+      font-size: 18px !important;
+      font-style: italic !important;
+      color: #758088 !important;
+    }
+  }
+}

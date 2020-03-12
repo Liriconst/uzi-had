@@ -138,47 +138,40 @@
   width: 220px;
 }
 
-.aboutTitleModal {
-  @include aboutTitleTemplate;
-  width: 100%;
+@mixin aboutImgModalTemplate {
+  @include flexRowRelative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
-// --^^^--- Последние изменения и рабочие стили
+.aboutImgModalVertical {
+  @include aboutImgModalTemplate;
+  height: 100%;
+  width: 100%;
 
-.newsTitleInModal {
+  img {
+    height: 100vh;
+  }
+}
+
+.aboutImgModalHorizontal {
+  @include aboutImgModalTemplate;
+  height: 100%;
+  width: 100%;
+
+  img {
+    width: 95vw;
+  }
+}
+
+.aboutTitleInModal {
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 24px;
-  color: #0064aa;
+  color: #393939;
   line-height: 1.25;
   text-align: center;
   white-space: normal !important;
-
-  @media screen and (min-width: 641px) {
-    margin: 20px 15px 0 15px;
-  }
-
-  @media screen and (max-width: 640px) {
-    margin-top: 30px;
-    font-size: ptr(80px) !important;
-  }
-}
-
-.newsFullTextInModal {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  color: #393939;
-  line-height: 1.25;
-  text-align: start;
-  white-space: normal !important;
-
-  @media screen and (min-width: 641px) {
-    margin: 30px 15px 0 15px;
-  }
-
-  @media screen and (max-width: 640px) {
-    margin-top: 20px;
-    font-size: ptr(72px) !important;
-  }
+  margin-top: 30px;
 }
