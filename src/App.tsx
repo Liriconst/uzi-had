@@ -85,10 +85,10 @@ const menu = (
         <MobileMax479>
             <div className={window.location.pathname === "/home" ? styles.appHeaderStartMenuModalCurrentLink :
                 styles.appHeaderStartMenuModalLinks}><Link to="/home">ГЛАВНАЯ</Link></div>
-            <span className={styles.appHeaderStartMenuModalSeparator}/>
             <div className={window.location.pathname === "/news" ? styles.appHeaderStartMenuModalCurrentLink :
                 styles.appHeaderStartMenuModalLinks}><Link to="/news">НОВОСТИ</Link></div>
-            <span className={styles.appHeaderStartMenuModalSeparator}/>
+            <div className={window.location.pathname === "/spa" ? styles.appHeaderStartMenuModalCurrentLink :
+                styles.appHeaderStartMenuModalLinks}><Link to="/spa">НОВОСТИ</Link></div>
             <div className={window.location.pathname === "/ultrasound" ? styles.appHeaderStartMenuModalCurrentLink :
                 styles.appHeaderStartMenuModalLinks}><Link to="/ultrasound">УЗИ</Link></div>
             <span className={styles.appHeaderStartMenuModalSeparator}/>
@@ -331,26 +331,50 @@ const HeaderForTablet = ({location}: {location:any}) => (
     </div>
 );
 
-const HeaderForMobile = ({location}: {location:any}) => (
-    <div className={styles.appHeader}>
-        <div className={styles.appHeaderStart}>
-            <a className={styles.appHeaderMiddleFavicon} href='/home'>
-                <img src="/static/img/9-favicon.png" alt={""}/>
-            </a>
-            <span className={styles.appHeaderStartSeparator}/>
-            <div className={styles.appHeaderMiddleName}>
-                <div className={styles.appHeaderMiddleNameFirst}><Link to="/home">медицинский центр</Link></div>
-                <div className={styles.appHeaderMiddleNameSecond}><Link to="/home">"ЮЖНЫЙ"</Link></div>
+interface iHeaderForMobileProps {
+    location: any;
+}
+
+class HeaderForMobile extends React.Component<iHeaderForMobileProps, {value: boolean}> {
+
+    componentDidUpdate(prevProps: iHeaderForMobileProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+
+    onRouteChanged() {
+        this.setState({value: false});
+        console.log("ROUTE CHANGED");
+    }
+
+    onVisibleChange = (value: boolean) => {
+        this.setState({value});
+    };
+
+    render() {
+        return (
+            <div className={styles.appHeader}>
+                <div className={styles.appHeaderStart}>
+                    <a className={styles.appHeaderMiddleFavicon} href='/home'>
+                        <img src="/static/img/9-favicon.png" alt={""}/>
+                    </a>
+                    <span className={styles.appHeaderStartSeparator}/>
+                    <div className={styles.appHeaderMiddleName}>
+                        <div className={styles.appHeaderMiddleNameFirst}><Link to="/home">медицинский центр</Link></div>
+                        <div className={styles.appHeaderMiddleNameSecond}><Link to="/home">"ЮЖНЫЙ"</Link></div>
+                    </div>
+                    <span className={styles.appHeaderStartSeparator}/>
+                    <Dropdown overlay={menu} overlayClassName={styles.appHeaderStartDropdown} trigger={['click']} visible={this.state && this.state.value} onVisibleChange={this.onVisibleChange}>
+                        <a className={styles.appHeaderStartMenuModalButton} href="#">
+                            <img src="/static/svg/5-menus-white.svg" alt={""}/>
+                        </a>
+                    </Dropdown>
+                </div>
             </div>
-            <span className={styles.appHeaderStartSeparator}/>
-            <Dropdown overlay={menu} overlayClassName={styles.appHeaderStartDropdown} trigger={['click']}>
-                <a className={styles.appHeaderStartMenuModalButton} href="#">
-                    <img src="/static/svg/5-menus-white.svg" alt={""}/>
-                </a>
-            </Dropdown>
-        </div>
-    </div>
-);
+        )
+    }
+};
 
 class AppHeaderInner extends React.Component<{
     location: any;

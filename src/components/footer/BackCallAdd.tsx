@@ -41,7 +41,7 @@ function editFIO(str: string) {
 }
 
 function changeCabinet(change: boolean) {
-    if (window.location.pathname === "/spa")
+    if (window.location.pathname == "/spa")
         change = false;
     else
         change = true;
@@ -67,11 +67,10 @@ class BackCallAdd extends React.Component<ReviewsAddProps, {
     }
 
     validatorFIO = (rule: any, str: string, callback: any) => {
-        if (str == null)
-            callback('Пожалуйста, заполните поле!');
-        else if (!/^[а-яА-ЯёЁ ]+$/.test(str))
-            callback('Разрешены только буквы русского алфавита. Пожалуйста, проверьте введёные данные.');
+        if (str === "") callback('Пожалуйста, заполните поле!');
+        else if (!/^[а-яА-ЯёЁ ]+$/.test(str)) callback('Разрешены только буквы русского алфавита. Пожалуйста, проверьте введёные данные.');
         else if (swearwordFilter.test(str)) callback('Присутствуют нецензурные выражения. Пожалуйста, проверьте введёные данные.');
+        callback()
     };
 
     openNotification = () => {

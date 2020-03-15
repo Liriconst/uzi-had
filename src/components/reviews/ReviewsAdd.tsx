@@ -58,19 +58,22 @@ class ReviewsAdd extends React.Component<ReviewsAddProps, {
     }
 
     validatorFIO = (rule: any, str: string, callback: any) => {
-        if (str == null)
-            callback('Пожалуйста, заполните поле!');
-        else if (!/^[а-яА-ЯёЁ ]+$/.test(str))
-            callback('Разрешены только буквы русского алфавита. Пожалуйста, проверьте введёные данные.');
+        if (str === "") callback('Пожалуйста, заполните поле!');
+        else if (!/^[а-яА-ЯёЁ ]+$/.test(str)) callback('Разрешены только буквы русского алфавита. Пожалуйста, проверьте введёные данные.');
         else if (swearwordFilter.test(str)) callback('Присутствуют нецензурные выражения. Пожалуйста, проверьте введёные данные.');
+        callback()
     };
 
     validatorReview = (rule: any, str: string, callback: any) => {
-        if (str == null)
-            callback('Пожалуйста, заполните поле!');
-        else if (!/^[?!.,:;"«»а-яА-ЯёЁ\-0-9 ]+$/.test(str))
-            callback('Разрешены только буквы русского алфавита, цифры и следующие спецсимволы: ?!.,:;"«»- . Пожалуйста, проверьте введёные данные.');
+        if (str === "") callback('Пожалуйста, заполните поле!');
+        else if (!/^[?!.,:;"«»а-яА-ЯёЁ\-0-9 ]+$/.test(str)) callback('Разрешены только буквы русского алфавита, цифры и следующие спецсимволы: ?!.,:;"«»- . Пожалуйста, проверьте введёные данные.');
         else if (swearwordFilter.test(str)) callback('Присутствуют нецензурные выражения. Пожалуйста, проверьте введёные данные.');
+        callback()
+    };
+
+    validatorMark = (rule: any, value: number, callback: any) => {
+        if (value == 0) callback('Пожалуйста, выберите оценку!');
+        callback()
     };
 
     openNotification = () => {
@@ -111,7 +114,7 @@ class ReviewsAdd extends React.Component<ReviewsAddProps, {
                             {getFieldDecorator('firstName', {
                                 rules: [{
                                     required: true,
-                                    // validator: this.validatorFIO
+                                    validator: this.validatorFIO
                                 }],
                             })(<Input placeholder="Имя..."/>)}
                         </Form.Item>
@@ -120,7 +123,7 @@ class ReviewsAdd extends React.Component<ReviewsAddProps, {
                             {getFieldDecorator('secondName', {
                                 rules: [{
                                     required: true,
-                                    // validator: this.validatorFIO
+                                    validator: this.validatorFIO
                                 }],
                             })(<Input placeholder="Фамилия..."/>)}
                         </Form.Item>
@@ -129,16 +132,19 @@ class ReviewsAdd extends React.Component<ReviewsAddProps, {
                             {getFieldDecorator('reviewText', {
                                 rules: [{
                                     required: true,
-                                    // validator: this.validatorReview
+                                    validator: this.validatorReview
                                 }],
                             })(<TextArea placeholder="Текст отзыва..." autoSize={{minRows: 3}}/>)}
                         </Form.Item>
                         <div className={styles.reviewsHeaderText}>Ваша оценка:</div>
                         <div className={styles.reviewsMark}>
                         <Form.Item>
-                            {getFieldDecorator('reviewMark', { initialValue: 5 })(
-                                <Rate tooltips={desc} onChange={this.handleChange} value={value} className={"reviewMarkInModal"}/>
-                            )}
+                            {getFieldDecorator('reviewMark', { initialValue: 5,
+                                rules: [{
+                                    required: true,
+                                    validator: this.validatorMark
+                                }],
+                            })(<Rate tooltips={desc} onChange={this.handleChange} value={value} className={"reviewMarkInModal"}/>)}
                         </Form.Item>
                         <span>{value ? <span className="reviewMarkTextInModal">{desc[value - 1]}</span> : ''}</span>
                         </div>

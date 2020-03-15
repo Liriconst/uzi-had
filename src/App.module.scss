@@ -463,7 +463,7 @@
   @media only screen and (min-width: 340px) and (max-width: 479px) {
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1px 50px 1fr 70px 40px 45px;
-    height: 100vh;
+    max-height: 100vh !important;
     width: 100vw;
     padding: 0 0 60px 0 !important;
   }
@@ -471,7 +471,7 @@
   @media only screen and (max-width: 339px) {
     grid-template-columns: 1fr;
     grid-template-rows: 40px 1px 40px 1px 40px 1px 40px 1px 40px 1px 40px 1px 40px 1px 40px 1fr 70px 40px 45px;
-    height: 100vh;
+    max-height: 100vh !important;
     width: 100vw;
     padding: 0 0 60px 0 !important;
   }
